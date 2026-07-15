@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>עץ הקטגוריות של כלבו בר אילן</title>
+    <title>עץ הקטגוריות של כלבו בר אילן - Commax</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
             border-radius: 12px;
@@ -31,18 +31,45 @@
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px;
+            padding: 40px 30px;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2.8em;
+            margin-bottom: 15px;
             font-weight: 700;
         }
 
         .header p {
             font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.95em;
             opacity: 0.9;
         }
 
@@ -50,7 +77,7 @@
             display: flex;
             gap: 15px;
             padding: 20px;
-            background: #f5f5f5;
+            background: #f8f9fa;
             border-bottom: 1px solid #ddd;
             flex-wrap: wrap;
             align-items: center;
@@ -58,12 +85,12 @@
 
         .search-box {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
         }
 
         .search-box input {
             width: 100%;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border: 2px solid #ddd;
             border-radius: 6px;
             font-size: 1em;
@@ -99,245 +126,108 @@
             background: #999;
         }
 
-        button.secondary:hover {
-            background: #777;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+        .content {
             padding: 20px;
-            background: #f9f9f9;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .stat-item {
-            background: white;
-            padding: 15px;
-            border-radius: 6px;
-            border-right: 4px solid #667eea;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .stat-item .label {
-            font-size: 0.85em;
-            color: #999;
-            margin-bottom: 5px;
-        }
-
-        .stat-item .value {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #667eea;
-        }
-
-        .tree-container {
-            padding: 20px;
-            max-height: calc(100vh - 400px);
+            max-height: calc(100vh - 300px);
             overflow-y: auto;
         }
 
         .category {
-            background: white;
             margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            border: 2px solid #e0e0e0;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .category:hover {
-            border-color: #667eea;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
-        }
-
-        .category.dragging {
-            opacity: 0.5;
-            background: #f0f0f0;
+            background: #fafafa;
         }
 
         .category-header {
             display: flex;
             align-items: center;
-            gap: 10px;
             padding: 15px;
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            cursor: move;
-            user-select: none;
+            cursor: pointer;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background 0.2s;
         }
 
         .category-header:hover {
-            background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
-        }
-
-        .drag-handle {
-            cursor: grab;
-            color: #999;
-            font-size: 1.2em;
-        }
-
-        .drag-handle:active {
-            cursor: grabbing;
+            background: #f5f5f5;
         }
 
         .toggle-btn {
             background: none;
             border: none;
-            color: #667eea;
             cursor: pointer;
             font-size: 1.2em;
+            margin-right: 10px;
+            transition: transform 0.3s;
             padding: 0;
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s;
         }
 
-        .toggle-btn.collapsed {
+        .toggle-btn.open {
             transform: rotate(-90deg);
         }
 
         .category-title {
-            flex: 1;
             font-weight: 600;
             font-size: 1.1em;
-        }
-
-        .category-id {
-            background: #667eea;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.75em;
-            font-weight: 700;
+            flex: 1;
+            margin-right: 10px;
         }
 
         .category-count {
-            background: #f0f0f0;
-            color: #666;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-        }
-
-        .category-actions {
-            display: flex;
-            gap: 5px;
-        }
-
-        .category-actions button {
-            padding: 5px 10px;
-            font-size: 0.75em;
-            background: #999;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
         }
 
         .category-content {
-            display: none;
-            padding: 15px;
-            border-top: 2px solid #e0e0e0;
-            background: #fafafa;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
         }
 
         .category-content.visible {
-            display: block;
+            max-height: 2000px;
         }
 
-        .note-section {
-            margin-bottom: 15px;
-            padding: 12px;
-            background: white;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-        }
-
-        .note-label {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .note-input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 0.9em;
-            font-family: inherit;
-            resize: vertical;
-            min-height: 60px;
-        }
-
-        .subgroups {
+        .subcategories {
+            padding: 15px 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+            border-top: 1px solid #e0e0e0;
         }
 
-        .subgroup {
+        .subcategory {
             background: white;
-            border: 1px solid #ddd;
+            padding: 12px;
             border-radius: 6px;
-            padding: 10px;
+            border: 1px solid #ddd;
+            transition: all 0.2s;
         }
 
-        .subgroup-title {
+        .subcategory:hover {
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+            border-color: #667eea;
+        }
+
+        .subcat-name {
             font-weight: 600;
-            color: #667eea;
-            margin-bottom: 8px;
-            font-size: 0.95em;
+            color: #333;
+            margin-bottom: 5px;
         }
 
-        .items-list {
+        .subcat-count {
             font-size: 0.85em;
             color: #666;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .items-list li {
-            margin-bottom: 4px;
-            padding: 4px;
-            background: #f9f9f9;
-            border-radius: 3px;
-            border-right: 3px solid #667eea;
-            padding-right: 8px;
-        }
-
-        .save-indicator {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: white;
-            padding: 15px 20px;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            display: none;
-            z-index: 1000;
-        }
-
-        .save-indicator.show {
-            display: block;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .save-indicator.success {
-            background: #4caf50;
-            color: white;
         }
 
         .footer {
@@ -345,30 +235,8 @@
             background: #f5f5f5;
             border-top: 1px solid #ddd;
             text-align: center;
-            color: #999;
+            color: #666;
             font-size: 0.9em;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .controls {
-                flex-direction: column;
-            }
-
-            .search-box {
-                min-width: 100%;
-            }
-
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .subgroups {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -376,119 +244,83 @@
     <div class="container">
         <div class="header">
             <h1>🌳 עץ הקטגוריות של כלבו בר אילן</h1>
-            <p>Kolbo Bar Ilan - Product Hierarchy</p>
+            <p>Commax Catalog - עץ קטגוריות מלא ואינטראקטיבי</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="categoryCount">0</div>
+                    <div class="stat-label">קטגוריות</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="subcategoryCount">0</div>
+                    <div class="stat-label">תת-קטגוריות</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="productCount">0</div>
+                    <div class="stat-label">מוצרים</div>
+                </div>
+            </div>
         </div>
 
         <div class="controls">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 חפש קטגוריה או מוצר...">
+                <input type="text" id="searchInput" placeholder="🔍 חיפוש בקטגוריות...">
             </div>
             <div class="buttons">
-                <button onclick="expandAll()">הרחב הכל</button>
-                <button onclick="collapseAll()">צמצם הכל</button>
-                <button class="secondary" onclick="exportData()">↓ ייצוא</button>
+                <button onclick="expandAll()">📂 הרחב הכל</button>
+                <button onclick="collapseAll()" class="secondary">📁 סגור הכל</button>
             </div>
         </div>
 
-        <div class="stats">
-            <div class="stat-item">
-                <div class="label">קטגוריות</div>
-                <div class="value" id="categoryCount">0</div>
-            </div>
-            <div class="stat-item">
-                <div class="label">תת-קטגוריות</div>
-                <div class="value" id="subcategoryCount">0</div>
-            </div>
-            <div class="stat-item">
-                <div class="label">מוצרים</div>
-                <div class="value" id="productCount">0</div>
-            </div>
-            <div class="stat-item">
-                <div class="label">ספקים</div>
-                <div class="value" id="supplierCount">0</div>
-            </div>
+        <div class="content" id="treeContainer">
         </div>
-
-        <div class="tree-container" id="treeContainer"></div>
 
         <div class="footer">
-            <p>✨ עץ קטגוריות אינטראקטיבי | כל השינויים נשמרים אוטומטית | Commax Catalog</p>
+            ✨ עץ קטגוריות אינטראקטיבי | Commax Catalog | עדכון אחרון: 2026-07-15
         </div>
-    </div>
-
-    <div class="save-indicator" id="saveIndicator">
-        ✅ השינויים נשמרו
     </div>
 
     <script>
         let allData = [];
-        let notes = {};
-        let categoryOrder = [];
-        let draggedElement = null;
 
         // Load data
-        async function loadData() {
-            try {
-                const response = await fetch('commax-product-tree.json');
-                const data = await response.json();
-                allData = data.מחלקות || [];
-                
-                // Load saved data
-                const saved = localStorage.getItem('kolbo-bar-ilan-data');
-                if (saved) {
-                    const savedData = JSON.parse(saved);
-                    notes = savedData.notes || {};
-                    categoryOrder = savedData.categoryOrder || [];
-                }
-
-                // Initialize category order
-                if (categoryOrder.length === 0) {
-                    categoryOrder = allData.map(c => c.id);
-                }
-
-                updateStats();
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                allData = data.categories || [];
+                console.log('📊 Loaded categories:', allData.length);
                 renderTree();
-            } catch (error) {
+                updateStats();
+            })
+            .catch(error => {
                 console.error('Error loading data:', error);
                 document.getElementById('treeContainer').innerHTML = 
-                    '<p style="color: red; padding: 20px;">❌ שגיאה בטעינת הנתונים</p>';
-            }
-        }
+                    '<div style="padding: 20px; color: red;">שגיאה בטעינת הנתונים</div>';
+            });
 
         function updateStats() {
             let categoryCount = allData.length;
             let subcategoryCount = 0;
             let productCount = 0;
-            let suppliers = new Set();
 
             allData.forEach(cat => {
-                Object.values(cat.קבוצות || {}).forEach(group => {
-                    Object.values(group.קבוצות_משנה || {}).forEach(subgroup => {
-                        subcategoryCount++;
-                        (subgroup.פריטים || []).forEach(item => {
-                            productCount++;
-                            if (item.ספק) suppliers.add(item.ספק);
-                        });
-                    });
+                const subcategories = cat.subcategories || [];
+                subcategoryCount += subcategories.length;
+                
+                subcategories.forEach(subcat => {
+                    productCount += subcat.itemCount || 0;
                 });
             });
 
             document.getElementById('categoryCount').textContent = categoryCount;
             document.getElementById('subcategoryCount').textContent = subcategoryCount;
-            document.getElementById('productCount').textContent = productCount;
-            document.getElementById('supplierCount').textContent = suppliers.size;
+            document.getElementById('productCount').textContent = productCount.toLocaleString('he-IL');
         }
 
         function renderTree() {
             const container = document.getElementById('treeContainer');
             container.innerHTML = '';
 
-            const sortedCategories = categoryOrder.map(id => 
-                allData.find(c => c.id === id)
-            ).filter(Boolean);
-
-            sortedCategories.forEach(category => {
-                if (!category) return;
+            allData.forEach(category => {
                 container.appendChild(createCategoryElement(category));
             });
         }
@@ -496,224 +328,79 @@
         function createCategoryElement(category) {
             const div = document.createElement('div');
             div.className = 'category';
-            div.draggable = true;
-            div.dataset.categoryId = category.id;
-
-            const itemCount = getItemCount(category);
 
             const header = document.createElement('div');
             header.className = 'category-header';
 
-            const dragHandle = document.createElement('div');
-            dragHandle.className = 'drag-handle';
-            dragHandle.innerHTML = '⋮⋮';
-            header.appendChild(dragHandle);
-
-            const toggleBtn = document.createElement('button');
-            toggleBtn.className = 'toggle-btn collapsed';  // Start collapsed (pointing down)
-            toggleBtn.innerHTML = '▼';
-            toggleBtn.onclick = (e) => {
-                e.preventDefault();
-                toggleCategory(div);
+            const toggle = document.createElement('button');
+            toggle.className = 'toggle-btn open';
+            toggle.innerHTML = '▶';
+            toggle.onclick = (e) => {
+                e.stopPropagation();
+                content.classList.toggle('visible');
+                toggle.classList.toggle('open');
             };
-            header.appendChild(toggleBtn);
 
-            const title = document.createElement('div');
+            const title = document.createElement('span');
             title.className = 'category-title';
-            title.textContent = category.שם;
+            title.textContent = `${category.id}. ${category.name}`;
+
+            const subcats = category.subcategories || [];
+            const totalItems = subcats.reduce((sum, s) => sum + (s.itemCount || 0), 0);
+            
+            const badge = document.createElement('span');
+            badge.className = 'category-count';
+            badge.textContent = `${subcats.length} תת-קטגוריות • ${totalItems} מוצרים`;
+
+            header.appendChild(toggle);
             header.appendChild(title);
-
-            const id = document.createElement('span');
-            id.className = 'category-id';
-            id.textContent = `#${category.id}`;
-            header.appendChild(id);
-
-            const count = document.createElement('span');
-            count.className = 'category-count';
-            count.textContent = `${itemCount} פריטים`;
-            header.appendChild(count);
-
-            const actions = document.createElement('div');
-            actions.className = 'category-actions';
-
-            const editBtn = document.createElement('button');
-            editBtn.textContent = '✏️ הערה';
-            editBtn.onclick = (e) => {
-                e.preventDefault();
-                editNote(category.id, category.שם);
-            };
-            actions.appendChild(editBtn);
-
-            header.appendChild(actions);
-            div.appendChild(header);
+            header.appendChild(badge);
 
             const content = document.createElement('div');
-            content.className = 'category-content visible';  // Show by default
+            content.className = 'category-content visible';
 
-            // Add note section
-            const noteSection = document.createElement('div');
-            noteSection.className = 'note-section';
-            const noteLabel = document.createElement('div');
-            noteLabel.className = 'note-label';
-            noteLabel.textContent = 'הערות:';
-            noteSection.appendChild(noteLabel);
-            
-            const noteText = document.createElement('textarea');
-            noteText.className = 'note-input';
-            noteText.placeholder = 'הוסף הערה לקטגוריה זו...';
-            noteText.value = notes[category.id] || '';
-            noteText.onchange = () => saveNote(category.id, noteText.value);
-            noteSection.appendChild(noteText);
-            content.appendChild(noteSection);
+            const subcatsDiv = document.createElement('div');
+            subcatsDiv.className = 'subcategories';
 
-            // Add products
-            const subgroups = document.createElement('div');
-            subgroups.className = 'subgroups';
-
-            Object.entries(category.קבוצות || {}).forEach(([groupName, group]) => {
-                Object.entries(group.קבוצות_משנה || {}).forEach(([subgroupName, subgroup]) => {
-                    if ((subgroup.פריטים || []).length > 0) {
-                        const sgDiv = document.createElement('div');
-                        sgDiv.className = 'subgroup';
-
-                        const sgTitle = document.createElement('div');
-                        sgTitle.className = 'subgroup-title';
-                        sgTitle.textContent = subgroupName;
-                        sgDiv.appendChild(sgTitle);
-
-                        const itemsList = document.createElement('ul');
-                        itemsList.className = 'items-list';
-                        (subgroup.פריטים || []).forEach(item => {
-                            const li = document.createElement('li');
-                            li.textContent = `${item.שם_פריט}`;
-                            itemsList.appendChild(li);
-                        });
-                        sgDiv.appendChild(itemsList);
-                        subgroups.appendChild(sgDiv);
-                    }
+            if (subcats.length > 0) {
+                subcats.forEach(subcat => {
+                    const subcatDiv = document.createElement('div');
+                    subcatDiv.className = 'subcategory';
+                    subcatDiv.innerHTML = `
+                        <div class="subcat-name">${subcat.id}. ${subcat.name}</div>
+                        <div class="subcat-count">${(subcat.itemCount || 0).toLocaleString('he-IL')} מוצרים</div>
+                    `;
+                    subcatsDiv.appendChild(subcatDiv);
                 });
-            });
-
-            if (subgroups.children.length === 0) {
-                const empty = document.createElement('p');
-                empty.style.color = '#999';
-                empty.textContent = 'אין מוצרים בקטגוריה זו';
-                subgroups.appendChild(empty);
+            } else {
+                subcatsDiv.innerHTML = '<div style="padding: 10px; color: #999;">אין תת-קטגוריות</div>';
             }
 
-            content.appendChild(subgroups);
+            content.appendChild(subcatsDiv);
+            div.appendChild(header);
             div.appendChild(content);
-
-            // Drag events
-            div.addEventListener('dragstart', (e) => {
-                draggedElement = div;
-                div.classList.add('dragging');
-            });
-
-            div.addEventListener('dragend', () => {
-                div.classList.remove('dragging');
-                draggedElement = null;
-            });
-
-            div.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                if (draggedElement && draggedElement !== div) {
-                    const rect = div.getBoundingClientRect();
-                    if (e.clientY - rect.top < rect.height / 2) {
-                        div.parentNode.insertBefore(draggedElement, div);
-                    } else {
-                        div.parentNode.insertBefore(draggedElement, div.nextSibling);
-                    }
-                    updateCategoryOrder();
-                }
-            });
 
             return div;
         }
 
-        function getItemCount(category) {
-            let count = 0;
-            Object.values(category.קבוצות || {}).forEach(group => {
-                Object.values(group.קבוצות_משנה || {}).forEach(subgroup => {
-                    count += (subgroup.פריטים || []).length;
-                });
-            });
-            return count;
-        }
-
-        function toggleCategory(element) {
-            const content = element.querySelector('.category-content');
-            const toggle = element.querySelector('.toggle-btn');
-            content.classList.toggle('visible');
-            toggle.classList.toggle('collapsed');
-        }
-
         function expandAll() {
-            document.querySelectorAll('.category-content').forEach(c => c.classList.add('visible'));
-            document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('collapsed'));
+            document.querySelectorAll('.category-content').forEach(el => el.classList.add('visible'));
+            document.querySelectorAll('.toggle-btn').forEach(el => el.classList.add('open'));
         }
 
         function collapseAll() {
-            document.querySelectorAll('.category-content').forEach(c => c.classList.remove('visible'));
-            document.querySelectorAll('.toggle-btn').forEach(b => b.classList.add('collapsed'));
+            document.querySelectorAll('.category-content').forEach(el => el.classList.remove('visible'));
+            document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('open'));
         }
 
-        function editNote(categoryId, categoryName) {
-            const currentNote = notes[categoryId] || '';
-            const newNote = prompt(`הערה לקטגוריה "${categoryName}":`, currentNote);
-            if (newNote !== null) {
-                saveNote(categoryId, newNote);
-            }
-        }
-
-        function saveNote(categoryId, noteText) {
-            notes[categoryId] = noteText;
-            saveData();
-        }
-
-        function updateCategoryOrder() {
-            categoryOrder = Array.from(document.querySelectorAll('.category')).map(el => 
-                parseInt(el.dataset.categoryId)
-            );
-            saveData();
-        }
-
-        function saveData() {
-            const data = {
-                notes: notes,
-                categoryOrder: categoryOrder,
-                timestamp: new Date().toISOString()
-            };
-            localStorage.setItem('kolbo-bar-ilan-data', JSON.stringify(data));
-            showSaveIndicator();
-        }
-
-        function showSaveIndicator() {
-            const indicator = document.getElementById('saveIndicator');
-            indicator.classList.add('show');
-            setTimeout(() => indicator.classList.remove('show'), 2000);
-        }
-
-        function exportData() {
-            const data = {
-                קטגוריות: allData,
-                הערות: notes,
-                סדר_קטגוריות: categoryOrder,
-                תאריך_ייצוא: new Date().toLocaleString('he-IL')
-            };
-
-            const json = JSON.stringify(data, null, 2);
-            const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `kolbo-bar-ilan-${new Date().toISOString().split('T')[0]}.json`;
-            link.click();
-            URL.revokeObjectURL(url);
-        }
-
-        // Initialize
-        loadData();
+        // Search functionality
+        document.getElementById('searchInput')?.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.category').forEach(cat => {
+                const text = cat.textContent.toLowerCase();
+                cat.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
     </script>
 </body>
 </html>
