@@ -105,6 +105,7 @@
         .buttons {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         button {
@@ -117,6 +118,7 @@
             font-weight: 600;
             transition: background 0.3s;
             font-size: 0.95em;
+            white-space: nowrap;
         }
 
         button:hover {
@@ -127,9 +129,25 @@
             background: #999;
         }
 
+        button.success {
+            background: #28a745;
+        }
+
+        button.success:hover {
+            background: #218838;
+        }
+
+        button.danger {
+            background: #dc3545;
+        }
+
+        button.danger:hover {
+            background: #c82333;
+        }
+
         .content {
             padding: 20px;
-            max-height: calc(100vh - 350px);
+            max-height: calc(100vh - 400px);
             overflow-y: auto;
         }
 
@@ -154,6 +172,7 @@
             border-bottom: 1px solid #e0e0e0;
             transition: background 0.2s;
             user-select: none;
+            gap: 10px;
         }
 
         .category-header:hover {
@@ -165,14 +184,13 @@
             border: none;
             cursor: pointer;
             font-size: 1.2em;
-            margin-right: 10px;
-            transition: transform 0.3s;
             padding: 0;
             width: 25px;
             height: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.3s;
         }
 
         .toggle-btn.open {
@@ -186,7 +204,6 @@
             border-radius: 4px;
             font-size: 0.8em;
             font-weight: 600;
-            margin-right: 8px;
             min-width: 30px;
             text-align: center;
         }
@@ -195,7 +212,6 @@
             font-weight: 600;
             font-size: 1.1em;
             flex: 1;
-            margin-right: 10px;
         }
 
         .category-count {
@@ -207,6 +223,16 @@
             font-weight: 600;
         }
 
+        .category-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .category-actions button {
+            padding: 5px 10px;
+            font-size: 0.85em;
+        }
+
         .category-content {
             max-height: 0;
             overflow: hidden;
@@ -214,7 +240,7 @@
         }
 
         .category-content.visible {
-            max-height: 2000px;
+            max-height: 3000px;
         }
 
         .subcategories {
@@ -231,6 +257,7 @@
             border-radius: 6px;
             border: 1px solid #ddd;
             transition: all 0.2s;
+            position: relative;
         }
 
         .subcategory:hover {
@@ -241,6 +268,29 @@
         .subcategory.checked {
             background: #f0f4ff;
             border-color: #667eea;
+        }
+
+        .subcat-delete {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8em;
+            cursor: pointer;
+            display: none;
+        }
+
+        .subcategory:hover .subcat-delete {
+            display: block;
+        }
+
+        .subcat-delete:hover {
+            background: #c82333;
         }
 
         .subcat-header {
@@ -301,6 +351,74 @@
             box-shadow: 0 0 3px rgba(102, 126, 234, 0.3);
         }
 
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 3px rgba(102, 126, 234, 0.3);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+        }
+
         .footer {
             padding: 20px;
             background: #f5f5f5;
@@ -310,12 +428,47 @@
             font-size: 0.9em;
         }
 
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.error {
+            background: #dc3545;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-300px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .subcategories {
                 grid-template-columns: 1fr;
             }
             .header h1 {
                 font-size: 1.8em;
+            }
+            .buttons {
+                width: 100%;
+            }
+            button {
+                flex: 1;
+                min-width: 100px;
             }
         }
     </style>
@@ -324,7 +477,7 @@
     <div class="container">
         <div class="header">
             <h1>🌳 עץ הקטגוריות של כלבו בר אילן</h1>
-            <p>Commax Catalog - עץ קטגוריות מלא עם Commax IDs וריבוי אפשרויות</p>
+            <p>Commax Catalog - עץ קטגוריות אינטראקטיבי עם יצירה וסנכרון</p>
             <div class="stats">
                 <div class="stat">
                     <div class="stat-number" id="categoryCount">0</div>
@@ -348,7 +501,9 @@
             <div class="buttons">
                 <button onclick="expandAll()">📂 הרחב הכל</button>
                 <button onclick="collapseAll()" class="secondary">📁 סגור הכל</button>
-                <button onclick="clearChecks()" class="secondary">☐ נקה בחירות</button>
+                <button onclick="openAddCategoryModal()" class="success">➕ קטגוריה חדשה</button>
+                <button onclick="exportData()" class="secondary">💾 שמור JSON</button>
+                <button onclick="exportCSV()" class="secondary">📊 שמור CSV</button>
             </div>
         </div>
 
@@ -356,19 +511,66 @@
         </div>
 
         <div class="footer">
-            ✨ עץ קטגוריות אינטראקטיבי עם סימון, גרירה והערות | Commax Catalog | עדכון: 2026-07-15
+            ✨ עץ קטגוריות אינטראקטיבי | Commax Catalog | עדכון: 2026-07-15 | 
+            <span id="syncStatus">💾 שמור בעדכון</span>
+        </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div class="modal" id="addCategoryModal">
+        <div class="modal-content">
+            <h2>➕ הוסף קטגוריה חדשה</h2>
+            <form onsubmit="addCategory(event)">
+                <div class="form-group">
+                    <label>מספר מזהה (Commax ID)</label>
+                    <input type="text" id="newCategoryId" placeholder="למשל: 838" required>
+                </div>
+                <div class="form-group">
+                    <label>שם הקטגוריה</label>
+                    <input type="text" id="newCategoryName" placeholder="למשל: קטגוריה חדשה" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="success">✅ הוסף</button>
+                    <button type="button" class="secondary" onclick="closeModal('addCategoryModal')">❌ בטל</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Subcategory Modal -->
+    <div class="modal" id="addSubcategoryModal">
+        <div class="modal-content">
+            <h2>➕ הוסף תת-קטגוריה חדשה</h2>
+            <form onsubmit="addSubcategory(event)">
+                <div class="form-group">
+                    <label>מספר מזהה (Commax ID)</label>
+                    <input type="text" id="newSubcategoryId" placeholder="למשל: 170" required>
+                </div>
+                <div class="form-group">
+                    <label>שם התת-קטגוריה</label>
+                    <input type="text" id="newSubcategoryName" placeholder="למשל: תת-קטגוריה חדשה" required>
+                </div>
+                <div class="form-group">
+                    <label>מספר מוצרים</label>
+                    <input type="number" id="newSubcategoryCount" value="0">
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="success">✅ הוסף</button>
+                    <button type="button" class="secondary" onclick="closeModal('addSubcategoryModal')">❌ בטל</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <script>
         let allData = [];
         let draggedCategory = null;
+        let currentCategoryIndex = null;
 
         // Load data
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
-                // Try to load from localStorage
                 const savedData = localStorage.getItem('commax-tree-data');
                 allData = savedData ? JSON.parse(savedData) : (data.categories || []);
                 
@@ -378,8 +580,7 @@
             })
             .catch(error => {
                 console.error('Error loading data:', error);
-                document.getElementById('treeContainer').innerHTML = 
-                    '<div style="padding: 20px; color: red;">שגיאה בטעינת הנתונים</div>';
+                showToast('שגיאה בטעינת הנתונים', 'error');
             });
 
         function updateStats() {
@@ -390,10 +591,7 @@
             allData.forEach(cat => {
                 const subcategories = cat.subcategories || [];
                 subcategoryCount += subcategories.length;
-                
-                subcategories.forEach(subcat => {
-                    productCount += subcat.itemCount || 0;
-                });
+                productCount += cat.itemCount || 0;
             });
 
             document.getElementById('categoryCount').textContent = categoryCount;
@@ -471,12 +669,41 @@
             
             const badge = document.createElement('span');
             badge.className = 'category-count';
-            badge.textContent = `${subcats.length} | ${totalItems.toLocaleString('he-IL')} מוצרים`;
+            badge.textContent = `${subcats.length} | ${totalItems.toLocaleString('he-IL')}`;
+
+            const actions = document.createElement('div');
+            actions.className = 'category-actions';
+
+            const addSubBtn = document.createElement('button');
+            addSubBtn.textContent = '➕ תת-קטגוריה';
+            addSubBtn.onclick = (e) => {
+                e.stopPropagation();
+                currentCategoryIndex = catIndex;
+                document.getElementById('addSubcategoryModal').classList.add('show');
+            };
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'danger';
+            deleteBtn.textContent = '🗑️';
+            deleteBtn.onclick = (e) => {
+                e.stopPropagation();
+                if (confirm(`האם אתה בטוח שברצונך למחוק את "${category.name}"?`)) {
+                    allData.splice(catIndex, 1);
+                    saveData();
+                    renderTree();
+                    updateStats();
+                    showToast('קטגוריה נמחקה בהצלחה');
+                }
+            };
+
+            actions.appendChild(addSubBtn);
+            actions.appendChild(deleteBtn);
 
             header.appendChild(toggle);
             header.appendChild(catIdBadge);
             header.appendChild(title);
             header.appendChild(badge);
+            header.appendChild(actions);
 
             const content = document.createElement('div');
             content.className = 'category-content visible';
@@ -489,6 +716,20 @@
                     const subcatDiv = document.createElement('div');
                     subcatDiv.className = 'subcategory' + (subcat.checked ? ' checked' : '');
                     
+                    const deleteSubBtn = document.createElement('button');
+                    deleteSubBtn.className = 'subcat-delete';
+                    deleteSubBtn.textContent = '×';
+                    deleteSubBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        if (confirm(`האם אתה בטוח שברצונך למחוק את "${subcat.name}"?`)) {
+                            category.subcategories.splice(idx, 1);
+                            saveData();
+                            renderTree();
+                            updateStats();
+                            showToast('תת-קטגוריה נמחקה בהצלחה');
+                        }
+                    };
+
                     const headerRow = document.createElement('div');
                     headerRow.className = 'subcat-header';
 
@@ -527,6 +768,7 @@
                         saveData();
                     };
 
+                    subcatDiv.appendChild(deleteSubBtn);
                     subcatDiv.appendChild(headerRow);
                     subcatDiv.appendChild(countDiv);
                     subcatDiv.appendChild(notes);
@@ -553,18 +795,115 @@
             document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('open'));
         }
 
-        function clearChecks() {
-            allData.forEach(cat => {
-                (cat.subcategories || []).forEach(subcat => {
-                    subcat.checked = false;
-                });
-            });
-            saveData();
-            renderTree();
-        }
-
         function saveData() {
             localStorage.setItem('commax-tree-data', JSON.stringify(allData));
+            updateStats();
+        }
+
+        function openAddCategoryModal() {
+            document.getElementById('addCategoryModal').classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        function addCategory(event) {
+            event.preventDefault();
+            const id = document.getElementById('newCategoryId').value;
+            const name = document.getElementById('newCategoryName').value;
+
+            allData.push({
+                id: id,
+                name: name,
+                commax_id: id,
+                itemCount: 0,
+                subcategories: []
+            });
+
+            saveData();
+            renderTree();
+            closeModal('addCategoryModal');
+            document.getElementById('newCategoryId').value = '';
+            document.getElementById('newCategoryName').value = '';
+            showToast('קטגוריה חדשה נוצרה בהצלחה ✅');
+        }
+
+        function addSubcategory(event) {
+            event.preventDefault();
+            if (currentCategoryIndex === null) {
+                showToast('יש לבחור קטגוריה', 'error');
+                return;
+            }
+
+            const id = document.getElementById('newSubcategoryId').value;
+            const name = document.getElementById('newSubcategoryName').value;
+            const count = parseInt(document.getElementById('newSubcategoryCount').value) || 0;
+
+            allData[currentCategoryIndex].subcategories.push({
+                id: id,
+                name: name,
+                commax_id: id,
+                itemCount: count,
+                checked: false,
+                notes: ''
+            });
+
+            saveData();
+            renderTree();
+            closeModal('addSubcategoryModal');
+            document.getElementById('newSubcategoryId').value = '';
+            document.getElementById('newSubcategoryName').value = '';
+            document.getElementById('newSubcategoryCount').value = '0';
+            currentCategoryIndex = null;
+            showToast('תת-קטגוריה חדשה נוצרה בהצלחה ✅');
+        }
+
+        function exportData() {
+            const dataStr = JSON.stringify(allData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `commax-categories-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            showToast('JSON שמור בהצלחה 💾');
+        }
+
+        function exportCSV() {
+            let csv = 'מחלקה,שם מחלקה,ק.משנה,שם ק.משנה,פריטים\n';
+            
+            allData.forEach(cat => {
+                const subcats = cat.subcategories || [];
+                if (subcats.length === 0) {
+                    csv += `${cat.commax_id},${cat.name},,${cat.itemCount}\n`;
+                } else {
+                    subcats.forEach((subcat, idx) => {
+                        if (idx === 0) {
+                            csv += `${cat.commax_id},${cat.name},${subcat.commax_id},"${subcat.name}",${subcat.itemCount}\n`;
+                        } else {
+                            csv += `,,${subcat.commax_id},"${subcat.name}",${subcat.itemCount}\n`;
+                        }
+                    });
+                }
+            });
+
+            const csvBlob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(csvBlob);
+            link.download = `commax-categories-${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+            showToast('CSV שמור בהצלחה 📊');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type === 'error' ? 'error' : ''}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
         }
 
         // Search functionality
@@ -574,6 +913,19 @@
                 const text = cat.textContent.toLowerCase();
                 cat.style.display = text.includes(query) ? '' : 'none';
             });
+        });
+
+        // Close modals when clicking outside
+        document.getElementById('addCategoryModal').addEventListener('click', (e) => {
+            if (e.target.id === 'addCategoryModal') {
+                closeModal('addCategoryModal');
+            }
+        });
+
+        document.getElementById('addSubcategoryModal').addEventListener('click', (e) => {
+            if (e.target.id === 'addSubcategoryModal') {
+                closeModal('addSubcategoryModal');
+            }
         });
     </script>
 </body>
