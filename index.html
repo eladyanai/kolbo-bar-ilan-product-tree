@@ -116,6 +116,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: background 0.3s;
+            font-size: 0.95em;
         }
 
         button:hover {
@@ -128,7 +129,7 @@
 
         .content {
             padding: 20px;
-            max-height: calc(100vh - 300px);
+            max-height: calc(100vh - 350px);
             overflow-y: auto;
         }
 
@@ -139,14 +140,20 @@
             background: #fafafa;
         }
 
+        .category.dragging {
+            opacity: 0.7;
+            transform: scale(0.98);
+        }
+
         .category-header {
             display: flex;
             align-items: center;
             padding: 15px;
-            cursor: pointer;
+            cursor: move;
             background: white;
             border-bottom: 1px solid #e0e0e0;
             transition: background 0.2s;
+            user-select: none;
         }
 
         .category-header:hover {
@@ -172,6 +179,18 @@
             transform: rotate(-90deg);
         }
 
+        .category-id {
+            background: #667eea;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-right: 8px;
+            min-width: 30px;
+            text-align: center;
+        }
+
         .category-title {
             font-weight: 600;
             font-size: 1.1em;
@@ -180,7 +199,7 @@
         }
 
         .category-count {
-            background: #667eea;
+            background: #764ba2;
             color: white;
             padding: 4px 12px;
             border-radius: 20px;
@@ -201,7 +220,7 @@
         .subcategories {
             padding: 15px 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 12px;
             border-top: 1px solid #e0e0e0;
         }
@@ -219,15 +238,67 @@
             border-color: #667eea;
         }
 
+        .subcategory.checked {
+            background: #f0f4ff;
+            border-color: #667eea;
+        }
+
+        .subcat-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 8px;
+        }
+
+        .subcat-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .subcat-id {
+            background: #e8e8e8;
+            color: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
         .subcat-name {
             font-weight: 600;
             color: #333;
-            margin-bottom: 5px;
+            flex: 1;
+            word-break: break-word;
         }
 
         .subcat-count {
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: #666;
+            margin-bottom: 6px;
+        }
+
+        .subcat-notes {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 30px;
+            max-height: 60px;
+        }
+
+        .subcat-notes::placeholder {
+            color: #ccc;
+        }
+
+        .subcat-notes:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 3px rgba(102, 126, 234, 0.3);
         }
 
         .footer {
@@ -238,13 +309,22 @@
             color: #666;
             font-size: 0.9em;
         }
+
+        @media (max-width: 768px) {
+            .subcategories {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>🌳 עץ הקטגוריות של כלבו בר אילן</h1>
-            <p>Commax Catalog - עץ קטגוריות מלא ואינטראקטיבי</p>
+            <p>Commax Catalog - עץ קטגוריות מלא עם Commax IDs וריבוי אפשרויות</p>
             <div class="stats">
                 <div class="stat">
                     <div class="stat-number" id="categoryCount">0</div>
@@ -268,6 +348,7 @@
             <div class="buttons">
                 <button onclick="expandAll()">📂 הרחב הכל</button>
                 <button onclick="collapseAll()" class="secondary">📁 סגור הכל</button>
+                <button onclick="clearChecks()" class="secondary">☐ נקה בחירות</button>
             </div>
         </div>
 
@@ -275,18 +356,22 @@
         </div>
 
         <div class="footer">
-            ✨ עץ קטגוריות אינטראקטיבי | Commax Catalog | עדכון אחרון: 2026-07-15
+            ✨ עץ קטגוריות אינטראקטיבי עם סימון, גרירה והערות | Commax Catalog | עדכון: 2026-07-15
         </div>
     </div>
 
     <script>
         let allData = [];
+        let draggedCategory = null;
 
         // Load data
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
-                allData = data.categories || [];
+                // Try to load from localStorage
+                const savedData = localStorage.getItem('commax-tree-data');
+                allData = savedData ? JSON.parse(savedData) : (data.categories || []);
+                
                 console.log('📊 Loaded categories:', allData.length);
                 renderTree();
                 updateStats();
@@ -320,14 +405,46 @@
             const container = document.getElementById('treeContainer');
             container.innerHTML = '';
 
-            allData.forEach(category => {
-                container.appendChild(createCategoryElement(category));
+            allData.forEach((category, index) => {
+                container.appendChild(createCategoryElement(category, index));
             });
         }
 
-        function createCategoryElement(category) {
+        function createCategoryElement(category, catIndex) {
             const div = document.createElement('div');
             div.className = 'category';
+            div.draggable = true;
+            div.dataset.catIndex = catIndex;
+
+            div.addEventListener('dragstart', (e) => {
+                draggedCategory = catIndex;
+                div.classList.add('dragging');
+            });
+
+            div.addEventListener('dragend', () => {
+                div.classList.remove('dragging');
+            });
+
+            div.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                div.style.borderTop = '3px solid #667eea';
+            });
+
+            div.addEventListener('dragleave', () => {
+                div.style.borderTop = '';
+            });
+
+            div.addEventListener('drop', (e) => {
+                e.preventDefault();
+                div.style.borderTop = '';
+                if (draggedCategory !== null && draggedCategory !== catIndex) {
+                    const temp = allData[draggedCategory];
+                    allData[draggedCategory] = allData[catIndex];
+                    allData[catIndex] = temp;
+                    saveData();
+                    renderTree();
+                }
+            });
 
             const header = document.createElement('div');
             header.className = 'category-header';
@@ -341,18 +458,23 @@
                 toggle.classList.toggle('open');
             };
 
+            const catIdBadge = document.createElement('span');
+            catIdBadge.className = 'category-id';
+            catIdBadge.textContent = `#${category.commax_id || category.id}`;
+
             const title = document.createElement('span');
             title.className = 'category-title';
-            title.textContent = `${category.id}. ${category.name}`;
+            title.textContent = category.name;
 
             const subcats = category.subcategories || [];
             const totalItems = subcats.reduce((sum, s) => sum + (s.itemCount || 0), 0);
             
             const badge = document.createElement('span');
             badge.className = 'category-count';
-            badge.textContent = `${subcats.length} תת-קטגוריות • ${totalItems} מוצרים`;
+            badge.textContent = `${subcats.length} | ${totalItems.toLocaleString('he-IL')} מוצרים`;
 
             header.appendChild(toggle);
+            header.appendChild(catIdBadge);
             header.appendChild(title);
             header.appendChild(badge);
 
@@ -363,13 +485,51 @@
             subcatsDiv.className = 'subcategories';
 
             if (subcats.length > 0) {
-                subcats.forEach(subcat => {
+                subcats.forEach((subcat, idx) => {
                     const subcatDiv = document.createElement('div');
-                    subcatDiv.className = 'subcategory';
-                    subcatDiv.innerHTML = `
-                        <div class="subcat-name">${subcat.id}. ${subcat.name}</div>
-                        <div class="subcat-count">${(subcat.itemCount || 0).toLocaleString('he-IL')} מוצרים</div>
-                    `;
+                    subcatDiv.className = 'subcategory' + (subcat.checked ? ' checked' : '');
+                    
+                    const headerRow = document.createElement('div');
+                    headerRow.className = 'subcat-header';
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'subcat-checkbox';
+                    checkbox.checked = subcat.checked || false;
+                    checkbox.onchange = (e) => {
+                        subcat.checked = e.target.checked;
+                        subcatDiv.classList.toggle('checked', e.target.checked);
+                        saveData();
+                    };
+
+                    const subcatId = document.createElement('span');
+                    subcatId.className = 'subcat-id';
+                    subcatId.textContent = `#${subcat.commax_id || subcat.id}`;
+
+                    const subcatName = document.createElement('span');
+                    subcatName.className = 'subcat-name';
+                    subcatName.textContent = subcat.name;
+
+                    headerRow.appendChild(checkbox);
+                    headerRow.appendChild(subcatId);
+                    headerRow.appendChild(subcatName);
+
+                    const countDiv = document.createElement('div');
+                    countDiv.className = 'subcat-count';
+                    countDiv.textContent = `${(subcat.itemCount || 0).toLocaleString('he-IL')} מוצרים`;
+
+                    const notes = document.createElement('textarea');
+                    notes.className = 'subcat-notes';
+                    notes.placeholder = '📝 הערות...';
+                    notes.value = subcat.notes || '';
+                    notes.onchange = () => {
+                        subcat.notes = notes.value;
+                        saveData();
+                    };
+
+                    subcatDiv.appendChild(headerRow);
+                    subcatDiv.appendChild(countDiv);
+                    subcatDiv.appendChild(notes);
                     subcatsDiv.appendChild(subcatDiv);
                 });
             } else {
@@ -391,6 +551,20 @@
         function collapseAll() {
             document.querySelectorAll('.category-content').forEach(el => el.classList.remove('visible'));
             document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('open'));
+        }
+
+        function clearChecks() {
+            allData.forEach(cat => {
+                (cat.subcategories || []).forEach(subcat => {
+                    subcat.checked = false;
+                });
+            });
+            saveData();
+            renderTree();
+        }
+
+        function saveData() {
+            localStorage.setItem('commax-tree-data', JSON.stringify(allData));
         }
 
         // Search functionality
