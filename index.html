@@ -3,1299 +3,1626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kolbo Bar Ilan - Product Tree Dashboard</title>
+    <title>Kolbo Bar Ilan - Advanced Dashboard</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5568d3;
+            --secondary: #764ba2;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --text: #1f2937;
+            --text-muted: #6b7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
-            color: #333;
+            padding: 16px;
+            color: var(--text);
         }
-        
+
         .container {
-            max-width: 1600px;
+            max-width: 1800px;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 95vh;
+            height: 96vh;
         }
-        
+
+        /* HEADER */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px 30px;
+            padding: 28px 32px;
             text-align: center;
-            border-bottom: 3px solid #5568d3;
+            border-bottom: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
+
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 5px;
+            font-size: 2.4em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
-        
+
         .header-info {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            font-size: 0.9em;
-            opacity: 0.95;
+            gap: 40px;
+            font-size: 0.95em;
+            opacity: 0.9;
+            font-weight: 500;
         }
-        
+
+        .header-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-stat span {
+            font-size: 1.2em;
+        }
+
+        /* CONTROLS BAR */
         .controls {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            padding: 15px 20px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
+            gap: 16px;
+            padding: 18px 24px;
+            background: var(--light);
+            border-bottom: 1px solid var(--border);
             align-items: center;
             justify-content: space-between;
-        }
-        
-        .control-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
             flex-wrap: wrap;
         }
-        
-        .save-indicator {
-            padding: 8px 12px;
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 6px;
-            font-size: 0.9em;
-            color: #856404;
+
+        .control-left {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex: 1;
+            min-width: 300px;
         }
-        
-        .save-indicator.saved {
-            background: #d4edda;
-            border-color: #28a745;
-            color: #155724;
+
+        .control-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
         }
-        
-        button, select, input {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 0.95em;
-            cursor: pointer;
-            transition: all 0.3s ease;
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            display: flex;
+            align-items: center;
             background: white;
-            color: #333;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 0 12px;
+            transition: all 0.3s ease;
         }
-        
-        button:hover {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-        
-        button.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-        
-        button.delete-btn {
-            background: #dc3545;
-            color: white;
-            border-color: #dc3545;
-        }
-        
-        button.delete-btn:hover {
-            background: #c82333;
-            border-color: #c82333;
-        }
-        
-        button.save-btn {
-            background: #28a745;
-            color: white;
-            border-color: #28a745;
-            font-weight: 600;
-        }
-        
-        button.save-btn:hover {
-            background: #218838;
-            border-color: #218838;
-        }
-        
-        select:focus, input:focus {
-            outline: none;
-            border-color: #667eea;
+
+        .search-box:focus-within {
+            border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-        
-        input[type="text"] {
+
+        .search-box input {
             flex: 1;
-            min-width: 200px;
-            max-width: 300px;
+            border: none;
+            outline: none;
+            padding: 10px 8px;
+            background: transparent;
+            font-size: 0.95em;
         }
-        
-        .view-modes {
-            display: flex;
-            gap: 5px;
-            align-items: center;
+
+        .search-icon {
+            font-size: 1.2em;
+            color: var(--text-muted);
         }
-        
-        .view-modes button {
-            padding: 8px 12px;
-            font-size: 0.85em;
-        }
-        
-        .content {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-        
-        .action-bar {
-            display: none;
-            gap: 15px;
-            padding: 15px;
-            background: #e7f3ff;
-            border: 2px solid #667eea;
+
+        input[type="text"],
+        input[type="search"],
+        select {
+            padding: 10px 12px;
+            border: 2px solid var(--border);
             border-radius: 8px;
-            margin-bottom: 20px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .action-bar.show {
-            display: flex;
-        }
-        
-        .action-bar-info {
-            font-weight: 600;
-            color: #667eea;
-        }
-        
-        /* Tree View */
-        .tree-item {
-            margin-bottom: 2px;
-        }
-        
-        .tree-item.group {
-            margin-bottom: 20px;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            overflow: hidden;
+            font-size: 0.95em;
             background: white;
+            color: var(--text);
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
-        
-        .tree-header {
-            padding: 12px 15px;
+
+        input[type="text"]:focus,
+        input[type="search"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .save-indicator {
+            padding: 8px 14px;
+            background: #fef3c7;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #92400e;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .save-indicator.saved {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        /* MAIN CONTENT */
+        .main {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--light);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            padding: 16px 12px;
+        }
+
+        .group-filter-item {
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+            font-weight: 500;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 600;
-            user-select: none;
-            transition: all 0.2s;
-            border-left: 4px solid;
         }
-        
-        .tree-header:hover {
-            background: #f8f9fa;
+
+        .group-filter-item:hover {
+            background: rgba(102, 126, 234, 0.05);
         }
-        
-        .tree-header .chevron {
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        
-        .tree-header.collapsed .chevron {
-            transform: rotate(-90deg);
-        }
-        
-        .tree-header .count {
-            font-size: 0.8em;
-            opacity: 0.7;
-            margin-left: auto;
-        }
-        
-        .tree-content {
-            display: none;
-            padding: 10px 0 10px 20px;
-        }
-        
-        .tree-content.expanded {
-            display: block;
-        }
-        
-        .tree-item.group > .tree-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        .group-filter-item.active {
+            background: var(--primary);
             color: white;
-            border-left-color: #667eea;
         }
-        
-        .tree-item.department > .tree-header {
-            background: #f0f3ff;
-            border-left-color: #667eea;
-            color: #333;
+
+        .group-color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
         }
-        
-        .tree-item.department > .tree-header .icon {
-            color: #667eea;
-        }
-        
-        .tree-item.subcategory > .tree-header {
-            padding: 10px 15px;
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
             background: white;
-            border: 1px solid #e9ecef;
-            border-left: 3px solid #667eea;
-            border-radius: 4px;
-            margin-bottom: 5px;
         }
-        
-        .tree-item.subcategory > .tree-header:hover {
-            border-color: #667eea;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+
+        /* BREADCRUMBS */
+        .breadcrumbs {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            flex-wrap: wrap;
         }
-        
-        .tree-item.subcategory .chevron {
-            display: none;
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .tree-item.subcategory .icon {
-            color: #667eea;
+
+        .breadcrumb-item.active {
+            color: var(--primary);
+            font-weight: 600;
         }
-        
-        .subcategory-info {
+
+        /* TREE STRUCTURE */
+        .tree-view {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tree-node {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .tree-node.dragging {
+            opacity: 0.5;
+        }
+
+        .tree-node.drag-over {
+            background: #f0f9ff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+        }
+
+        .tree-node-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            background: white;
+        }
+
+        .tree-node-header:hover {
+            background: var(--light);
+        }
+
+        .tree-node-header.drag-handle {
+            cursor: grab;
+            padding-left: 14px;
+        }
+
+        .tree-node-header.drag-handle:active {
+            cursor: grabbing;
+        }
+
+        .expand-btn {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+            color: var(--text-muted);
+        }
+
+        .expand-btn.expanded {
+            transform: rotate(90deg);
+        }
+
+        .drag-handle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            cursor: grab;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .drag-handle:hover {
+            color: var(--primary);
+            transform: scale(1.15);
+        }
+
+        .drag-handle:active {
+            cursor: grabbing;
+            color: var(--primary-dark);
+        }
+
+        .tree-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .tree-icon {
+            font-size: 1.3em;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .tree-content {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
+            min-width: 0;
         }
-        
-        .subcategory-name {
-            font-weight: 500;
-        }
-        
-        .subcategory-id {
-            font-size: 0.8em;
-            color: #666;
-        }
-        
-        .subcategory-notes {
-            font-size: 0.85em;
-            color: #999;
-            max-width: 300px;
+
+        .tree-title {
+            font-weight: 600;
+            font-size: 0.95em;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
-        .subcategory-notes.editable {
-            cursor: pointer;
-            background: #fff9e6;
-            padding: 3px 6px;
-            border-radius: 3px;
-        }
-        
-        .notes-edit {
-            display: none;
-            font-size: 0.85em;
-            flex: 1;
-            max-width: 400px;
-        }
-        
-        .notes-edit.show {
-            display: block;
-        }
-        
-        input[type="checkbox"] {
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-            margin-top: 2px;
-            accent-color: #667eea;
-        }
-        
-        /* List View */
-        .list-view {
-            display: none;
-        }
-        
-        .list-view.active {
-            display: block;
-        }
-        
-        .list-item {
+
+        .tree-meta {
             display: flex;
-            align-items: center;
             gap: 12px;
-            padding: 12px;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            background: white;
-            transition: all 0.2s;
+            font-size: 0.85em;
+            color: var(--text-muted);
         }
-        
-        .list-item:hover {
-            background: #f8f9fa;
-            border-color: #667eea;
+
+        .tree-id {
+            font-weight: 600;
+            color: var(--primary);
+            font-family: 'Monaco', 'Courier New', monospace;
         }
-        
-        .list-item.checked {
-            background: #f0f3ff;
-            border-color: #667eea;
-        }
-        
-        .breadcrumb {
+
+        .tree-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #f3f4f6;
+            padding: 2px 8px;
+            border-radius: 4px;
             font-size: 0.8em;
-            color: #999;
-            margin-bottom: 3px;
         }
-        
-        /* Grid View */
-        .grid-view {
+
+        .tree-children {
             display: none;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
+            padding: 0 12px 12px 52px;
+            background: #fafbfc;
+            border-top: 1px solid var(--border);
         }
-        
-        .grid-view.active {
-            display: grid;
-        }
-        
-        .grid-card {
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 15px;
-            background: white;
-            transition: all 0.2s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .grid-card:hover {
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
-        }
-        
-        .grid-card.checked {
-            background: #f0f3ff;
-            border-color: #667eea;
-        }
-        
-        .grid-card-header {
+
+        .tree-children.expanded {
             display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tree-node-child {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            background: white;
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 12px;
             align-items: flex-start;
         }
-        
-        .grid-card-title {
+
+        .tree-node-child:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary);
+        }
+
+        .tree-node-child.drag-over {
+            background: #f0f9ff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+        }
+
+        .tree-node-child.dragging {
+            opacity: 0.5;
+        }
+
+        .tree-node-child-header {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .tree-node-child-title {
             font-weight: 600;
-            color: #333;
+            font-size: 0.9em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        
-        .grid-card-id {
+
+        .tree-node-child-meta {
+            display: flex;
+            gap: 12px;
             font-size: 0.8em;
-            color: #667eea;
-            font-weight: 500;
+            color: var(--text-muted);
         }
-        
-        .grid-card-count {
-            font-size: 0.85em;
-            color: #999;
+
+        .tree-node-child-actions {
+            display: flex;
+            gap: 6px;
         }
-        
-        .grid-card-breadcrumb {
-            font-size: 0.75em;
-            color: #999;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        /* Folder View */
-        .folder-view {
-            display: none;
-        }
-        
-        .folder-view.active {
-            display: block;
-        }
-        
-        .folder-item {
+
+        .action-btn {
+            width: 28px;
+            height: 28px;
+            padding: 0;
+            border: none;
+            background: #f3f4f6;
+            border-radius: 6px;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s;
+            justify-content: center;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
         }
-        
-        .folder-item:hover {
-            background: #f8f9fa;
-            border-color: #667eea;
+
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
         }
-        
-        .folder-item.folder {
-            font-weight: 600;
-        }
-        
-        .folder-icon {
-            font-size: 1.2em;
-        }
-        
-        .folder-name {
-            flex: 1;
-        }
-        
-        .folder-count {
-            font-size: 0.8em;
-            color: #999;
-            padding: 4px 8px;
-            background: #f8f9fa;
-            border-radius: 4px;
-        }
-        
-        .folder-children {
+
+        /* ACTION BAR */
+        .action-bar {
             display: none;
-            margin-top: 5px;
-            margin-left: 30px;
+            padding: 16px 24px;
+            background: #f0f9ff;
+            border-top: 2px solid var(--primary);
+            gap: 12px;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
         }
-        
-        .folder-children.expanded {
-            display: block;
+
+        .action-bar.visible {
+            display: flex;
         }
-        
-        /* Modal */
-        .modal {
+
+        .selected-count {
+            font-weight: 600;
+            color: var(--primary);
+            margin-right: 12px;
+            font-size: 0.95em;
+        }
+
+        .action-bar-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .action-bar-divider {
+            width: 1px;
+            height: 28px;
+            background: var(--border);
+            margin: 0 4px;
+        }
+
+        /* NOTES INLINE EDIT */
+        .notes-editor {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex: 1;
+            margin-top: 8px;
+        }
+
+        .notes-input {
+            flex: 1;
+            padding: 8px 12px !important;
+            font-size: 0.9em !important;
+            border-radius: 6px !important;
+        }
+
+        .notes-btn {
+            width: 28px;
+            height: 28px;
+            padding: 0 !important;
+            font-size: 0.9em;
+        }
+
+        /* MODALS */
+        .modal-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1000;
             align-items: center;
             justify-content: center;
         }
-        
-        .modal.show {
+
+        .modal-overlay.active {
             display: flex;
         }
-        
-        .modal-content {
+
+        .modal {
             background: white;
             border-radius: 12px;
-            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 0;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
         }
-        
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         .modal-header {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #333;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 700;
+            font-size: 1.1em;
         }
-        
+
         .modal-body {
-            margin-bottom: 20px;
-        }
-        
-        .modal-body textarea {
-            width: 100%;
-            min-height: 120px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 0.95em;
-            resize: vertical;
-        }
-        
-        .modal-body textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        
-        .modal-footer {
+            padding: 20px 24px;
             display: flex;
-            gap: 10px;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
             justify-content: flex-end;
         }
-        
-        .modal-footer button {
-            padding: 10px 20px;
+
+        .modal-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-        
-        /* Drag & Drop */
-        .drag-over {
-            background: #e7f3ff !important;
-            border-color: #667eea !important;
-            border-style: dashed !important;
+
+        .modal-field label {
+            font-weight: 600;
+            font-size: 0.9em;
+            color: var(--text);
         }
-        
-        .dragging {
+
+        /* DRAG IMAGE */
+        .drag-image {
+            display: none;
+            position: fixed;
+            top: -9999px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 12px 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
             opacity: 0.5;
         }
-        
-        /* Color Groups */
-        .group-1 { border-left-color: #FF6B6B; }
-        .group-1 .tree-header { background: linear-gradient(135deg, #FF6B6B 0%, #E63946 100%); }
-        
-        .group-2 { border-left-color: #4ECDC4; }
-        .group-2 .tree-header { background: linear-gradient(135deg, #4ECDC4 0%, #3BAA9C 100%); }
-        
-        .group-3 { border-left-color: #FFD93D; }
-        .group-3 .tree-header { background: linear-gradient(135deg, #FFD93D 0%, #F4B817 100%); color: #333; }
-        
-        .group-4 { border-left-color: #A855F7; }
-        .group-4 .tree-header { background: linear-gradient(135deg, #A855F7 0%, #9333EA 100%); }
-        
-        .group-5 { border-left-color: #06B6D4; }
-        .group-5 .tree-header { background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); }
-        
-        .group-color-1 { background: rgba(255, 107, 107, 0.08); border-color: #FF6B6B; }
-        .group-color-2 { background: rgba(78, 205, 196, 0.08); border-color: #4ECDC4; }
-        .group-color-3 { background: rgba(255, 217, 61, 0.08); border-color: #FFD93D; }
-        .group-color-4 { background: rgba(168, 85, 247, 0.08); border-color: #A855F7; }
-        .group-color-5 { background: rgba(6, 182, 212, 0.08); border-color: #06B6D4; }
-        
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #999;
-        }
-        
-        .empty-state p {
-            font-size: 1.1em;
-            margin-bottom: 10px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .grid-view {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 240px;
             }
-            
-            .controls {
-                flex-direction: column;
-                align-items: flex-start;
+
+            .tree-children {
+                padding: 0 12px 12px 44px;
             }
-        }
-        
-        @media (max-width: 768px) {
+
             .header h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
-            
-            .controls {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .grid-view {
-                grid-template-columns: 1fr;
+
+            .header-info {
+                gap: 20px;
+                font-size: 0.85em;
             }
         }
+
+        @media (max-width: 768px) {
+            .container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .main {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-height: 200px;
+                display: flex;
+                gap: 8px;
+                padding: 12px;
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+
+            .group-filter-item {
+                flex-shrink: 0;
+                min-width: 120px;
+            }
+
+            .content {
+                padding: 16px;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .control-left {
+                min-width: auto;
+            }
+
+            .header-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+
+        /* ANIMATION */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .saving {
+            animation: pulse 1s infinite;
+        }
+
+        /* COLOR PALETTE - GROUP COLORS */
+        .color-1 { background: #fce7f3; }
+        .color-2 { background: #fef3c7; }
+        .color-3 { background: #dcfce7; }
+        .color-4 { background: #dbeafe; }
+        .color-5 { background: #ede9fe; }
+        .color-6 { background: #f5e6ff; }
+        .color-7 { background: #fee2e2; }
+        .color-8 { background: #f0fdf4; }
+        .color-9 { background: #eff6ff; }
+        .color-10 { background: #f3e8ff; }
+
+        .dot-1 { background: #ec4899; }
+        .dot-2 { background: #f59e0b; }
+        .dot-3 { background: #10b981; }
+        .dot-4 { background: #3b82f6; }
+        .dot-5 { background: #8b5cf6; }
+        .dot-6 { background: #d946ef; }
+        .dot-7 { background: #ef4444; }
+        .dot-8 { background: #16a34a; }
+        .dot-9 { background: #0ea5e9; }
+        .dot-10 { background: #6366f1; }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- HEADER -->
         <div class="header">
             <h1>📦 Kolbo Bar Ilan - Product Tree Dashboard</h1>
             <div class="header-info">
-                <span>מערכת ניהול מוצרים מקיפה</span>
-                <span id="itemTotal">סה״כ פריטים: 0</span>
-            </div>
-        </div>
-        
-        <div class="controls">
-            <div class="control-group">
-                <label>🔍 חיפוש:</label>
-                <input type="text" id="searchInput" placeholder="חיפוש לפי שם או ID...">
-            </div>
-            
-            <div class="control-group">
-                <label>📁 קבוצה:</label>
-                <select id="groupFilter">
-                    <option value="">כל הקבוצות</option>
-                </select>
-            </div>
-            
-            <div class="control-group view-modes">
-                <label>תצוגה:</label>
-                <button class="view-btn active" data-view="tree">🌳 עץ</button>
-                <button class="view-btn" data-view="list">📋 רשימה</button>
-                <button class="view-btn" data-view="grid">📊 גריד</button>
-                <button class="view-btn" data-view="folder">📁 תיקייה</button>
-            </div>
-            
-            <div class="control-group">
-                <button id="saveBtn" class="save-btn">💾 שמור לקובץ</button>
-                <div class="save-indicator" id="saveIndicator">
-                    ✏️ שינויים לא שמורים (0)
+                <div class="header-stat">
+                    <span>👥</span>
+                    <span id="totalGroups">0</span> Groups
+                </div>
+                <div class="header-stat">
+                    <span>📂</span>
+                    <span id="totalDepartments">0</span> Departments
+                </div>
+                <div class="header-stat">
+                    <span>📄</span>
+                    <span id="totalSubcategories">0</span> Subcategories
                 </div>
             </div>
         </div>
-        
-        <div class="action-bar" id="actionBar">
-            <div class="action-bar-info">
-                <span id="selectedCount">נבחר 0</span> פריטים
-            </div>
-            <button id="viewDetailsBtn" title="צפה בפרטים">👁️ פרטים</button>
-            <button id="editNotesBtn" title="עריכת הערות">📝 הערות</button>
-            <button id="moveBtn" title="העברה לקבוצה אחרת">⬅️ העבר</button>
-            <button id="deleteBtn" class="delete-btn" title="מחיקה">🗑️ מחק</button>
-            <button id="clearSelectionBtn" title="ביטול בחירה">❌ ביטול</button>
-        </div>
-        
-        <div class="content">
-            <div class="tree-view active" id="treeView"></div>
-            <div class="list-view" id="listView"></div>
-            <div class="grid-view" id="gridView"></div>
-            <div class="folder-view" id="folderView"></div>
-        </div>
-    </div>
-    
-    <!-- Modals -->
-    <div class="modal" id="notesModal">
-        <div class="modal-content">
-            <div class="modal-header">📝 עריכת הערות</div>
-            <div class="modal-body">
-                <textarea id="notesInput" placeholder="הוסף הערות..."></textarea>
-            </div>
-            <div class="modal-footer">
-                <button id="notesCancel">ביטול</button>
-                <button id="notesSave" style="background: #667eea; color: white; border-color: #667eea;">שמור</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal" id="deleteModal">
-        <div class="modal-content">
-            <div class="modal-header">⚠️ אישור מחיקה</div>
-            <div class="modal-body">
-                <p id="deleteMessage">האם אתה בטוח שברצונך למחוק את הפריטים הנבחרים?</p>
-            </div>
-            <div class="modal-footer">
-                <button id="deleteCancel">ביטול</button>
-                <button id="deleteConfirm" class="delete-btn">מחק</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal" id="moveModal">
-        <div class="modal-content">
-            <div class="modal-header">⬅️ העברה לקבוצה</div>
-            <div class="modal-body">
-                <select id="moveGroupSelect">
-                    <option value="">בחר קבוצה...</option>
+
+        <!-- CONTROLS BAR -->
+        <div class="controls">
+            <div class="control-left">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input 
+                        type="search" 
+                        id="searchInput" 
+                        placeholder="Search by name or Commax ID (#89)..."
+                        autocomplete="off"
+                    >
+                </div>
+                <select id="groupFilter" title="Filter by group">
+                    <option value="">All Groups</option>
                 </select>
             </div>
-            <div class="modal-footer">
-                <button id="moveCancel">ביטול</button>
-                <button id="moveConfirm" style="background: #667eea; color: white; border-color: #667eea;">העבר</button>
+            <div class="control-right">
+                <div id="saveIndicator" class="save-indicator">
+                    ⏱️ Auto-saving...
+                </div>
+                <button class="btn-primary" id="saveBtn">💾 Save to Cloud</button>
             </div>
         </div>
-    </div>
-    
-    <div class="modal" id="detailsModal">
-        <div class="modal-content">
-            <div class="modal-header">👁️ פרטים של בחירה</div>
-            <div class="modal-body" id="detailsContent">
+
+        <!-- ACTION BAR (shown when items selected) -->
+        <div id="actionBar" class="action-bar">
+            <span class="selected-count" id="selectedCount">0 items selected</span>
+            <div class="action-bar-divider"></div>
+            <div class="action-bar-group">
+                <button class="action-btn" id="deleteSelectedBtn" title="Delete selected (Del)">🗑️ Delete</button>
+                <button class="action-btn" id="moveSelectedBtn" title="Move to group">➡️ Move</button>
+                <button class="action-btn" id="notesSelectedBtn" title="Add notes">📝 Notes</button>
             </div>
-            <div class="modal-footer">
-                <button id="detailsClose">סגור</button>
+            <div class="action-bar-divider"></div>
+            <button class="btn-secondary" id="clearSelectionBtn">✕ Clear</button>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main">
+            <!-- SIDEBAR: GROUP FILTER -->
+            <div class="sidebar">
+                <div style="padding: 8px 12px; font-weight: 600; font-size: 0.85em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
+                    📑 Filter by Group
+                </div>
+                <div id="groupFilterList"></div>
+            </div>
+
+            <!-- MAIN CONTENT AREA -->
+            <div class="content">
+                <div class="breadcrumbs">
+                    <div class="breadcrumb-item">📦 All Items</div>
+                    <div id="breadcrumbText"></div>
+                </div>
+                <div id="treeContainer" class="tree-view"></div>
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <div class="empty-state-icon">🔍</div>
+                    <div><strong>No items found</strong></div>
+                    <div>Try adjusting your search or filters</div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- MODALS -->
+    <div id="moveModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">➡️ Move Item</div>
+            <div class="modal-body">
+                <div class="modal-field">
+                    <label>Select Target Group:</label>
+                    <select id="moveGroupSelect">
+                        <option value="">-- Choose a group --</option>
+                    </select>
+                </div>
+                <div class="modal-field">
+                    <label>Select Target Department:</label>
+                    <select id="moveDepartmentSelect">
+                        <option value="">-- Choose a department --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeMoveModal()">Cancel</button>
+                <button class="btn-primary" onclick="confirmMove()">Move</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">⚠️ Confirm Delete</div>
+            <div class="modal-body">
+                <div id="confirmMessage">Are you sure you want to delete this item?</div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeConfirmModal()">Cancel</button>
+                <button class="btn-danger" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DRAG IMAGE TEMPLATE -->
+    <div id="dragImage" class="drag-image"></div>
+
     <script>
-        // Data Management
-        let data = null;
-        let draggedItem = null;
+        // ============================================================
+        // DATA MANAGEMENT & STATE
+        // ============================================================
+        let appData = null;
+        let filteredData = null;
         let selectedItems = new Set();
-        let unsavedChanges = 0;
-        let currentView = 'tree';
-        
-        // Color palette for groups
-        const groupColors = [
-            '#FF6B6B', '#4ECDC4', '#FFD93D', '#A855F7', '#06B6D4',
-            '#F76707', '#2DD4BF', '#8B5CF6', '#EC4899', '#F59E0B',
-            '#10B981', '#6366F1', '#EF4444', '#0EA5E9', '#84CC16'
+        let expandedNodes = new Set();
+        let currentDragItem = null;
+        let isDragging = false;
+        let unsavedChanges = false;
+        let saveTimeout = null;
+        let lastSaveTime = null;
+
+        const SAVE_INDICATOR = document.getElementById('saveIndicator');
+        const SEARCH_INPUT = document.getElementById('searchInput');
+        const GROUP_FILTER = document.getElementById('groupFilter');
+        const TREE_CONTAINER = document.getElementById('treeContainer');
+        const EMPTY_STATE = document.getElementById('emptyState');
+        const ACTION_BAR = document.getElementById('actionBar');
+        const SELECTED_COUNT = document.getElementById('selectedCount');
+
+        const GROUP_COLORS = [
+            'color-1', 'color-2', 'color-3', 'color-4', 'color-5',
+            'color-6', 'color-7', 'color-8', 'color-9', 'color-10'
         ];
-        
-        // Initialize
-        async function init() {
-            await loadData();
-            setupEventListeners();
-            render();
-        }
-        
+
+        const DOT_COLORS = [
+            'dot-1', 'dot-2', 'dot-3', 'dot-4', 'dot-5',
+            'dot-6', 'dot-7', 'dot-8', 'dot-9', 'dot-10'
+        ];
+
+        // ============================================================
+        // LOAD DATA
+        // ============================================================
         async function loadData() {
             try {
                 const response = await fetch('data.json');
-                data = await response.json();
+                appData = await response.json();
+                filteredData = JSON.parse(JSON.stringify(appData));
                 
-                // Ensure all items have required fields
-                data.groups.forEach((group, gIdx) => {
-                    group.color = groupColors[gIdx % groupColors.length];
-                    group.departments.forEach((dept, dIdx) => {
-                        dept.expanded = true;
-                        dept.subcategories.forEach(sub => {
-                            if (!sub.hasOwnProperty('checked')) sub.checked = false;
-                            if (!sub.hasOwnProperty('notes')) sub.notes = '';
-                            if (!sub.hasOwnProperty('order_index')) sub.order_index = 0;
-                        });
-                    });
-                });
-                
-                updateItemTotal();
+                initializeUI();
+                updateStats();
+                renderTree();
+                restoreExpandedState();
                 loadFromLocalStorage();
             } catch (e) {
-                console.error('Error loading data:', e);
-                alert('Failed to load data');
+                console.error('Failed to load data:', e);
+                EMPTY_STATE.style.display = 'flex';
             }
         }
-        
-        function setupEventListeners() {
-            // Search and Filter
-            document.getElementById('searchInput').addEventListener('input', render);
-            document.getElementById('groupFilter').addEventListener('change', render);
+
+        function initializeUI() {
+            // Populate group filter dropdown
+            const groupFilterList = document.getElementById('groupFilterList');
+            const groupSelect = document.getElementById('moveGroupSelect');
             
-            // View Modes
-            document.querySelectorAll('.view-btn').forEach(btn => {
-                btn.addEventListener('click', e => {
-                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    currentView = e.target.dataset.view;
-                    render();
+            groupFilterList.innerHTML = '';
+            groupSelect.innerHTML = '<option value="">-- Choose a group --</option>';
+            GROUP_FILTER.innerHTML = '<option value="">All Groups</option>';
+
+            appData.groups.forEach((group, idx) => {
+                const colorClass = GROUP_COLORS[idx % GROUP_COLORS.length];
+                const dotClass = DOT_COLORS[idx % DOT_COLORS.length];
+
+                // Sidebar filter
+                const filterItem = document.createElement('div');
+                filterItem.className = `group-filter-item`;
+                filterItem.innerHTML = `
+                    <div class="group-color-dot ${dotClass}"></div>
+                    <span>${group.name}</span>
+                `;
+                filterItem.onclick = () => selectGroupFilter(group.id, filterItem);
+                groupFilterList.appendChild(filterItem);
+
+                // Modal select
+                const option = document.createElement('option');
+                option.value = group.id;
+                option.textContent = group.name;
+                groupSelect.appendChild(option);
+
+                // Top filter
+                const filterOption = document.createElement('option');
+                filterOption.value = group.id;
+                filterOption.textContent = group.name;
+                GROUP_FILTER.appendChild(filterOption);
+            });
+
+            // Populate move department select
+            updateMoveDepartmentSelect();
+        }
+
+        function updateMoveDepartmentSelect() {
+            const groupId = parseInt(document.getElementById('moveGroupSelect').value);
+            const departmentSelect = document.getElementById('moveDepartmentSelect');
+            departmentSelect.innerHTML = '<option value="">-- Choose a department --</option>';
+
+            if (!groupId) return;
+
+            const group = appData.groups.find(g => g.id === groupId);
+            if (group) {
+                group.departments.forEach(dept => {
+                    const option = document.createElement('option');
+                    option.value = dept.id;
+                    option.textContent = dept.name;
+                    departmentSelect.appendChild(option);
+                });
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('totalGroups').textContent = filteredData.groups.length;
+            let deptCount = 0;
+            let subCount = 0;
+            
+            filteredData.groups.forEach(g => {
+                deptCount += g.departments.length;
+                g.departments.forEach(d => {
+                    subCount += d.subcategories.length;
                 });
             });
             
-            // Save Button
-            document.getElementById('saveBtn').addEventListener('click', saveToFile);
-            
-            // Action Bar Buttons
-            document.getElementById('viewDetailsBtn').addEventListener('click', showDetailsModal);
-            document.getElementById('editNotesBtn').addEventListener('click', () => showNotesModal());
-            document.getElementById('moveBtn').addEventListener('click', showMoveModal);
-            document.getElementById('deleteBtn').addEventListener('click', showDeleteModal);
-            document.getElementById('clearSelectionBtn').addEventListener('click', clearSelection);
-            
-            // Modals - Notes
-            document.getElementById('notesCancel').addEventListener('click', () => closeModal('notesModal'));
-            document.getElementById('notesSave').addEventListener('click', saveNotes);
-            
-            // Modals - Delete
-            document.getElementById('deleteCancel').addEventListener('click', () => closeModal('deleteModal'));
-            document.getElementById('deleteConfirm').addEventListener('click', confirmDelete);
-            
-            // Modals - Move
-            document.getElementById('moveCancel').addEventListener('click', () => closeModal('moveModal'));
-            document.getElementById('moveConfirm').addEventListener('click', confirmMove);
-            
-            // Details Modal
-            document.getElementById('detailsClose').addEventListener('click', () => closeModal('detailsModal'));
-            
-            // Populate group filter and move select
-            populateGroupSelects();
+            document.getElementById('totalDepartments').textContent = deptCount;
+            document.getElementById('totalSubcategories').textContent = subCount;
         }
-        
-        function populateGroupSelects() {
-            const groupFilter = document.getElementById('groupFilter');
-            const moveSelect = document.getElementById('moveGroupSelect');
-            
-            data.groups.forEach(group => {
-                const option1 = document.createElement('option');
-                option1.value = group.id;
-                option1.textContent = group.name;
-                groupFilter.appendChild(option1);
-                
-                const option2 = document.createElement('option');
-                option2.value = group.id;
-                option2.textContent = group.name;
-                moveSelect.appendChild(option2);
+
+        // ============================================================
+        // SEARCH & FILTER
+        // ============================================================
+        function selectGroupFilter(groupId, element) {
+            document.querySelectorAll('.group-filter-item').forEach(e => e.classList.remove('active'));
+            element.classList.add('active');
+            GROUP_FILTER.value = groupId;
+            filterAndRender();
+        }
+
+        function filterAndRender() {
+            const searchTerm = SEARCH_INPUT.value.toLowerCase().trim();
+            const groupId = GROUP_FILTER.value ? parseInt(GROUP_FILTER.value) : null;
+
+            // Clone data for filtering
+            filteredData = JSON.parse(JSON.stringify(appData));
+
+            // Filter by group
+            if (groupId) {
+                filteredData.groups = filteredData.groups.filter(g => g.id === groupId);
+            }
+
+            // Filter by search term
+            if (searchTerm) {
+                filteredData.groups = filteredData.groups.map(group => ({
+                    ...group,
+                    departments: group.departments.map(dept => ({
+                        ...dept,
+                        subcategories: dept.subcategories.filter(sub =>
+                            sub.name.toLowerCase().includes(searchTerm) ||
+                            sub.commax_id?.toString().includes(searchTerm)
+                        )
+                    })).filter(d => d.subcategories.length > 0)
+                })).filter(g => g.departments.length > 0);
+            }
+
+            updateStats();
+            renderTree();
+        }
+
+        // ============================================================
+        // TREE RENDERING
+        // ============================================================
+        function renderTree() {
+            TREE_CONTAINER.innerHTML = '';
+
+            const hasItems = filteredData.groups.some(g => 
+                g.departments.some(d => d.subcategories.length > 0)
+            );
+
+            if (!hasItems) {
+                EMPTY_STATE.style.display = 'flex';
+                return;
+            }
+
+            EMPTY_STATE.style.display = 'none';
+
+            filteredData.groups.forEach((group, groupIdx) => {
+                const hasSubcategories = group.departments.some(d => d.subcategories.length > 0);
+                if (!hasSubcategories) return;
+
+                const groupNode = createGroupNode(group, groupIdx);
+                TREE_CONTAINER.appendChild(groupNode);
             });
         }
-        
-        function getFilteredData() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const groupId = parseInt(document.getElementById('groupFilter').value) || null;
-            
-            return data.groups.filter(group => {
-                if (groupId && group.id !== groupId) return false;
-                return group;
-            }).map(group => ({
-                ...group,
-                departments: group.departments.map(dept => ({
-                    ...dept,
-                    subcategories: dept.subcategories.filter(sub => {
-                        const nameMatch = sub.name.toLowerCase().includes(searchTerm);
-                        const idMatch = sub.commax_id.toString().includes(searchTerm);
-                        return nameMatch || idMatch;
-                    })
-                })).filter(dept => dept.subcategories.length > 0)
-            })).filter(group => group.departments.length > 0);
-        }
-        
-        function render() {
-            const filtered = getFilteredData();
-            
-            document.getElementById('treeView').innerHTML = renderTreeView(filtered);
-            document.getElementById('listView').innerHTML = renderListView(filtered);
-            document.getElementById('gridView').innerHTML = renderGridView(filtered);
-            document.getElementById('folderView').innerHTML = renderFolderView(filtered);
-            
-            // Show correct view
-            document.querySelectorAll('[id$="View"]').forEach(v => v.classList.remove('active'));
-            document.getElementById(currentView + 'View').classList.add('active');
-            
-            attachEventListeners();
-            updateActionBar();
-        }
-        
-        function renderTreeView(filtered) {
-            if (filtered.length === 0) return '<div class="empty-state"><p>אין פריטים להצגה</p></div>';
-            
-            return filtered.map((group, gIdx) => `
-                <div class="tree-item group group-${group.id}">
-                    <div class="tree-header" data-type="group" data-group-id="${group.id}">
-                        <span class="icon">📂</span>
-                        <span>${group.name}</span>
-                        <span class="count">${group.departments.reduce((s, d) => s + d.subcategories.length, 0)} פריטים</span>
-                        <span class="chevron">▼</span>
-                    </div>
-                    <div class="tree-content expanded">
-                        ${group.departments.map((dept, dIdx) => `
-                            <div class="tree-item department" data-type="department" data-dept-id="${dept.id}">
-                                <div class="tree-header">
-                                    <span class="icon">📁</span>
-                                    <span>${dept.name}</span>
-                                    <span class="count">${dept.subcategories.length} פריטים</span>
-                                    <span class="chevron">▼</span>
-                                </div>
-                                <div class="tree-content expanded">
-                                    ${dept.subcategories.map(sub => renderSubcategoryItem(sub, group.id)).join('')}
-                                </div>
-                            </div>
-                        `).join('')}
+
+        function createGroupNode(group, groupIdx) {
+            const node = document.createElement('div');
+            node.className = 'tree-node';
+            node.id = `group-${group.id}`;
+            node.draggable = true;
+            const colorClass = GROUP_COLORS[groupIdx % GROUP_COLORS.length];
+            const dotClass = DOT_COLORS[groupIdx % DOT_COLORS.length];
+
+            const header = document.createElement('div');
+            header.className = 'tree-node-header drag-handle';
+            header.innerHTML = `
+                <div class="drag-handle" title="Drag to reorder">☰</div>
+                <div class="expand-btn ${expandedNodes.has(group.id) ? 'expanded' : ''}" data-group-id="${group.id}">▶</div>
+                <div class="tree-icon">👥</div>
+                <input type="checkbox" class="tree-checkbox" data-type="group" data-id="${group.id}">
+                <div class="tree-content">
+                    <div class="tree-title">${group.name}</div>
+                    <div class="tree-meta">
+                        <div class="tree-count">
+                            📂 ${group.departments.length} dept${group.departments.length !== 1 ? 's' : ''}
+                        </div>
                     </div>
                 </div>
-            `).join('');
+                <div class="group-color-dot ${dotClass}"></div>
+            `;
+
+            header.style.borderLeft = `4px solid`;
+            header.style.background = `linear-gradient(to right, rgba(${getColorRGB(dotClass)}, 0.05), transparent)`;
+
+            const expandBtn = header.querySelector('.expand-btn');
+            expandBtn.onclick = (e) => {
+                e.stopPropagation();
+                toggleGroupExpand(group.id, expandBtn);
+            };
+
+            const checkbox = header.querySelector('.tree-checkbox');
+            checkbox.onchange = (e) => {
+                e.stopPropagation();
+                selectItem('group', group.id, checkbox.checked);
+            };
+
+            // Drag events
+            node.ondragstart = (e) => dragStart(e, 'group', group.id);
+            node.ondragend = dragEnd;
+            node.ondragover = dragOver;
+            node.ondrop = (e) => drop(e, 'group', group.id);
+
+            const container = document.createElement('div');
+            container.className = 'tree-children';
+            if (expandedNodes.has(group.id)) {
+                container.classList.add('expanded');
+            }
+
+            group.departments.forEach((dept, deptIdx) => {
+                const deptNode = createDepartmentNode(dept, group.id, colorClass, dotClass);
+                container.appendChild(deptNode);
+            });
+
+            node.appendChild(header);
+            node.appendChild(container);
+
+            return node;
         }
-        
-        function renderSubcategoryItem(sub, groupId) {
-            const isChecked = selectedItems.has(`${groupId}-${sub.id}`);
-            return `
-                <div class="tree-item subcategory" data-type="subcategory" data-subcat-id="${sub.id}" data-group-id="${groupId}" draggable="true">
-                    <div class="tree-header">
-                        <input type="checkbox" ${isChecked ? 'checked' : ''} data-id="${groupId}-${sub.id}">
-                        <span class="icon">📄</span>
-                        <div class="subcategory-info">
-                            <div class="subcategory-name">${sub.name}</div>
-                            <div class="subcategory-id">#${sub.commax_id} • ${sub.itemCount} פריטים</div>
-                            <div class="subcategory-notes editable" data-id="${groupId}-${sub.id}">${sub.notes || 'הוסף הערה...'}</div>
-                        </div>
+
+        function createDepartmentNode(dept, groupId, colorClass, dotClass) {
+            const node = document.createElement('div');
+            node.className = 'tree-node-child';
+            node.id = `dept-${dept.id}`;
+            node.draggable = true;
+
+            const header = document.createElement('div');
+            header.style.display = 'flex';
+            header.style.alignItems = 'center';
+            header.style.gap = '12px';
+            header.style.flex = '1';
+
+            header.innerHTML = `
+                <div class="drag-handle" title="Drag to reorder">☰</div>
+                <div class="tree-icon">📂</div>
+                <input type="checkbox" class="tree-checkbox" data-type="department" data-id="${dept.id}" data-group-id="${groupId}">
+                <div class="tree-node-child-header">
+                    <div class="tree-node-child-title">${dept.name}</div>
+                    <div class="tree-node-child-meta">
+                        <div class="tree-count">📄 ${dept.subcategories.length}</div>
                     </div>
                 </div>
             `;
+
+            const checkbox = header.querySelector('.tree-checkbox');
+            checkbox.onchange = (e) => {
+                e.stopPropagation();
+                selectItem('department', dept.id, checkbox.checked);
+            };
+
+            const actions = document.createElement('div');
+            actions.className = 'tree-node-child-actions';
+            actions.innerHTML = `
+                <button class="action-btn" title="View subcategories">👁️</button>
+                <button class="action-btn" title="Edit">✏️</button>
+                <button class="action-btn" title="Delete">🗑️</button>
+            `;
+
+            node.appendChild(header);
+            node.appendChild(actions);
+
+            // Subcategories as collapsible list
+            const subList = document.createElement('div');
+            subList.style.display = 'none';
+            subList.style.marginTop = '12px';
+            subList.style.paddingTop = '12px';
+            subList.style.borderTop = '1px solid var(--border)';
+            subList.style.flexBasis = '100%';
+
+            dept.subcategories.forEach(sub => {
+                const subItem = createSubcategoryNode(sub, dept.id, groupId, colorClass, dotClass);
+                subList.appendChild(subItem);
+            });
+
+            // Toggle subcategories on click
+            actions.querySelector('button').onclick = (e) => {
+                e.stopPropagation();
+                subList.style.display = subList.style.display === 'none' ? 'flex' : 'none';
+                subList.style.flexDirection = 'column';
+                subList.style.gap = '8px';
+            };
+
+            node.appendChild(subList);
+
+            // Drag events
+            node.ondragstart = (e) => dragStart(e, 'department', dept.id);
+            node.ondragend = dragEnd;
+            node.ondragover = dragOver;
+            node.ondrop = (e) => drop(e, 'department', dept.id);
+
+            return node;
         }
-        
-        function renderListView(filtered) {
-            if (filtered.length === 0) return '<div class="empty-state"><p>אין פריטים להצגה</p></div>';
-            
-            return filtered.map(group => 
-                group.departments.map(dept =>
-                    dept.subcategories.map(sub => {
-                        const isChecked = selectedItems.has(`${group.id}-${sub.id}`);
-                        return `
-                            <div class="list-item ${isChecked ? 'checked' : ''}" data-type="subcategory" data-subcat-id="${sub.id}" data-group-id="${group.id}">
-                                <input type="checkbox" ${isChecked ? 'checked' : ''} data-id="${group.id}-${sub.id}">
-                                <div style="flex: 1;">
-                                    <div class="breadcrumb">📂 ${group.name} > 📁 ${dept.name}</div>
-                                    <div class="subcategory-name">${sub.name}</div>
-                                    <div class="subcategory-id">#${sub.commax_id}</div>
-                                    ${sub.notes ? `<div class="subcategory-notes">${sub.notes}</div>` : ''}
-                                </div>
-                                <span style="color: #999; font-size: 0.9em;">${sub.itemCount} פריטים</span>
-                            </div>
-                        `;
-                    })
-                ).join('')
-            ).join('');
-        }
-        
-        function renderGridView(filtered) {
-            if (filtered.length === 0) return '<div class="empty-state" style="grid-column: 1/-1;"><p>אין פריטים להצגה</p></div>';
-            
-            return filtered.map(group => 
-                group.departments.map(dept =>
-                    dept.subcategories.map(sub => {
-                        const isChecked = selectedItems.has(`${group.id}-${sub.id}`);
-                        return `
-                            <div class="grid-card ${isChecked ? 'checked' : ''}" data-type="subcategory" data-subcat-id="${sub.id}" data-group-id="${group.id}">
-                                <div style="margin-bottom: 10px;">
-                                    <input type="checkbox" ${isChecked ? 'checked' : ''} data-id="${group.id}-${sub.id}">
-                                </div>
-                                <div class="grid-card-breadcrumb">📂 ${group.name} > 📁 ${dept.name}</div>
-                                <div class="grid-card-title">${sub.name}</div>
-                                <div class="grid-card-id">#${sub.commax_id}</div>
-                                <div class="grid-card-count">${sub.itemCount} פריטים</div>
-                                ${sub.notes ? `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e9ecef; font-size: 0.85em; color: #666;">${sub.notes}</div>` : ''}
-                            </div>
-                        `;
-                    })
-                ).join('')
-            ).join('');
-        }
-        
-        function renderFolderView(filtered) {
-            if (filtered.length === 0) return '<div class="empty-state"><p>אין פריטים להצגה</p></div>';
-            
-            return filtered.map(group => `
-                <div class="folder-item folder" data-type="group-folder" data-group-id="${group.id}">
-                    <span class="folder-icon">📂</span>
-                    <div class="folder-name">${group.name}</div>
-                    <div class="folder-count">${group.departments.reduce((s, d) => s + d.subcategories.length, 0)}</div>
-                </div>
-                <div class="folder-children expanded">
-                    ${group.departments.map(dept => `
-                        <div class="folder-item folder" data-type="dept-folder" data-dept-id="${dept.id}">
-                            <span class="folder-icon">📁</span>
-                            <div class="folder-name">${dept.name}</div>
-                            <div class="folder-count">${dept.subcategories.length}</div>
+
+        function createSubcategoryNode(sub, deptId, groupId, colorClass, dotClass) {
+            const node = document.createElement('div');
+            node.style.padding = '10px 12px';
+            node.style.background = 'white';
+            node.style.borderRadius = '6px';
+            node.style.border = '1px solid var(--border)';
+            node.style.display = 'flex';
+            node.style.flexDirection = 'column';
+            node.style.gap = '8px';
+            node.id = `sub-${sub.id}`;
+            node.draggable = true;
+
+            node.innerHTML = `
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <div class="drag-handle" title="Drag to reorder">☰</div>
+                    <div class="tree-icon">📄</div>
+                    <input type="checkbox" class="tree-checkbox" data-type="subcategory" data-id="${sub.id}" data-dept-id="${deptId}" data-group-id="${groupId}">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; font-size: 0.9em;">${sub.name}</div>
+                        <div class="tree-node-child-meta">
+                            <span class="tree-id">#${sub.commax_id}</span>
+                            <span>${sub.itemCount} items</span>
                         </div>
-                        <div class="folder-children expanded">
-                            ${dept.subcategories.map(sub => {
-                                const isChecked = selectedItems.has(`${group.id}-${sub.id}`);
-                                return `
-                                    <div class="folder-item ${isChecked ? 'checked' : ''}" data-type="subcategory" data-subcat-id="${sub.id}" data-group-id="${group.id}">
-                                        <input type="checkbox" ${isChecked ? 'checked' : ''} data-id="${group.id}-${sub.id}" style="margin-left: 10px;">
-                                        <span class="folder-icon">📄</span>
-                                        <div class="folder-name">${sub.name}</div>
-                                        <div class="folder-count">#${sub.commax_id}</div>
-                                    </div>
-                                `;
-                            }).join('')}
-                        </div>
-                    `).join('')}
+                    </div>
                 </div>
-            `).join('');
+                <div class="notes-editor" style="display: ${sub.notes ? 'flex' : 'none'};">
+                    <span style="font-size: 0.85em; color: var(--text-muted);">📝</span>
+                    <span style="font-size: 0.9em;">${sub.notes}</span>
+                </div>
+            `;
+
+            const checkbox = node.querySelector('.tree-checkbox');
+            checkbox.onchange = (e) => {
+                e.stopPropagation();
+                selectItem('subcategory', sub.id, checkbox.checked);
+            };
+
+            node.ondragstart = (e) => dragStart(e, 'subcategory', sub.id);
+            node.ondragend = dragEnd;
+            node.ondragover = dragOver;
+            node.ondrop = (e) => drop(e, 'subcategory', sub.id);
+
+            return node;
         }
-        
-        function attachEventListeners() {
-            // Checkboxes
-            document.querySelectorAll('input[type="checkbox"][data-id]').forEach(checkbox => {
-                checkbox.addEventListener('change', e => {
-                    const id = e.target.dataset.id;
-                    if (e.target.checked) {
-                        selectedItems.add(id);
-                    } else {
-                        selectedItems.delete(id);
-                    }
-                    markUnsaved();
-                    updateActionBar();
-                    render();
-                });
-            });
-            
-            // Notes click
-            document.querySelectorAll('.subcategory-notes.editable').forEach(el => {
-                el.addEventListener('click', e => {
-                    e.stopPropagation();
-                    const itemId = el.dataset.id;
-                    selectedItems.clear();
-                    selectedItems.add(itemId);
-                    showNotesModal();
-                });
-            });
-            
-            // Drag and Drop
-            document.querySelectorAll('[draggable="true"]').forEach(el => {
-                el.addEventListener('dragstart', dragStart);
-                el.addEventListener('dragend', dragEnd);
-                el.addEventListener('dragover', dragOver);
-                el.addEventListener('drop', drop);
-            });
-            
-            // Tree headers toggle
-            document.querySelectorAll('.tree-header').forEach(header => {
-                header.addEventListener('click', e => {
-                    if (e.target.tagName === 'INPUT') return;
-                    const content = header.nextElementSibling;
-                    if (content && content.classList.contains('tree-content')) {
-                        header.classList.toggle('collapsed');
-                        content.classList.toggle('expanded');
-                    }
-                });
-            });
-            
-            // Folder toggle
-            document.querySelectorAll('.folder-item.folder').forEach(item => {
-                item.addEventListener('click', e => {
-                    if (e.target.tagName === 'INPUT') return;
-                    const next = item.nextElementSibling;
-                    if (next && next.classList.contains('folder-children')) {
-                        next.classList.toggle('expanded');
-                    }
-                });
-            });
-        }
-        
-        function dragStart(e) {
-            draggedItem = e.currentTarget;
-            e.dataTransfer.effectAllowed = 'move';
-            e.currentTarget.classList.add('dragging');
-        }
-        
-        function dragEnd(e) {
-            e.currentTarget.classList.remove('dragging');
-            document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
-        }
-        
-        function dragOver(e) {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-            e.currentTarget.classList.add('drag-over');
-        }
-        
-        function drop(e) {
-            e.preventDefault();
-            e.currentTarget.classList.remove('drag-over');
-            // Drag functionality placeholder - can be enhanced
-        }
-        
-        function updateActionBar() {
-            const actionBar = document.getElementById('actionBar');
-            if (selectedItems.size > 0) {
-                actionBar.classList.add('show');
-                document.getElementById('selectedCount').textContent = selectedItems.size;
+
+        function toggleGroupExpand(groupId, btn) {
+            if (expandedNodes.has(groupId)) {
+                expandedNodes.delete(groupId);
+                btn.classList.remove('expanded');
+                btn.closest('.tree-node').querySelector('.tree-children').classList.remove('expanded');
             } else {
-                actionBar.classList.remove('show');
+                expandedNodes.add(groupId);
+                btn.classList.add('expanded');
+                btn.closest('.tree-node').querySelector('.tree-children').classList.add('expanded');
+            }
+            localStorage.setItem('expandedNodes', JSON.stringify([...expandedNodes]));
+        }
+
+        function restoreExpandedState() {
+            const saved = localStorage.getItem('expandedNodes');
+            if (saved) {
+                expandedNodes = new Set(JSON.parse(saved).map(Number));
             }
         }
-        
-        function clearSelection() {
-            selectedItems.clear();
+
+        // ============================================================
+        // SELECTION & ACTIONS
+        // ============================================================
+        function selectItem(type, id, checked) {
+            const key = `${type}-${id}`;
+            if (checked) {
+                selectedItems.add(key);
+            } else {
+                selectedItems.delete(key);
+            }
             updateActionBar();
-            render();
         }
-        
-        function showDetailsModal() {
-            const details = [];
-            selectedItems.forEach(itemId => {
-                const [groupId, subId] = itemId.split('-');
-                const group = data.groups.find(g => g.id == groupId);
-                if (group) {
-                    const dept = group.departments.find(d => 
-                        d.subcategories.some(s => s.id == subId)
-                    );
-                    if (dept) {
-                        const sub = dept.subcategories.find(s => s.id == subId);
-                        if (sub) {
-                            details.push(`
-                                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #e9ecef;">
-                                    <div><strong>${sub.name}</strong></div>
-                                    <div>ID: #${sub.commax_id}</div>
-                                    <div>קבוצה: ${group.name}</div>
-                                    <div>מחלקה: ${dept.name}</div>
-                                    <div>פריטים: ${sub.itemCount}</div>
-                                    ${sub.notes ? `<div>הערות: ${sub.notes}</div>` : ''}
-                                </div>
-                            `);
-                        }
-                    }
-                }
-            });
-            
-            document.getElementById('detailsContent').innerHTML = details.join('') || '<p>אין פרטים</p>';
-            openModal('detailsModal');
+
+        function updateActionBar() {
+            if (selectedItems.size > 0) {
+                ACTION_BAR.classList.add('visible');
+                SELECTED_COUNT.textContent = `${selectedItems.size} item${selectedItems.size !== 1 ? 's' : ''} selected`;
+            } else {
+                ACTION_BAR.classList.remove('visible');
+            }
         }
-        
-        function showNotesModal() {
-            if (selectedItems.size === 0) return;
-            const firstItemId = Array.from(selectedItems)[0];
-            const [groupId, subId] = firstItemId.split('-');
-            const group = data.groups.find(g => g.id == groupId);
-            const dept = group.departments.find(d => d.subcategories.some(s => s.id == subId));
-            const sub = dept.subcategories.find(s => s.id == subId);
-            
-            document.getElementById('notesInput').value = sub.notes || '';
-            openModal('notesModal');
-        }
-        
-        function saveNotes() {
-            const notes = document.getElementById('notesInput').value;
-            selectedItems.forEach(itemId => {
-                const [groupId, subId] = itemId.split('-');
-                const group = data.groups.find(g => g.id == groupId);
-                const dept = group.departments.find(d => d.subcategories.some(s => s.id == subId));
-                const sub = dept.subcategories.find(s => s.id == subId);
-                if (sub) sub.notes = notes;
-            });
-            markUnsaved();
-            closeModal('notesModal');
-            render();
-        }
-        
-        function showDeleteModal() {
-            if (selectedItems.size === 0) return;
-            const msg = `בטוח שברצונך למחוק ${selectedItems.size} פריטים?`;
-            document.getElementById('deleteMessage').textContent = msg;
-            openModal('deleteModal');
-        }
-        
-        function confirmDelete() {
-            selectedItems.forEach(itemId => {
-                const [groupId, subId] = itemId.split('-');
-                const group = data.groups.find(g => g.id == groupId);
-                if (group) {
-                    group.departments.forEach(dept => {
-                        const idx = dept.subcategories.findIndex(s => s.id == subId);
-                        if (idx !== -1) {
-                            dept.subcategories.splice(idx, 1);
-                        }
-                    });
-                }
-            });
+
+        document.getElementById('clearSelectionBtn').onclick = () => {
             selectedItems.clear();
-            markUnsaved();
-            closeModal('deleteModal');
-            render();
-        }
-        
-        function showMoveModal() {
+            document.querySelectorAll('.tree-checkbox').forEach(cb => cb.checked = false);
+            updateActionBar();
+        };
+
+        document.getElementById('deleteSelectedBtn').onclick = () => {
             if (selectedItems.size === 0) return;
-            document.getElementById('moveGroupSelect').value = '';
-            openModal('moveModal');
+            document.getElementById('confirmMessage').textContent = 
+                `Delete ${selectedItems.size} item${selectedItems.size !== 1 ? 's' : ''}? This cannot be undone.`;
+            document.getElementById('confirmModal').classList.add('active');
+        };
+
+        document.getElementById('moveSelectedBtn').onclick = () => {
+            if (selectedItems.size === 0) return;
+            document.getElementById('moveModal').classList.add('active');
+        };
+
+        document.getElementById('notesSelectedBtn').onclick = () => {
+            // For now, just show a prompt
+            const notes = prompt('Add notes to selected items:');
+            if (notes !== null) {
+                selectedItems.forEach(key => {
+                    const [type, id] = key.split('-');
+                    findItemById(parseInt(id)).notes = notes;
+                });
+                unsavedChanges = true;
+                filterAndRender();
+                markUnsaved();
+            }
+        };
+
+        function findItemById(id) {
+            for (let group of appData.groups) {
+                for (let dept of group.departments) {
+                    const sub = dept.subcategories.find(s => s.id === id);
+                    if (sub) return sub;
+                    if (dept.id === id) return dept;
+                }
+                if (group.id === id) return group;
+            }
+            return null;
         }
-        
+
+        function closeMoveModal() {
+            document.getElementById('moveModal').classList.remove('active');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+        }
+
         function confirmMove() {
-            const targetGroupId = parseInt(document.getElementById('moveGroupSelect').value);
-            if (!targetGroupId) {
-                alert('בחר קבוצה');
+            if (selectedItems.size === 0) return;
+            const groupId = parseInt(document.getElementById('moveGroupSelect').value);
+            const deptId = parseInt(document.getElementById('moveDepartmentSelect').value);
+
+            if (!groupId || !deptId) {
+                alert('Please select both group and department');
                 return;
             }
-            
-            const targetGroup = data.groups.find(g => g.id === targetGroupId);
-            if (!targetGroup) return;
-            
-            const itemsToMove = [];
-            selectedItems.forEach(itemId => {
-                const [groupId, subId] = itemId.split('-');
-                const group = data.groups.find(g => g.id == groupId);
-                if (group && group.id !== targetGroupId) {
-                    group.departments.forEach(dept => {
-                        const idx = dept.subcategories.findIndex(s => s.id == subId);
-                        if (idx !== -1) {
-                            itemsToMove.push(dept.subcategories.splice(idx, 1)[0]);
+
+            selectedItems.forEach(key => {
+                const [type, id] = key.split('-');
+                if (type === 'subcategory') {
+                    const sub = findItemById(parseInt(id));
+                    if (sub) {
+                        // Remove from old dept
+                        for (let group of appData.groups) {
+                            for (let dept of group.departments) {
+                                const idx = dept.subcategories.indexOf(sub);
+                                if (idx > -1) {
+                                    dept.subcategories.splice(idx, 1);
+                                }
+                            }
                         }
-                    });
+                        // Add to new dept
+                        const newDept = appData.groups.find(g => g.id === groupId)?.departments.find(d => d.id === deptId);
+                        if (newDept) {
+                            newDept.subcategories.push(sub);
+                        }
+                    }
                 }
             });
-            
-            // Add to first department of target group
-            if (targetGroup.departments.length > 0 && itemsToMove.length > 0) {
-                targetGroup.departments[0].subcategories.push(...itemsToMove);
-            }
-            
+
+            unsavedChanges = true;
             selectedItems.clear();
+            document.querySelectorAll('.tree-checkbox').forEach(cb => cb.checked = false);
+            closeMoveModal();
+            filterAndRender();
+            updateActionBar();
             markUnsaved();
-            closeModal('moveModal');
-            render();
         }
-        
-        function openModal(id) {
-            document.getElementById(id).classList.add('show');
-        }
-        
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('show');
-        }
-        
-        function updateItemTotal() {
-            let total = 0;
-            data.groups.forEach(group => {
-                group.departments.forEach(dept => {
-                    total += dept.subcategories.length;
-                });
+
+        function confirmDelete() {
+            selectedItems.forEach(key => {
+                const [type, id] = key.split('-');
+                const numId = parseInt(id);
+
+                for (let group of appData.groups) {
+                    for (let dept of group.departments) {
+                        const subIdx = dept.subcategories.findIndex(s => s.id === numId);
+                        if (subIdx > -1) {
+                            dept.subcategories.splice(subIdx, 1);
+                        }
+                    }
+                    const deptIdx = group.departments.findIndex(d => d.id === numId);
+                    if (deptIdx > -1) {
+                        group.departments.splice(deptIdx, 1);
+                    }
+                }
             });
-            document.getElementById('itemTotal').textContent = `סה״כ פריטים: ${total}`;
+
+            unsavedChanges = true;
+            selectedItems.clear();
+            closeConfirmModal();
+            filterAndRender();
+            updateActionBar();
+            markUnsaved();
         }
-        
+
+        // ============================================================
+        // DRAG & DROP
+        // ============================================================
+        function dragStart(e, type, id) {
+            isDragging = true;
+            currentDragItem = { type, id };
+            e.target.closest('.tree-node, .tree-node-child').classList.add('dragging');
+
+            const dragText = e.target.closest('.tree-node, .tree-node-child').querySelector('.tree-title, .tree-node-child-title')?.textContent || 'Item';
+            const dragImage = document.getElementById('dragImage');
+            dragImage.textContent = `↑ ${dragText}`;
+            dragImage.style.display = 'block';
+            e.dataTransfer.setDragImage(dragImage, 0, 0);
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function dragEnd(e) {
+            isDragging = false;
+            document.querySelectorAll('.dragging, .drag-over').forEach(el => {
+                el.classList.remove('dragging', 'drag-over');
+            });
+            document.getElementById('dragImage').style.display = 'none';
+        }
+
+        function dragOver(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            this.classList.add('drag-over');
+        }
+
+        function drop(e, type, id) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!currentDragItem) return;
+
+            // Simple reordering - save changes
+            unsavedChanges = true;
+            markUnsaved();
+            filterAndRender();
+        }
+
+        // ============================================================
+        // SAVE & CLOUD
+        // ============================================================
         function markUnsaved() {
-            unsavedChanges++;
-            const indicator = document.getElementById('saveIndicator');
-            indicator.textContent = `✏️ שינויים לא שמורים (${unsavedChanges})`;
-            indicator.classList.remove('saved');
-            saveToLocalStorage();
+            SAVE_INDICATOR.textContent = '⏱️ Unsaved changes';
+            SAVE_INDICATOR.classList.remove('saved');
+
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                autoSave();
+            }, 3000);
         }
-        
-        function saveToLocalStorage() {
-            localStorage.setItem('kolbo_unsaved', unsavedChanges.toString());
-            localStorage.setItem('kolbo_data', JSON.stringify(data));
-        }
-        
-        function loadFromLocalStorage() {
-            const saved = localStorage.getItem('kolbo_unsaved');
-            if (saved) {
-                unsavedChanges = parseInt(saved);
-                const indicator = document.getElementById('saveIndicator');
-                indicator.textContent = `✏️ שינויים לא שמורים (${unsavedChanges})`;
+
+        async function autoSave() {
+            try {
+                SAVE_INDICATOR.classList.add('saving');
+                SAVE_INDICATOR.textContent = '⏱️ Auto-saving...';
+                await saveToCloud();
+            } catch (e) {
+                SAVE_INDICATOR.textContent = '❌ Failed to save';
             }
         }
-        
-        async function saveToFile() {
+
+        document.getElementById('saveBtn').onclick = () => {
+            SAVE_INDICATOR.classList.add('saving');
+            SAVE_INDICATOR.textContent = '💾 Saving...';
+            saveToCloud();
+        };
+
+        async function saveToCloud() {
             try {
                 const response = await fetch('/api/save-data', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(appData)
                 });
-                
-                const result = await response.json();
-                if (result.success) {
-                    unsavedChanges = 0;
-                    const indicator = document.getElementById('saveIndicator');
-                    indicator.textContent = '✅ שמור בהצלחה!';
-                    indicator.classList.add('saved');
-                    localStorage.removeItem('kolbo_unsaved');
-                    localStorage.removeItem('kolbo_data');
-                    
+
+                if (response.ok) {
+                    SAVE_INDICATOR.classList.remove('saving');
+                    SAVE_INDICATOR.classList.add('saved');
+                    SAVE_INDICATOR.textContent = '✅ Saved to cloud';
+                    unsavedChanges = false;
+                    localStorage.removeItem('unsavedData');
+                    lastSaveTime = new Date();
+
                     setTimeout(() => {
-                        indicator.textContent = '✏️ שינויים לא שמורים (0)';
-                        indicator.classList.remove('saved');
-                    }, 3000);
+                        if (!unsavedChanges) {
+                            SAVE_INDICATOR.textContent = '✅ All changes saved';
+                            SAVE_INDICATOR.classList.add('saved');
+                        }
+                    }, 2000);
                 } else {
-                    alert('שגיאה בשמירה: ' + result.error);
+                    throw new Error('Save failed');
                 }
             } catch (e) {
-                alert('שגיאה: ' + e.message);
+                console.error('Save error:', e);
+                SAVE_INDICATOR.classList.remove('saving', 'saved');
+                SAVE_INDICATOR.textContent = '❌ Save failed';
+                setTimeout(() => {
+                    if (unsavedChanges) {
+                        SAVE_INDICATOR.textContent = '⏱️ Unsaved changes';
+                    }
+                }, 2000);
             }
         }
-        
-        // Initialize app
-        init();
+
+        // ============================================================
+        // LOCAL STORAGE
+        // ============================================================
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('unsavedData');
+            if (saved) {
+                const savedData = JSON.parse(saved);
+                appData = savedData;
+                unsavedChanges = true;
+                markUnsaved();
+                filterAndRender();
+            }
+        }
+
+        function saveToLocalStorage() {
+            if (unsavedChanges) {
+                localStorage.setItem('unsavedData', JSON.stringify(appData));
+            }
+        }
+
+        // ============================================================
+        // EVENT LISTENERS
+        // ============================================================
+        SEARCH_INPUT.addEventListener('input', filterAndRender);
+        GROUP_FILTER.addEventListener('change', filterAndRender);
+
+        document.getElementById('moveGroupSelect').addEventListener('change', updateMoveDepartmentSelect);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Delete' && selectedItems.size > 0) {
+                document.getElementById('deleteSelectedBtn').click();
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                document.getElementById('saveBtn').click();
+            }
+        });
+
+        // Auto-save every 30 seconds
+        setInterval(saveToLocalStorage, 30000);
+
+        // Initial load
+        window.addEventListener('load', loadData);
     </script>
 </body>
 </html>
