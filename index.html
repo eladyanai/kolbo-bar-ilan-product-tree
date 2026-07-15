@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>עץ הקטגוריות של כלבו בר אילן - Commax</title>
+    <title>קטלוג קומקס כלבו בר אילן - מוקד הזמנות</title>
     <style>
         * {
             margin: 0;
@@ -12,11 +12,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
             min-height: 100vh;
             padding: 20px;
-            color: #333;
         }
 
         .container {
@@ -31,902 +31,743 @@
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 40px 30px;
+            padding: 30px;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
+            font-size: 2.5em;
+            margin-bottom: 5px;
             font-weight: 700;
         }
 
         .header p {
             font-size: 1.1em;
-            opacity: 0.95;
-            margin-bottom: 20px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
-        }
-
-        .stat {
-            background: rgba(255,255,255,0.2);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.95em;
             opacity: 0.9;
         }
 
         .controls {
             display: flex;
-            gap: 15px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #ddd;
             flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
             align-items: center;
         }
 
-        .search-box {
-            flex: 1;
-            min-width: 250px;
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
-        .search-box input {
-            width: 100%;
-            padding: 12px 15px;
+        .control-group label {
+            font-weight: 600;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        input[type="text"], select {
+            padding: 10px 15px;
             border: 2px solid #ddd;
             border-radius: 6px;
-            font-size: 1em;
+            font-size: 0.95em;
+            font-family: inherit;
             transition: border-color 0.3s;
         }
 
-        .search-box input:focus {
+        input[type="text"]:focus, select:focus {
             outline: none;
             border-color: #667eea;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         button {
             padding: 10px 20px;
             border: none;
             border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
             background: #667eea;
             color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85em;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+            background: #e0e0e0;
+            padding: 2px;
+            border-radius: 6px;
+        }
+
+        .view-toggle button {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .view-toggle button.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-right: auto;
+        }
+
+        .stat-item {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            color: #555;
             font-size: 0.95em;
-            white-space: nowrap;
         }
 
-        button:hover {
-            background: #764ba2;
+        .stat-item strong {
+            color: #667eea;
+            font-size: 1.2em;
         }
 
-        button.secondary {
-            background: #999;
+        .main-content {
+            display: flex;
+            min-height: calc(100vh - 300px);
         }
 
-        button.success {
-            background: #28a745;
-        }
-
-        button.success:hover {
-            background: #218838;
-        }
-
-        button.danger {
-            background: #dc3545;
-        }
-
-        button.danger:hover {
-            background: #c82333;
-        }
-
-        .content {
-            padding: 20px;
-            max-height: calc(100vh - 400px);
+        .sidebar {
+            width: 250px;
+            background: #f8f9fa;
+            border-left: 1px solid #e0e0e0;
             overflow-y: auto;
+            padding: 0;
+        }
+
+        .tree-view {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .group {
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .group-header {
+            padding: 15px 20px;
+            background: white;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            transition: background 0.3s;
+            border-left: 4px solid #667eea;
+        }
+
+        .group-header:hover {
+            background: #f8f9fa;
+        }
+
+        .group-header.collapsed::before {
+            content: '▶';
+            font-size: 0.8em;
+            margin-right: 10px;
+        }
+
+        .group-header.expanded::before {
+            content: '▼';
+            font-size: 0.8em;
+            margin-right: 10px;
+        }
+
+        .group-content {
+            display: none;
+        }
+
+        .group-content.visible {
+            display: block;
+        }
+
+        .group-stats {
+            font-size: 0.8em;
+            color: #999;
+            font-weight: normal;
         }
 
         .category {
-            margin-bottom: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            background: #fafafa;
-        }
-
-        .category.dragging {
-            opacity: 0.7;
-            transform: scale(0.98);
-        }
-
-        .category-header {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            cursor: move;
-            background: white;
-            border-bottom: 1px solid #e0e0e0;
-            transition: background 0.2s;
-            user-select: none;
-            gap: 10px;
-        }
-
-        .category-header:hover {
-            background: #f5f5f5;
-        }
-
-        .toggle-btn {
-            background: none;
-            border: none;
+            padding: 12px 20px;
+            border-bottom: 1px solid #f0f0f0;
             cursor: pointer;
-            font-size: 1.2em;
-            padding: 0;
-            width: 25px;
-            height: 25px;
+            user-select: none;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.3s;
+            transition: background 0.2s;
+            margin-right: 20px;
         }
 
-        .toggle-btn.open {
-            transform: rotate(-90deg);
+        .category:hover {
+            background: #f0f5ff;
         }
 
-        .category-id {
-            background: #667eea;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: 600;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .category-title {
-            font-weight: 600;
-            font-size: 1.1em;
+        .category-main {
             flex: 1;
         }
 
-        .category-count {
-            background: #764ba2;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
+        .category-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .category-details {
             font-size: 0.85em;
-            font-weight: 600;
+            color: #999;
+            margin-top: 2px;
         }
 
         .category-actions {
             display: flex;
-            gap: 5px;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.2s;
         }
 
-        .category-actions button {
-            padding: 5px 10px;
-            font-size: 0.85em;
+        .category:hover .category-actions {
+            opacity: 1;
         }
 
-        .category-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .category-content.visible {
-            max-height: 3000px;
-        }
-
-        .subcategories {
-            padding: 15px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 12px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .subcategory {
-            background: white;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .subcategory:hover {
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
-            border-color: #667eea;
-        }
-
-        .subcategory.checked {
-            background: #f0f4ff;
-            border-color: #667eea;
-        }
-
-        .subcat-delete {
-            position: absolute;
-            top: 5px;
-            right: 5px;
+        .delete-btn {
             background: #dc3545;
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            font-size: 0.8em;
+            padding: 4px 8px;
+            border-radius: 4px;
             cursor: pointer;
-            display: none;
+            font-size: 0.8em;
+            transition: background 0.2s;
         }
 
-        .subcategory:hover .subcat-delete {
-            display: block;
-        }
-
-        .subcat-delete:hover {
+        .delete-btn:hover {
             background: #c82333;
         }
 
-        .subcat-header {
+        .subcategories {
+            display: none;
+            background: #f8f9fa;
+            padding: 10px 0;
+        }
+
+        .subcategories.visible {
+            display: block;
+        }
+
+        .subcategory {
+            padding: 10px 40px;
             display: flex;
+            gap: 12px;
             align-items: center;
-            margin-bottom: 8px;
-            gap: 8px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95em;
+            transition: background 0.2s;
         }
 
-        .subcat-checkbox {
-            width: 18px;
-            height: 18px;
+        .subcategory:hover {
+            background: #fff3cd;
+        }
+
+        .subcategory input[type="checkbox"] {
             cursor: pointer;
-            accent-color: #667eea;
+            width: 20px;
+            height: 20px;
         }
 
-        .subcat-id {
-            background: #e8e8e8;
-            color: #333;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.75em;
-            font-weight: 600;
-        }
-
-        .subcat-name {
-            font-weight: 600;
-            color: #333;
+        .subcategory-info {
             flex: 1;
+            min-width: 0;
+        }
+
+        .subcategory-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .subcategory-items {
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        .subcategory-notes {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
             word-break: break-word;
         }
 
-        .subcat-count {
-            font-size: 0.8em;
-            color: #666;
-            margin-bottom: 6px;
+        .grid-view .group-content.visible {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0;
+            padding: 0;
         }
 
-        .subcat-notes {
-            width: 100%;
-            padding: 6px 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 0.85em;
-            font-family: inherit;
-            resize: vertical;
-            min-height: 30px;
-            max-height: 60px;
+        .grid-view .category {
+            border: 1px solid #e0e0e0;
+            margin: 0;
+            padding: 15px;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: default;
         }
 
-        .subcat-notes::placeholder {
-            color: #ccc;
-        }
-
-        .subcat-notes:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 3px rgba(102, 126, 234, 0.3);
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        .modal-content {
+        .grid-view .category:hover {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .modal h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .form-group input {
+        .grid-view .category-actions {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1em;
-            font-family: inherit;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 3px rgba(102, 126, 234, 0.3);
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .modal-buttons button {
-            flex: 1;
+            opacity: 1;
+            margin-top: 10px;
+            justify-content: flex-start;
         }
 
         .footer {
-            padding: 20px;
-            background: #f5f5f5;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #28a745;
-            color: white;
-            padding: 15px 25px;
+        .save-indicator {
+            padding: 8px 16px;
             border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 2000;
-            animation: slideIn 0.3s ease;
+            font-size: 0.9em;
+            font-weight: 600;
         }
 
-        .toast.error {
-            background: #dc3545;
+        .save-indicator.unsaved {
+            background: #fff3cd;
+            color: #856404;
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(-300px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        .save-indicator.saved {
+            background: #d4edda;
+            color: #155724;
         }
 
         @media (max-width: 768px) {
-            .subcategories {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-height: 300px;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .stats {
+                margin-right: 0;
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .grid-view .group-content.visible {
                 grid-template-columns: 1fr;
             }
-            .header h1 {
-                font-size: 1.8em;
-            }
-            .buttons {
-                width: 100%;
-            }
-            button {
-                flex: 1;
-                min-width: 100px;
-            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .expand-all-btn, .collapse-all-btn {
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌳 עץ הקטגוריות של כלבו בר אילן</h1>
-            <p>Commax Catalog - עץ קטגוריות אינטראקטיבי עם יצירה וסנכרון</p>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number" id="categoryCount">0</div>
-                    <div class="stat-label">קטגוריות</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="subcategoryCount">0</div>
-                    <div class="stat-label">תת-קטגוריות</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number" id="productCount">0</div>
-                    <div class="stat-label">מוצרים</div>
-                </div>
-            </div>
+            <h1>🛒 קטלוג קומקס כלבו בר אילן</h1>
+            <p>מערכת ניהול קטגוריות ותת-קטגוריות</p>
         </div>
 
         <div class="controls">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 חיפוש בקטגוריות...">
+            <div class="stats" id="stats">
+                <div class="stat-item">
+                    <strong id="groupCount">8</strong>
+                    <span>קבוצות</span>
+                </div>
+                <div class="stat-item">
+                    <strong id="categoryCount">45</strong>
+                    <span>קטגוריות</span>
+                </div>
+                <div class="stat-item">
+                    <strong id="subcategoryCount">465</strong>
+                    <span>תת-קטגוריות</span>
+                </div>
+                <div class="stat-item">
+                    <strong id="itemCount">19K+</strong>
+                    <span>מוצרים</span>
+                </div>
             </div>
-            <div class="buttons">
-                <button onclick="expandAll()">📂 הרחב הכל</button>
-                <button onclick="collapseAll()" class="secondary">📁 סגור הכל</button>
-                <button onclick="openAddCategoryModal()" class="success">➕ קטגוריה חדשה</button>
-                <button onclick="exportData()" class="secondary">💾 שמור JSON</button>
-                <button onclick="exportCSV()" class="secondary">📊 שמור CSV</button>
+
+            <div class="control-group">
+                <label>📊 תצוגה:</label>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="tree">🌳 עץ</button>
+                    <button class="view-btn" data-view="grid">📋 גריד</button>
+                </div>
             </div>
+
+            <div class="control-group">
+                <label>🔍 חיפוש:</label>
+                <input type="text" id="searchInput" placeholder="הקלד לחיפוש...">
+            </div>
+
+            <div class="control-group">
+                <label>📁 קבוצה:</label>
+                <select id="groupFilter">
+                    <option value="">כל הקבוצות</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>📊 מיון:</label>
+                <select id="sortBy">
+                    <option value="name">לפי שם</option>
+                    <option value="items">לפי מוצרים (הרבה ביותר)</option>
+                    <option value="items-asc">לפי מוצרים (מעט ביותר)</option>
+                </select>
+            </div>
+
+            <button class="btn-primary btn-small" id="expandAllBtn">📂 פתח הכל</button>
+            <button class="btn-secondary btn-small" id="collapseAllBtn">📁 סגור הכל</button>
         </div>
 
-        <div class="content" id="treeContainer">
+        <div class="main-content">
+            <div class="sidebar" id="sidebar"></div>
+            <div class="tree-view" id="treeView"></div>
         </div>
 
         <div class="footer">
-            ✨ עץ קטגוריות אינטראקטיבי | Commax Catalog | עדכון: 2026-07-15 | 
-            <span id="syncStatus">💾 שמור בעדכון</span>
-        </div>
-    </div>
-
-    <!-- Add Category Modal -->
-    <div class="modal" id="addCategoryModal">
-        <div class="modal-content">
-            <h2>➕ הוסף קטגוריה חדשה</h2>
-            <form onsubmit="addCategory(event)">
-                <div class="form-group">
-                    <label>מספר מזהה (Commax ID)</label>
-                    <input type="text" id="newCategoryId" placeholder="למשל: 838" required>
-                </div>
-                <div class="form-group">
-                    <label>שם הקטגוריה</label>
-                    <input type="text" id="newCategoryName" placeholder="למשל: קטגוריה חדשה" required>
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="success">✅ הוסף</button>
-                    <button type="button" class="secondary" onclick="closeModal('addCategoryModal')">❌ בטל</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Add Subcategory Modal -->
-    <div class="modal" id="addSubcategoryModal">
-        <div class="modal-content">
-            <h2>➕ הוסף תת-קטגוריה חדשה</h2>
-            <form onsubmit="addSubcategory(event)">
-                <div class="form-group">
-                    <label>מספר מזהה (Commax ID)</label>
-                    <input type="text" id="newSubcategoryId" placeholder="למשל: 170" required>
-                </div>
-                <div class="form-group">
-                    <label>שם התת-קטגוריה</label>
-                    <input type="text" id="newSubcategoryName" placeholder="למשל: תת-קטגוריה חדשה" required>
-                </div>
-                <div class="form-group">
-                    <label>מספר מוצרים</label>
-                    <input type="number" id="newSubcategoryCount" value="0">
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="success">✅ הוסף</button>
-                    <button type="button" class="secondary" onclick="closeModal('addSubcategoryModal')">❌ בטל</button>
-                </div>
-            </form>
+            <span class="save-indicator unsaved" id="saveStatus">💾 שינויים לא שמורים</span>
+            <button class="btn-primary" id="saveBtn">💾 שמור לקובץ</button>
+            <button class="btn-secondary" id="downloadCsvBtn">📥 הורד CSV</button>
+            <button class="btn-secondary" id="resetBtn">⚠️ ביטול שינויים</button>
         </div>
     </div>
 
     <script>
-        let allData = [];
-        let draggedCategory = null;
-        let currentCategoryIndex = null;
+        // Load hierarchical data
+        let appData = null;
+        let currentView = 'tree';
+        let hasChanges = false;
 
-        // Load data
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                const savedData = localStorage.getItem('commax-tree-data');
-                allData = savedData ? JSON.parse(savedData) : (data.categories || []);
-                
-                console.log('📊 Loaded categories:', allData.length);
-                renderTree();
-                updateStats();
-            })
-            .catch(error => {
+        async function loadData() {
+            try {
+                const response = await fetch('./data.json');
+                const data = await response.json();
+                appData = data;
+                initializeApp();
+            } catch (error) {
                 console.error('Error loading data:', error);
-                showToast('שגיאה בטעינת הנתונים', 'error');
+                alert('שגיאה בטעינת הנתונים. בדוק את הקובץ data.json');
+            }
+        }
+
+        function initializeApp() {
+            populateGroupFilter();
+            renderTree();
+            setupEventListeners();
+            updateStats();
+            loadLocalStorage();
+        }
+
+        function populateGroupFilter() {
+            const select = document.getElementById('groupFilter');
+            appData.groups.forEach(group => {
+                const option = document.createElement('option');
+                option.value = group.id;
+                option.textContent = `${group.name} (${group.categoryCount})`;
+                select.appendChild(option);
             });
-
-        function updateStats() {
-            let categoryCount = allData.length;
-            let subcategoryCount = 0;
-            let productCount = 0;
-
-            allData.forEach(cat => {
-                const subcategories = cat.subcategories || [];
-                subcategoryCount += subcategories.length;
-                productCount += cat.itemCount || 0;
-            });
-
-            document.getElementById('categoryCount').textContent = categoryCount;
-            document.getElementById('subcategoryCount').textContent = subcategoryCount;
-            document.getElementById('productCount').textContent = productCount.toLocaleString('he-IL');
         }
 
         function renderTree() {
-            const container = document.getElementById('treeContainer');
-            container.innerHTML = '';
+            const treeView = document.getElementById('treeView');
+            treeView.innerHTML = '';
 
-            allData.forEach((category, index) => {
-                container.appendChild(createCategoryElement(category, index));
-            });
-        }
+            let filteredGroups = appData.groups;
+            const groupFilter = document.getElementById('groupFilter').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const sortBy = document.getElementById('sortBy').value;
 
-        function createCategoryElement(category, catIndex) {
-            const div = document.createElement('div');
-            div.className = 'category';
-            div.draggable = true;
-            div.dataset.catIndex = catIndex;
+            // Filter by group
+            if (groupFilter) {
+                filteredGroups = filteredGroups.filter(g => g.id === groupFilter);
+            }
 
-            div.addEventListener('dragstart', (e) => {
-                draggedCategory = catIndex;
-                div.classList.add('dragging');
-            });
-
-            div.addEventListener('dragend', () => {
-                div.classList.remove('dragging');
-            });
-
-            div.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                div.style.borderTop = '3px solid #667eea';
-            });
-
-            div.addEventListener('dragleave', () => {
-                div.style.borderTop = '';
-            });
-
-            div.addEventListener('drop', (e) => {
-                e.preventDefault();
-                div.style.borderTop = '';
-                if (draggedCategory !== null && draggedCategory !== catIndex) {
-                    const temp = allData[draggedCategory];
-                    allData[draggedCategory] = allData[catIndex];
-                    allData[catIndex] = temp;
-                    saveData();
-                    renderTree();
+            // Sort
+            filteredGroups.forEach(group => {
+                if (sortBy === 'items') {
+                    group.categories.sort((a, b) => b.itemCount - a.itemCount);
+                } else if (sortBy === 'items-asc') {
+                    group.categories.sort((a, b) => a.itemCount - b.itemCount);
+                } else {
+                    group.categories.sort((a, b) => a.name.localeCompare(b.name));
                 }
             });
 
-            const header = document.createElement('div');
-            header.className = 'category-header';
+            // Render groups
+            filteredGroups.forEach(group => {
+                const groupEl = document.createElement('div');
+                groupEl.className = 'group';
+                groupEl.dataset.groupId = group.id;
 
-            const toggle = document.createElement('button');
-            toggle.className = 'toggle-btn open';
-            toggle.innerHTML = '▶';
-            toggle.onclick = (e) => {
-                e.stopPropagation();
-                content.classList.toggle('visible');
-                toggle.classList.toggle('open');
-            };
+                const header = document.createElement('div');
+                header.className = 'group-header expanded';
+                header.innerHTML = `
+                    <span>${group.icon} ${group.name} <span class="group-stats">(${group.categoryCount} | ${group.subcategoryCount} | ${group.itemCount})</span></span>
+                `;
 
-            const catIdBadge = document.createElement('span');
-            catIdBadge.className = 'category-id';
-            catIdBadge.textContent = `#${category.commax_id || category.id}`;
+                const content = document.createElement('div');
+                content.className = 'group-content visible';
 
-            const title = document.createElement('span');
-            title.className = 'category-title';
-            title.textContent = category.name;
+                group.categories.forEach(cat => {
+                    const catEl = document.createElement('div');
+                    catEl.className = 'category';
+                    catEl.dataset.categoryId = cat.id;
 
-            const subcats = category.subcategories || [];
-            const totalItems = subcats.reduce((sum, s) => sum + (s.itemCount || 0), 0);
-            
-            const badge = document.createElement('span');
-            badge.className = 'category-count';
-            badge.textContent = `${subcats.length} | ${totalItems.toLocaleString('he-IL')}`;
+                    let matchesSearch = !searchTerm || 
+                        cat.name.toLowerCase().includes(searchTerm) ||
+                        cat.subcategories.some(s => s.name.toLowerCase().includes(searchTerm));
 
-            const actions = document.createElement('div');
-            actions.className = 'category-actions';
+                    if (!matchesSearch) {
+                        catEl.classList.add('hidden');
+                    }
 
-            const addSubBtn = document.createElement('button');
-            addSubBtn.textContent = '➕ תת-קטגוריה';
-            addSubBtn.onclick = (e) => {
-                e.stopPropagation();
-                currentCategoryIndex = catIndex;
-                document.getElementById('addSubcategoryModal').classList.add('show');
-            };
+                    catEl.innerHTML = `
+                        <div class="category-main">
+                            <div class="category-name">${cat.name}</div>
+                            <div class="category-details">
+                                ${cat.subcategoryCount} תת-קטגוריות • ${cat.itemCount} מוצרים
+                            </div>
+                        </div>
+                        <div class="category-actions">
+                            <button class="delete-btn" data-category-id="${cat.id}">🗑️ מחק</button>
+                        </div>
+                    `;
 
-            const deleteBtn = document.createElement('button');
-            deleteBtn.className = 'danger';
-            deleteBtn.textContent = '🗑️';
-            deleteBtn.onclick = (e) => {
-                e.stopPropagation();
-                if (confirm(`האם אתה בטוח שברצונך למחוק את "${category.name}"?`)) {
-                    allData.splice(catIndex, 1);
-                    saveData();
-                    renderTree();
-                    updateStats();
-                    showToast('קטגוריה נמחקה בהצלחה');
-                }
-            };
+                    // Toggle subcategories
+                    const categoryMain = catEl.querySelector('.category-main');
+                    categoryMain.style.cursor = 'pointer';
+                    categoryMain.addEventListener('click', () => toggleSubcategories(catEl));
 
-            actions.appendChild(addSubBtn);
-            actions.appendChild(deleteBtn);
+                    // Subcategories
+                    const subcatsEl = document.createElement('div');
+                    subcatsEl.className = 'subcategories visible';
 
-            header.appendChild(toggle);
-            header.appendChild(catIdBadge);
-            header.appendChild(title);
-            header.appendChild(badge);
-            header.appendChild(actions);
+                    cat.subcategories.forEach(subcat => {
+                        const subcatEl = document.createElement('div');
+                        subcatEl.className = 'subcategory';
 
-            const content = document.createElement('div');
-            content.className = 'category-content visible';
-
-            const subcatsDiv = document.createElement('div');
-            subcatsDiv.className = 'subcategories';
-
-            if (subcats.length > 0) {
-                subcats.forEach((subcat, idx) => {
-                    const subcatDiv = document.createElement('div');
-                    subcatDiv.className = 'subcategory' + (subcat.checked ? ' checked' : '');
-                    
-                    const deleteSubBtn = document.createElement('button');
-                    deleteSubBtn.className = 'subcat-delete';
-                    deleteSubBtn.textContent = '×';
-                    deleteSubBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        if (confirm(`האם אתה בטוח שברצונך למחוק את "${subcat.name}"?`)) {
-                            category.subcategories.splice(idx, 1);
-                            saveData();
-                            renderTree();
-                            updateStats();
-                            showToast('תת-קטגוריה נמחקה בהצלחה');
+                        let matchesSub = !searchTerm || subcat.name.toLowerCase().includes(searchTerm);
+                        if (!matchesSub) {
+                            subcatEl.classList.add('hidden');
                         }
-                    };
 
-                    const headerRow = document.createElement('div');
-                    headerRow.className = 'subcat-header';
+                        subcatEl.innerHTML = `
+                            <input type="checkbox" ${subcat.checked ? 'checked' : ''} data-subcat-id="${subcat.id}">
+                            <div class="subcategory-info">
+                                <div class="subcategory-name">#${subcat.commax_id} ${subcat.name}</div>
+                                <div class="subcategory-items">${subcat.itemCount} מוצרים</div>
+                                ${subcat.notes ? `<div class="subcategory-notes">הערה: ${subcat.notes}</div>` : ''}
+                            </div>
+                        `;
 
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.className = 'subcat-checkbox';
-                    checkbox.checked = subcat.checked || false;
-                    checkbox.onchange = (e) => {
-                        subcat.checked = e.target.checked;
-                        subcatDiv.classList.toggle('checked', e.target.checked);
-                        saveData();
-                    };
+                        const checkbox = subcatEl.querySelector('input[type="checkbox"]');
+                        checkbox.addEventListener('change', (e) => {
+                            subcat.checked = e.target.checked;
+                            markAsUnsaved();
+                        });
 
-                    const subcatId = document.createElement('span');
-                    subcatId.className = 'subcat-id';
-                    subcatId.textContent = `#${subcat.commax_id || subcat.id}`;
+                        subcatsEl.appendChild(subcatEl);
+                    });
 
-                    const subcatName = document.createElement('span');
-                    subcatName.className = 'subcat-name';
-                    subcatName.textContent = subcat.name;
-
-                    headerRow.appendChild(checkbox);
-                    headerRow.appendChild(subcatId);
-                    headerRow.appendChild(subcatName);
-
-                    const countDiv = document.createElement('div');
-                    countDiv.className = 'subcat-count';
-                    countDiv.textContent = `${(subcat.itemCount || 0).toLocaleString('he-IL')} מוצרים`;
-
-                    const notes = document.createElement('textarea');
-                    notes.className = 'subcat-notes';
-                    notes.placeholder = '📝 הערות...';
-                    notes.value = subcat.notes || '';
-                    notes.onchange = () => {
-                        subcat.notes = notes.value;
-                        saveData();
-                    };
-
-                    subcatDiv.appendChild(deleteSubBtn);
-                    subcatDiv.appendChild(headerRow);
-                    subcatDiv.appendChild(countDiv);
-                    subcatDiv.appendChild(notes);
-                    subcatsDiv.appendChild(subcatDiv);
+                    catEl.appendChild(subcatsEl);
+                    content.appendChild(catEl);
                 });
-            } else {
-                subcatsDiv.innerHTML = '<div style="padding: 10px; color: #999;">אין תת-קטגוריות</div>';
-            }
 
-            content.appendChild(subcatsDiv);
-            div.appendChild(header);
-            div.appendChild(content);
-
-            return div;
+                header.addEventListener('click', () => toggleGroup(groupEl, header));
+                groupEl.appendChild(header);
+                groupEl.appendChild(content);
+                treeView.appendChild(groupEl);
+            });
         }
 
-        function expandAll() {
-            document.querySelectorAll('.category-content').forEach(el => el.classList.add('visible'));
-            document.querySelectorAll('.toggle-btn').forEach(el => el.classList.add('open'));
+        function toggleGroup(groupEl, header) {
+            const content = groupEl.querySelector('.group-content');
+            header.classList.toggle('expanded');
+            header.classList.toggle('collapsed');
+            content.classList.toggle('visible');
         }
 
-        function collapseAll() {
-            document.querySelectorAll('.category-content').forEach(el => el.classList.remove('visible'));
-            document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('open'));
+        function toggleSubcategories(catEl) {
+            const subcats = catEl.querySelector('.subcategories');
+            subcats.classList.toggle('visible');
         }
 
-        function saveData() {
-            localStorage.setItem('commax-tree-data', JSON.stringify(allData));
-            updateStats();
-        }
-
-        function openAddCategoryModal() {
-            document.getElementById('addCategoryModal').classList.add('show');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('show');
-        }
-
-        function addCategory(event) {
-            event.preventDefault();
-            const id = document.getElementById('newCategoryId').value;
-            const name = document.getElementById('newCategoryName').value;
-
-            allData.push({
-                id: id,
-                name: name,
-                commax_id: id,
-                itemCount: 0,
-                subcategories: []
+        function setupEventListeners() {
+            document.getElementById('expandAllBtn').addEventListener('click', () => {
+                document.querySelectorAll('.group-header').forEach(h => {
+                    h.classList.add('expanded');
+                    h.classList.remove('collapsed');
+                    h.parentElement.querySelector('.group-content').classList.add('visible');
+                });
             });
 
-            saveData();
-            renderTree();
-            closeModal('addCategoryModal');
-            document.getElementById('newCategoryId').value = '';
-            document.getElementById('newCategoryName').value = '';
-            showToast('קטגוריה חדשה נוצרה בהצלחה ✅');
-        }
-
-        function addSubcategory(event) {
-            event.preventDefault();
-            if (currentCategoryIndex === null) {
-                showToast('יש לבחור קטגוריה', 'error');
-                return;
-            }
-
-            const id = document.getElementById('newSubcategoryId').value;
-            const name = document.getElementById('newSubcategoryName').value;
-            const count = parseInt(document.getElementById('newSubcategoryCount').value) || 0;
-
-            allData[currentCategoryIndex].subcategories.push({
-                id: id,
-                name: name,
-                commax_id: id,
-                itemCount: count,
-                checked: false,
-                notes: ''
+            document.getElementById('collapseAllBtn').addEventListener('click', () => {
+                document.querySelectorAll('.group-header').forEach(h => {
+                    h.classList.remove('expanded');
+                    h.classList.add('collapsed');
+                    h.parentElement.querySelector('.group-content').classList.remove('visible');
+                });
             });
 
-            saveData();
-            renderTree();
-            closeModal('addSubcategoryModal');
-            document.getElementById('newSubcategoryId').value = '';
-            document.getElementById('newSubcategoryName').value = '';
-            document.getElementById('newSubcategoryCount').value = '0';
-            currentCategoryIndex = null;
-            showToast('תת-קטגוריה חדשה נוצרה בהצלחה ✅');
+            document.getElementById('searchInput').addEventListener('input', renderTree);
+            document.getElementById('groupFilter').addEventListener('change', renderTree);
+            document.getElementById('sortBy').addEventListener('change', renderTree);
+
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentView = e.target.dataset.view;
+                    document.body.classList.toggle('grid-view', currentView === 'grid');
+                });
+            });
+
+            document.getElementById('saveBtn').addEventListener('click', saveToFile);
+            document.getElementById('downloadCsvBtn').addEventListener('click', downloadCSV);
+            document.getElementById('resetBtn').addEventListener('click', resetChanges);
         }
 
-        function exportData() {
-            const dataStr = JSON.stringify(allData, null, 2);
+        function markAsUnsaved() {
+            hasChanges = true;
+            document.getElementById('saveStatus').textContent = '💾 שינויים לא שמורים';
+            document.getElementById('saveStatus').className = 'save-indicator unsaved';
+        }
+
+        function saveLocalStorage() {
+            localStorage.setItem('kolbo-tree-data', JSON.stringify(appData));
+            localStorage.setItem('kolbo-tree-lastSave', new Date().toISOString());
+        }
+
+        function loadLocalStorage() {
+            const saved = localStorage.getItem('kolbo-tree-data');
+            if (saved) {
+                appData = JSON.parse(saved);
+                renderTree();
+            }
+        }
+
+        function saveToFile() {
+            saveLocalStorage();
+            const dataStr = JSON.stringify(appData, null, 2);
             const dataBlob = new Blob([dataStr], { type: 'application/json;charset=utf-8' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(dataBlob);
-            link.download = `commax-categories-${new Date().toISOString().split('T')[0]}.json`;
+            link.download = `kolbo-tree-${new Date().toISOString().split('T')[0]}.json`;
             link.click();
-            showToast('JSON שמור בהצלחה 💾');
-        }
 
-        function exportCSV() {
-            let csv = 'מחלקה,שם מחלקה,ק.משנה,שם ק.משנה,פריטים\n';
-            
-            allData.forEach(cat => {
-                const subcats = cat.subcategories || [];
-                if (subcats.length === 0) {
-                    csv += `${cat.commax_id},${cat.name},,${cat.itemCount}\n`;
-                } else {
-                    subcats.forEach((subcat, idx) => {
-                        if (idx === 0) {
-                            csv += `${cat.commax_id},${cat.name},${subcat.commax_id},"${subcat.name}",${subcat.itemCount}\n`;
-                        } else {
-                            csv += `,,${subcat.commax_id},"${subcat.name}",${subcat.itemCount}\n`;
-                        }
-                    });
-                }
-            });
-
-            const csvBlob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(csvBlob);
-            link.download = `commax-categories-${new Date().toISOString().split('T')[0]}.csv`;
-            link.click();
-            showToast('CSV שמור בהצלחה 📊');
-        }
-
-        function showToast(message, type = 'success') {
-            const toast = document.createElement('div');
-            toast.className = `toast ${type === 'error' ? 'error' : ''}`;
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            
+            hasChanges = false;
+            document.getElementById('saveStatus').textContent = '✅ שמור בהצלחה!';
+            document.getElementById('saveStatus').className = 'save-indicator saved';
             setTimeout(() => {
-                toast.remove();
+                document.getElementById('saveStatus').textContent = '💾 שינויים לא שמורים';
+                document.getElementById('saveStatus').className = 'save-indicator unsaved';
             }, 3000);
         }
 
-        // Search functionality
-        document.getElementById('searchInput')?.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            document.querySelectorAll('.category').forEach(cat => {
-                const text = cat.textContent.toLowerCase();
-                cat.style.display = text.includes(query) ? '' : 'none';
+        function downloadCSV() {
+            let csv = 'קבוצה,קטגוריה,תת-קטגוריה,ID,מוצרים,סמוני\n';
+            appData.groups.forEach(group => {
+                group.categories.forEach(cat => {
+                    cat.subcategories.forEach(subcat => {
+                        csv += `"${group.name}","${cat.name}","${subcat.name}","${subcat.commax_id}","${subcat.itemCount}","${subcat.checked ? 'כן' : 'לא'}"\n`;
+                    });
+                });
             });
-        });
 
-        // Close modals when clicking outside
-        document.getElementById('addCategoryModal').addEventListener('click', (e) => {
-            if (e.target.id === 'addCategoryModal') {
-                closeModal('addCategoryModal');
-            }
-        });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `kolbo-tree-${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        }
 
-        document.getElementById('addSubcategoryModal').addEventListener('click', (e) => {
-            if (e.target.id === 'addSubcategoryModal') {
-                closeModal('addSubcategoryModal');
+        function resetChanges() {
+            if (confirm('האם אתה בטוח שברצונך לביטול כל השינויים?')) {
+                localStorage.removeItem('kolbo-tree-data');
+                loadData();
+                hasChanges = false;
             }
-        });
+        }
+
+        function updateStats() {
+            if (!appData) return;
+            document.getElementById('groupCount').textContent = appData.groups.length;
+            document.getElementById('categoryCount').textContent = appData.metadata.total_categories;
+            document.getElementById('subcategoryCount').textContent = appData.metadata.total_subcategories;
+            document.getElementById('itemCount').textContent = (appData.metadata.total_items / 1000).toFixed(0) + 'K';
+        }
+
+        // Initialize on page load
+        loadData();
     </script>
 </body>
 </html>
