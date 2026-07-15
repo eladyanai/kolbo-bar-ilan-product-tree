@@ -510,7 +510,7 @@
             header.appendChild(dragHandle);
 
             const toggleBtn = document.createElement('button');
-            toggleBtn.className = 'toggle-btn';
+            toggleBtn.className = 'toggle-btn collapsed';  // Start collapsed (pointing down)
             toggleBtn.innerHTML = '▼';
             toggleBtn.onclick = (e) => {
                 e.preventDefault();
@@ -548,7 +548,7 @@
             div.appendChild(header);
 
             const content = document.createElement('div');
-            content.className = 'category-content';
+            content.className = 'category-content visible';  // Show by default
 
             // Add note section
             const noteSection = document.createElement('div');
