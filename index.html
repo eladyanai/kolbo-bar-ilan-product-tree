@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Product Tree Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            justify-content: flex-start;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: #667eea;
+            color: white;
+        }
+
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        button.secondary {
+            background: #6c757d;
+        }
+
+        button.secondary:hover {
+            background: #5a6268;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid #667eea;
+            text-align: right;
+        }
+
+        .stat-card .label {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .tree-container {
+            padding: 20px;
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .tree-item {
+            margin: 5px 0;
+        }
+
+        .tree-toggle {
+            background: none;
+            border: none;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 1em;
+            padding: 0 10px 0 0;
+            margin-left: -30px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .tree-toggle.collapsed::before {
+            content: "▶";
+        }
+
+        .tree-toggle.expanded::before {
+            content: "▼";
+        }
+
+        .tree-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            direction: rtl;
+        }
+
+        .tree-label:hover {
+            background: #f0f0f0;
+        }
+
+        .tree-label.main-cat {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: #667eea;
+            padding-right: 30px;
+        }
+
+        .tree-label.sub-cat {
+            color: #495057;
+            padding-right: 50px;
+        }
+
+        .tree-label.item {
+            color: #6c757d;
+            padding-right: 70px;
+            font-size: 0.95em;
+        }
+
+        .item-badge {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .source-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 8px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            font-weight: 600;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        .tree-children {
+            margin-right: 20px;
+        }
+
+        .tree-children.hidden {
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌳 Divine Product Tree</h1>
+            <p>ניווט אינטראקטיבי בעץ המוצרים המלא</p>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="חפש קטגוריה, תת-קטגוריה או מוצר...">
+            </div>
+            <div class="button-group">
+                <button id="expandAllBtn">הרחב הכל</button>
+                <button id="collapseAllBtn">צמצם הכל</button>
+                <button id="resetBtn" class="secondary">איפוס</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="label">קטגוריות ראשיות</div>
+                <div class="value" id="catCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">תת-קטגוריות</div>
+                <div class="value" id="subCatCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">סה"כ פריטים</div>
+                <div class="value" id="itemCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">תוצאות חיפוש</div>
+                <div class="value" id="searchCount">0</div>
+            </div>
+        </div>
+
+        <div class="tree-container" id="treeContainer">
+            <div class="loading">⏳ טוען מידע...</div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let allData = {};
+        let expandedItems = new Set();
+        let searchTerm = '';
+
+        // Load data
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                allData = await response.json();
+                renderTree();
+                updateStats();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('treeContainer').innerHTML = '<div class="no-results">❌ שגיאה בטעינת הנתונים</div>';
+            }
+        }
+
+        function updateStats() {
+            const categories = allData.categories || [];
+            let subCatCount = 0;
+            let itemCount = 0;
+
+            categories.forEach(cat => {
+                const subcats = cat.subcategories || [];
+                subCatCount += subcats.length;
+                subcats.forEach(sub => {
+                    itemCount += (sub.items || []).length;
+                });
+            });
+
+            document.getElementById('catCount').textContent = categories.length;
+            document.getElementById('subCatCount').textContent = subCatCount;
+            document.getElementById('itemCount').textContent = itemCount;
+        }
+
+        function renderTree() {
+            const container = document.getElementById('treeContainer');
+            const categories = allData.categories || [];
+
+            if (categories.length === 0) {
+                container.innerHTML = '<div class="no-results">אין נתונים זמינים</div>';
+                return;
+            }
+
+            let html = '<div class="tree-item">';
+            
+            categories.forEach((cat, catIdx) => {
+                const catId = `cat-${catIdx}`;
+                const isExpanded = expandedItems.has(catId);
+                
+                html += `
+                    <div class="tree-item">
+                        <div>
+                            <button class="tree-toggle ${isExpanded ? 'expanded' : 'collapsed'}" 
+                                    onclick="toggleCategory('${catId}')"></button>
+                            <span class="tree-label main-cat" onclick="toggleCategory('${catId}')">
+                                ${cat.name}
+                                <span class="item-badge">${countSubItems(cat)}</span>
+                            </span>
+                        </div>
+                        <div class="tree-children ${isExpanded ? '' : 'hidden'}" id="${catId}">
+                `;
+
+                const subcats = cat.subcategories || [];
+                subcats.forEach((subcat, subcatIdx) => {
+                    const subcatId = `${catId}-sub-${subcatIdx}`;
+                    const subIsExpanded = expandedItems.has(subcatId);
+                    
+                    html += `
+                        <div class="tree-item">
+                            <div>
+                                <button class="tree-toggle ${subIsExpanded ? 'expanded' : 'collapsed'}" 
+                                        onclick="toggleCategory('${subcatId}')"></button>
+                                <span class="tree-label sub-cat" onclick="toggleCategory('${subcatId}')">
+                                    ${subcat.name}
+                                    <span class="item-badge">${(subcat.items || []).length}</span>
+                                </span>
+                            </div>
+                            <div class="tree-children ${subIsExpanded ? '' : 'hidden'}" id="${subcatId}">
+                    `;
+
+                    const items = subcat.items || [];
+                    items.forEach(item => {
+                        const matches = !searchTerm || 
+                                      item.name.includes(searchTerm) ||
+                                      cat.name.includes(searchTerm) ||
+                                      subcat.name.includes(searchTerm);
+                        
+                        if (!matches && searchTerm) {
+                            return;
+                        }
+
+                        html += `
+                            <div class="tree-item">
+                                <span class="tree-label item">
+                                    ${item.name}
+                                    ${item.source ? `<span class="source-tag">${item.source}</span>` : ''}
+                                </span>
+                            </div>
+                        `;
+                    });
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        function countSubItems(category) {
+            let count = 0;
+            (category.subcategories || []).forEach(sub => {
+                count += (sub.items || []).length;
+            });
+            return count;
+        }
+
+        function toggleCategory(id) {
+            if (expandedItems.has(id)) {
+                expandedItems.delete(id);
+            } else {
+                expandedItems.add(id);
+            }
+            renderTree();
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            expandedItems.clear();
+            if (searchTerm) {
+                // Expand all to show search results
+                const categories = allData.categories || [];
+                let idx = 0;
+                categories.forEach((cat, catIdx) => {
+                    expandedItems.add(`cat-${catIdx}`);
+                    (cat.subcategories || []).forEach((sub, subcatIdx) => {
+                        expandedItems.add(`cat-${catIdx}-sub-${subcatIdx}`);
+                    });
+                });
+            }
+            renderTree();
+            updateSearchCount();
+        });
+
+        document.getElementById('expandAllBtn').addEventListener('click', () => {
+            const categories = allData.categories || [];
+            categories.forEach((cat, catIdx) => {
+                expandedItems.add(`cat-${catIdx}`);
+                (cat.subcategories || []).forEach((sub, subcatIdx) => {
+                    expandedItems.add(`cat-${catIdx}-sub-${subcatIdx}`);
+                });
+            });
+            renderTree();
+        });
+
+        document.getElementById('collapseAllBtn').addEventListener('click', () => {
+            expandedItems.clear();
+            renderTree();
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            document.getElementById('searchInput').value = '';
+            searchTerm = '';
+            expandedItems.clear();
+            renderTree();
+        });
+
+        function updateSearchCount() {
+            if (!searchTerm) {
+                document.getElementById('searchCount').textContent = '0';
+                return;
+            }
+
+            let count = 0;
+            const categories = allData.categories || [];
+            categories.forEach(cat => {
+                (cat.subcategories || []).forEach(sub => {
+                    (sub.items || []).forEach(item => {
+                        if (item.name.includes(searchTerm) || 
+                            cat.name.includes(searchTerm) ||
+                            sub.name.includes(searchTerm)) {
+                            count++;
+                        }
+                    });
+                });
+            });
+            document.getElementById('searchCount').textContent = count;
+        }
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
