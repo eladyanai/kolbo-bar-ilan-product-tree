@@ -1,6 +1,7 @@
 {
   "buildCommand": "",
   "outputDirectory": ".",
-  "framework": "html",
-  "env": []
+  "installCommand": "",
+  "framework": null,
+  "env": {}
 }
