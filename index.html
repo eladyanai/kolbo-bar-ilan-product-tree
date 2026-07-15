@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>קטלוג קומקס כלבו בר אילן - מוקד הזמנות</title>
+    <title>Kolbo Bar Ilan - Product Tree</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
             min-height: 100vh;
             padding: 20px;
+            color: #333;
         }
-
+        
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -27,747 +27,936 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
         }
-
+        
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 30px;
             text-align: center;
         }
-
+        
         .header h1 {
             font-size: 2.5em;
-            margin-bottom: 5px;
-            font-weight: 700;
+            margin-bottom: 10px;
         }
-
+        
         .header p {
             font-size: 1.1em;
-            opacity: 0.9;
+            opacity: 0.95;
         }
-
+        
         .controls {
             display: flex;
-            flex-wrap: wrap;
             gap: 15px;
-            padding: 20px 30px;
+            flex-wrap: wrap;
+            padding: 20px;
             background: #f8f9fa;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e9ecef;
             align-items: center;
         }
-
+        
         .control-group {
             display: flex;
             gap: 10px;
             align-items: center;
         }
-
-        .control-group label {
-            font-weight: 600;
-            color: #555;
-            font-size: 0.95em;
-        }
-
-        input[type="text"], select {
+        
+        button, select, input {
             padding: 10px 15px;
-            border: 2px solid #ddd;
+            border: 1px solid #ddd;
             border-radius: 6px;
             font-size: 0.95em;
-            font-family: inherit;
-            transition: border-color 0.3s;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            color: #333;
         }
-
-        input[type="text"]:focus, select:focus {
+        
+        button:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        button.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        select:focus, input:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.95em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #5a6268;
-        }
-
-        .btn-small {
-            padding: 6px 12px;
-            font-size: 0.85em;
-        }
-
-        .view-toggle {
-            display: flex;
-            gap: 5px;
-            background: #e0e0e0;
-            padding: 2px;
-            border-radius: 6px;
-        }
-
-        .view-toggle button {
-            padding: 8px 16px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s;
-        }
-
-        .view-toggle button.active {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .stats {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-right: auto;
-        }
-
-        .stat-item {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            color: #555;
-            font-size: 0.95em;
-        }
-
-        .stat-item strong {
-            color: #667eea;
-            font-size: 1.2em;
-        }
-
-        .main-content {
-            display: flex;
-            min-height: calc(100vh - 300px);
-        }
-
-        .sidebar {
-            width: 250px;
-            background: #f8f9fa;
-            border-left: 1px solid #e0e0e0;
-            overflow-y: auto;
-            padding: 0;
-        }
-
-        .tree-view {
+        
+        input[type="text"] {
             flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+        }
+        
+        .content {
+            padding: 20px;
+            max-height: calc(100vh - 400px);
             overflow-y: auto;
-            padding: 0;
         }
-
+        
+        .tree-container {
+            font-size: 0.95em;
+        }
+        
         .group {
-            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 30px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f9fa;
         }
-
+        
         .group-header {
-            padding: 15px 20px;
-            background: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
             cursor: pointer;
-            user-select: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            color: #333;
-            transition: background 0.3s;
-            border-left: 4px solid #667eea;
+            user-select: none;
         }
-
+        
         .group-header:hover {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #5568d3 0%, #6a3d8f 100%);
         }
-
-        .group-header.collapsed::before {
-            content: '▶';
-            font-size: 0.8em;
-            margin-right: 10px;
+        
+        .group-header .toggle {
+            margin-left: 10px;
         }
-
-        .group-header.expanded::before {
-            content: '▼';
-            font-size: 0.8em;
-            margin-right: 10px;
-        }
-
+        
         .group-content {
+            padding: 15px;
             display: none;
         }
-
-        .group-content.visible {
+        
+        .group-content.expanded {
             display: block;
         }
-
-        .group-stats {
-            font-size: 0.8em;
-            color: #999;
-            font-weight: normal;
+        
+        .department {
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
         }
-
-        .category {
-            padding: 12px 20px;
-            border-bottom: 1px solid #f0f0f0;
+        
+        .dept-header {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
             cursor: pointer;
-            user-select: none;
             display: flex;
-            justify-content: space-between;
+            gap: 10px;
             align-items: center;
-            transition: background 0.2s;
-            margin-right: 20px;
         }
-
-        .category:hover {
-            background: #f0f5ff;
+        
+        .dept-header:hover {
+            color: #5568d3;
         }
-
-        .category-main {
-            flex: 1;
-        }
-
-        .category-name {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .category-details {
-            font-size: 0.85em;
-            color: #999;
-            margin-top: 2px;
-        }
-
-        .category-actions {
-            display: flex;
-            gap: 8px;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .category:hover .category-actions {
-            opacity: 1;
-        }
-
-        .delete-btn {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 4px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8em;
-            transition: background 0.2s;
-        }
-
-        .delete-btn:hover {
-            background: #c82333;
-        }
-
+        
         .subcategories {
             display: none;
-            background: #f8f9fa;
-            padding: 10px 0;
+            margin-top: 10px;
         }
-
-        .subcategories.visible {
+        
+        .subcategories.expanded {
             display: block;
         }
-
+        
         .subcategory {
-            padding: 10px 40px;
             display: flex;
-            gap: 12px;
-            align-items: center;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.95em;
-            transition: background 0.2s;
+            gap: 10px;
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 6px;
+            align-items: flex-start;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s;
         }
-
+        
         .subcategory:hover {
-            background: #fff3cd;
+            background: #f8f9fa;
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
         }
-
+        
         .subcategory input[type="checkbox"] {
+            margin-top: 4px;
             cursor: pointer;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
         }
-
-        .subcategory-info {
+        
+        .subcategory.checked {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+        
+        .subcat-delete {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            min-width: 50px;
+        }
+        
+        .subcat-delete:hover {
+            background: #cc0000;
+        }
+        
+        .subcat-info {
             flex: 1;
             min-width: 0;
         }
-
-        .subcategory-name {
+        
+        .subcat-name {
             font-weight: 500;
             color: #333;
-        }
-
-        .subcategory-items {
-            font-size: 0.85em;
-            color: #999;
-        }
-
-        .subcategory-notes {
-            font-size: 0.85em;
-            color: #666;
-            font-style: italic;
             word-break: break-word;
         }
-
-        .grid-view .group-content.visible {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 0;
-            padding: 0;
+        
+        .subcat-meta {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 2px;
         }
-
-        .grid-view .category {
-            border: 1px solid #e0e0e0;
-            margin: 0;
-            padding: 15px;
-            flex-direction: column;
-            align-items: flex-start;
-            cursor: default;
-        }
-
-        .grid-view .category:hover {
-            background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .grid-view .category-actions {
-            width: 100%;
-            opacity: 1;
-            margin-top: 10px;
-            justify-content: flex-start;
-        }
-
-        .footer {
-            background: #f8f9fa;
-            padding: 20px 30px;
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .save-indicator {
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.9em;
+        
+        .subcat-id {
+            color: #667eea;
             font-weight: 600;
         }
-
-        .save-indicator.unsaved {
-            background: #fff3cd;
-            color: #856404;
+        
+        .subcat-notes {
+            width: 100%;
+            padding: 6px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 40px;
         }
-
-        .save-indicator.saved {
-            background: #d4edda;
-            color: #155724;
+        
+        .subcat-notes:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-
+        
+        .grid-view {
+            display: none;
+        }
+        
+        .grid-view.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            border-color: #667eea;
+        }
+        
+        .card.checked {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+        
+        .card-meta {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .card-checkbox {
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .stats {
+            padding: 15px;
+            background: #e8f5e9;
+            border-top: 1px solid #c8e6c9;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #2e7d32;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+        
+        .modal-buttons button {
+            padding: 12px 24px;
+        }
+        
         @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                max-height: 300px;
-            }
-
             .controls {
                 flex-direction: column;
             }
-
-            .stats {
-                margin-right: 0;
+            
+            .control-group {
                 width: 100%;
-                justify-content: space-around;
+                flex-direction: column;
             }
-
-            .grid-view .group-content.visible {
+            
+            input[type="text"] {
+                max-width: 100%;
+            }
+            
+            .grid-view.active {
                 grid-template-columns: 1fr;
             }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
         }
-
-        .hidden {
-            display: none !important;
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease;
+            z-index: 2000;
         }
-
-        .expand-all-btn, .collapse-all-btn {
-            margin-right: 10px;
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .warning {
+            background: #ff9800 !important;
+        }
+        
+        .error {
+            background: #f44336 !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🛒 קטלוג קומקס כלבו בר אילן</h1>
-            <p>מערכת ניהול קטגוריות ותת-קטגוריות</p>
+            <h1>🏪 Kolbo Bar Ilan - Product Tree</h1>
+            <p>Category Hierarchy Management System</p>
         </div>
-
+        
         <div class="controls">
-            <div class="stats" id="stats">
-                <div class="stat-item">
-                    <strong id="groupCount">8</strong>
-                    <span>קבוצות</span>
-                </div>
-                <div class="stat-item">
-                    <strong id="categoryCount">45</strong>
-                    <span>קטגוריות</span>
-                </div>
-                <div class="stat-item">
-                    <strong id="subcategoryCount">465</strong>
-                    <span>תת-קטגוריות</span>
-                </div>
-                <div class="stat-item">
-                    <strong id="itemCount">19K+</strong>
-                    <span>מוצרים</span>
-                </div>
-            </div>
-
             <div class="control-group">
-                <label>📊 תצוגה:</label>
-                <div class="view-toggle">
-                    <button class="view-btn active" data-view="tree">🌳 עץ</button>
-                    <button class="view-btn" data-view="grid">📋 גריד</button>
-                </div>
+                <button id="viewToggle" class="active" title="Toggle between tree and grid view">
+                    📊 Tree View
+                </button>
             </div>
-
+            
             <div class="control-group">
-                <label>🔍 חיפוש:</label>
-                <input type="text" id="searchInput" placeholder="הקלד לחיפוש...">
+                <span style="color: #666;">🔍 Search:</span>
+                <input type="text" id="searchInput" placeholder="Search categories...">
             </div>
-
+            
             <div class="control-group">
-                <label>📁 קבוצה:</label>
+                <span style="color: #666;">📁 Group:</span>
                 <select id="groupFilter">
-                    <option value="">כל הקבוצות</option>
+                    <option value="">All Groups</option>
                 </select>
             </div>
-
+            
             <div class="control-group">
-                <label>📊 מיון:</label>
+                <span style="color: #666;">↕️ Sort:</span>
                 <select id="sortBy">
-                    <option value="name">לפי שם</option>
-                    <option value="items">לפי מוצרים (הרבה ביותר)</option>
-                    <option value="items-asc">לפי מוצרים (מעט ביותר)</option>
+                    <option value="name">By Name</option>
+                    <option value="count">By Item Count</option>
                 </select>
             </div>
-
-            <button class="btn-primary btn-small" id="expandAllBtn">📂 פתח הכל</button>
-            <button class="btn-secondary btn-small" id="collapseAllBtn">📁 סגור הכל</button>
+            
+            <button id="expandAllBtn" title="Expand all groups">▼ Expand All</button>
+            <button id="collapseAllBtn" title="Collapse all groups">▲ Collapse All</button>
+            
+            <button id="downloadBtn" style="background: #4caf50; color: white; border-color: #4caf50;" title="Download as JSON">⬇️ Download JSON</button>
+            <button id="exportCsvBtn" style="background: #2196F3; color: white; border-color: #2196F3;" title="Export as CSV">📊 Export CSV</button>
         </div>
-
-        <div class="main-content">
-            <div class="sidebar" id="sidebar"></div>
-            <div class="tree-view" id="treeView"></div>
+        
+        <div id="loadingIndicator" style="text-align: center; padding: 40px; color: #666;">
+            Loading data...
         </div>
-
-        <div class="footer">
-            <span class="save-indicator unsaved" id="saveStatus">💾 שינויים לא שמורים</span>
-            <button class="btn-primary" id="saveBtn">💾 שמור לקובץ</button>
-            <button class="btn-secondary" id="downloadCsvBtn">📥 הורד CSV</button>
-            <button class="btn-secondary" id="resetBtn">⚠️ ביטול שינויים</button>
+        
+        <div id="treeView" class="tree-container" style="display: none;"></div>
+        
+        <div id="gridView" class="grid-view"></div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">Total Groups</div>
+                <div class="stat-value" id="totalGroups">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Total Departments</div>
+                <div class="stat-value" id="totalDepts">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Total Subcategories</div>
+                <div class="stat-value" id="totalSubcats">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Marked Items</div>
+                <div class="stat-value" id="markedCount">0</div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Confirm Action</div>
+            <div id="confirmMessage"></div>
+            <div class="modal-buttons">
+                <button onclick="closeModal()" style="background: #999; color: white; border-color: #999;">Cancel</button>
+                <button id="confirmBtn" style="background: #f44336; color: white; border-color: #f44336;">Delete</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Load hierarchical data
-        let appData = null;
-        let currentView = 'tree';
-        let hasChanges = false;
-
+        let data = null;
+        let filteredData = null;
+        let isGridView = false;
+        let currentDeleteTarget = null;
+        
+        // Storage key for localStorage
+        const STORAGE_KEY = 'kolbo-bar-ilan-product-tree';
+        
+        // Load data
         async function loadData() {
             try {
-                const response = await fetch('./data.json');
-                const data = await response.json();
-                appData = data;
-                initializeApp();
+                const response = await fetch('data.json');
+                if (!response.ok) throw new Error('Failed to load data.json');
+                data = await response.json();
+                
+                // Load saved state from localStorage
+                loadSavedState();
+                
+                // Initialize UI
+                initializeUI();
+                render();
+                
+                document.getElementById('loadingIndicator').style.display = 'none';
+                document.getElementById('treeView').style.display = 'block';
+                
+                showToast('Data loaded successfully!', 'success');
             } catch (error) {
                 console.error('Error loading data:', error);
-                alert('שגיאה בטעינת הנתונים. בדוק את הקובץ data.json');
+                document.getElementById('loadingIndicator').innerHTML = 
+                    `<div style="color: red;">Error loading data: ${error.message}</div>`;
             }
         }
-
-        function initializeApp() {
-            populateGroupFilter();
-            renderTree();
-            setupEventListeners();
-            updateStats();
-            loadLocalStorage();
-        }
-
-        function populateGroupFilter() {
-            const select = document.getElementById('groupFilter');
-            appData.groups.forEach(group => {
+        
+        function initializeUI() {
+            if (!data || !data.groups) return;
+            
+            // Populate group filter
+            const groupFilter = document.getElementById('groupFilter');
+            const groups = data.groups.sort((a, b) => a.name.localeCompare(b.name));
+            
+            groups.forEach(group => {
                 const option = document.createElement('option');
-                option.value = group.id;
-                option.textContent = `${group.name} (${group.categoryCount})`;
-                select.appendChild(option);
+                option.value = group.name;
+                option.textContent = group.name;
+                groupFilter.appendChild(option);
             });
+            
+            // Update stats
+            updateStats();
         }
-
-        function renderTree() {
-            const treeView = document.getElementById('treeView');
-            treeView.innerHTML = '';
-
-            let filteredGroups = appData.groups;
-            const groupFilter = document.getElementById('groupFilter').value;
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const sortBy = document.getElementById('sortBy').value;
-
-            // Filter by group
-            if (groupFilter) {
-                filteredGroups = filteredGroups.filter(g => g.id === groupFilter);
+        
+        function updateStats() {
+            if (!data) return;
+            
+            const totalGroups = data.groups.length;
+            const totalDepts = data.groups.reduce((sum, g) => sum + g.departments.length, 0);
+            const totalSubcats = data.groups.reduce((sum, g) => 
+                sum + g.departments.reduce((s, d) => s + d.subcategories.length, 0), 0);
+            const markedCount = data.groups.reduce((sum, g) => 
+                sum + g.departments.reduce((s, d) => 
+                    s + d.subcategories.filter(s => s.checked).length, 0), 0);
+            
+            document.getElementById('totalGroups').textContent = totalGroups;
+            document.getElementById('totalDepts').textContent = totalDepts;
+            document.getElementById('totalSubcats').textContent = totalSubcats;
+            document.getElementById('markedCount').textContent = markedCount;
+        }
+        
+        function render() {
+            if (isGridView) {
+                renderGridView();
+            } else {
+                renderTreeView();
             }
-
-            // Sort
-            filteredGroups.forEach(group => {
-                if (sortBy === 'items') {
-                    group.categories.sort((a, b) => b.itemCount - a.itemCount);
-                } else if (sortBy === 'items-asc') {
-                    group.categories.sort((a, b) => a.itemCount - b.itemCount);
-                } else {
-                    group.categories.sort((a, b) => a.name.localeCompare(b.name));
-                }
-            });
-
-            // Render groups
-            filteredGroups.forEach(group => {
+        }
+        
+        function renderTreeView() {
+            const container = document.getElementById('treeView');
+            container.innerHTML = '';
+            
+            const groups = applyFilters(data.groups);
+            
+            groups.forEach(group => {
                 const groupEl = document.createElement('div');
                 groupEl.className = 'group';
-                groupEl.dataset.groupId = group.id;
-
-                const header = document.createElement('div');
-                header.className = 'group-header expanded';
-                header.innerHTML = `
-                    <span>${group.icon} ${group.name} <span class="group-stats">(${group.categoryCount} | ${group.subcategoryCount} | ${group.itemCount})</span></span>
+                
+                const headerEl = document.createElement('div');
+                headerEl.className = 'group-header';
+                headerEl.innerHTML = `
+                    <span>${group.name} (${group.itemCount} items)</span>
+                    <span class="toggle">▶️</span>
                 `;
-
-                const content = document.createElement('div');
-                content.className = 'group-content visible';
-
-                group.categories.forEach(cat => {
-                    const catEl = document.createElement('div');
-                    catEl.className = 'category';
-                    catEl.dataset.categoryId = cat.id;
-
-                    let matchesSearch = !searchTerm || 
-                        cat.name.toLowerCase().includes(searchTerm) ||
-                        cat.subcategories.some(s => s.name.toLowerCase().includes(searchTerm));
-
-                    if (!matchesSearch) {
-                        catEl.classList.add('hidden');
-                    }
-
-                    catEl.innerHTML = `
-                        <div class="category-main">
-                            <div class="category-name">${cat.name}</div>
-                            <div class="category-details">
-                                ${cat.subcategoryCount} תת-קטגוריות • ${cat.itemCount} מוצרים
-                            </div>
-                        </div>
-                        <div class="category-actions">
-                            <button class="delete-btn" data-category-id="${cat.id}">🗑️ מחק</button>
-                        </div>
+                headerEl.onclick = (e) => {
+                    e.stopPropagation();
+                    groupEl.classList.toggle('expanded');
+                    headerEl.querySelector('.toggle').textContent = groupEl.classList.contains('expanded') ? '▼' : '▶️';
+                    contentEl.classList.toggle('expanded');
+                };
+                
+                const contentEl = document.createElement('div');
+                contentEl.className = 'group-content';
+                
+                // Render departments
+                group.departments.forEach(dept => {
+                    const deptEl = document.createElement('div');
+                    deptEl.className = 'department';
+                    
+                    const deptHeaderEl = document.createElement('div');
+                    deptHeaderEl.className = 'dept-header';
+                    deptHeaderEl.innerHTML = `
+                        <span>📂 ${dept.name} (${dept.itemCount} items)</span>
                     `;
-
-                    // Toggle subcategories
-                    const categoryMain = catEl.querySelector('.category-main');
-                    categoryMain.style.cursor = 'pointer';
-                    categoryMain.addEventListener('click', () => toggleSubcategories(catEl));
-
-                    // Subcategories
+                    deptHeaderEl.style.cursor = 'pointer';
+                    
                     const subcatsEl = document.createElement('div');
-                    subcatsEl.className = 'subcategories visible';
-
-                    cat.subcategories.forEach(subcat => {
+                    subcatsEl.className = 'subcategories';
+                    
+                    deptHeaderEl.onclick = () => {
+                        subcatsEl.classList.toggle('expanded');
+                    };
+                    
+                    // Render subcategories
+                    dept.subcategories.forEach(subcat => {
                         const subcatEl = document.createElement('div');
-                        subcatEl.className = 'subcategory';
-
-                        let matchesSub = !searchTerm || subcat.name.toLowerCase().includes(searchTerm);
-                        if (!matchesSub) {
-                            subcatEl.classList.add('hidden');
-                        }
-
-                        subcatEl.innerHTML = `
-                            <input type="checkbox" ${subcat.checked ? 'checked' : ''} data-subcat-id="${subcat.id}">
-                            <div class="subcategory-info">
-                                <div class="subcategory-name">#${subcat.commax_id} ${subcat.name}</div>
-                                <div class="subcategory-items">${subcat.itemCount} מוצרים</div>
-                                ${subcat.notes ? `<div class="subcategory-notes">הערה: ${subcat.notes}</div>` : ''}
-                            </div>
-                        `;
-
-                        const checkbox = subcatEl.querySelector('input[type="checkbox"]');
-                        checkbox.addEventListener('change', (e) => {
-                            subcat.checked = e.target.checked;
-                            markAsUnsaved();
-                        });
-
+                        subcatEl.className = 'subcategory' + (subcat.checked ? ' checked' : '');
+                        
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.className = 'subcat-delete';
+                        deleteBtn.textContent = '🗑️ Delete';
+                        deleteBtn.onclick = (e) => {
+                            e.stopPropagation();
+                            confirmDelete(group, dept, subcat);
+                        };
+                        
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.checked = subcat.checked;
+                        checkbox.onchange = () => {
+                            subcat.checked = checkbox.checked;
+                            subcatEl.classList.toggle('checked');
+                            updateStats();
+                            saveState();
+                        };
+                        
+                        const infoEl = document.createElement('div');
+                        infoEl.className = 'subcat-info';
+                        
+                        const nameEl = document.createElement('div');
+                        nameEl.className = 'subcat-name';
+                        nameEl.textContent = subcat.name;
+                        
+                        const metaEl = document.createElement('div');
+                        metaEl.className = 'subcat-meta';
+                        metaEl.innerHTML = `${subcat.itemCount} items &nbsp;|&nbsp; <span class="subcat-id">#${subcat.commax_id}</span>`;
+                        
+                        const notesEl = document.createElement('textarea');
+                        notesEl.className = 'subcat-notes';
+                        notesEl.placeholder = 'Add notes...';
+                        notesEl.value = subcat.notes || '';
+                        notesEl.onchange = () => {
+                            subcat.notes = notesEl.value;
+                            saveState();
+                        };
+                        
+                        infoEl.appendChild(nameEl);
+                        infoEl.appendChild(metaEl);
+                        infoEl.appendChild(notesEl);
+                        
+                        subcatEl.appendChild(deleteBtn);
+                        subcatEl.appendChild(checkbox);
+                        subcatEl.appendChild(infoEl);
+                        
                         subcatsEl.appendChild(subcatEl);
                     });
-
-                    catEl.appendChild(subcatsEl);
-                    content.appendChild(catEl);
+                    
+                    deptEl.appendChild(deptHeaderEl);
+                    deptEl.appendChild(subcatsEl);
+                    contentEl.appendChild(deptEl);
                 });
-
-                header.addEventListener('click', () => toggleGroup(groupEl, header));
-                groupEl.appendChild(header);
-                groupEl.appendChild(content);
-                treeView.appendChild(groupEl);
+                
+                groupEl.appendChild(headerEl);
+                groupEl.appendChild(contentEl);
+                container.appendChild(groupEl);
             });
         }
-
-        function toggleGroup(groupEl, header) {
-            const content = groupEl.querySelector('.group-content');
-            header.classList.toggle('expanded');
-            header.classList.toggle('collapsed');
-            content.classList.toggle('visible');
-        }
-
-        function toggleSubcategories(catEl) {
-            const subcats = catEl.querySelector('.subcategories');
-            subcats.classList.toggle('visible');
-        }
-
-        function setupEventListeners() {
-            document.getElementById('expandAllBtn').addEventListener('click', () => {
-                document.querySelectorAll('.group-header').forEach(h => {
-                    h.classList.add('expanded');
-                    h.classList.remove('collapsed');
-                    h.parentElement.querySelector('.group-content').classList.add('visible');
-                });
-            });
-
-            document.getElementById('collapseAllBtn').addEventListener('click', () => {
-                document.querySelectorAll('.group-header').forEach(h => {
-                    h.classList.remove('expanded');
-                    h.classList.add('collapsed');
-                    h.parentElement.querySelector('.group-content').classList.remove('visible');
-                });
-            });
-
-            document.getElementById('searchInput').addEventListener('input', renderTree);
-            document.getElementById('groupFilter').addEventListener('change', renderTree);
-            document.getElementById('sortBy').addEventListener('change', renderTree);
-
-            document.querySelectorAll('.view-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    currentView = e.target.dataset.view;
-                    document.body.classList.toggle('grid-view', currentView === 'grid');
-                });
-            });
-
-            document.getElementById('saveBtn').addEventListener('click', saveToFile);
-            document.getElementById('downloadCsvBtn').addEventListener('click', downloadCSV);
-            document.getElementById('resetBtn').addEventListener('click', resetChanges);
-        }
-
-        function markAsUnsaved() {
-            hasChanges = true;
-            document.getElementById('saveStatus').textContent = '💾 שינויים לא שמורים';
-            document.getElementById('saveStatus').className = 'save-indicator unsaved';
-        }
-
-        function saveLocalStorage() {
-            localStorage.setItem('kolbo-tree-data', JSON.stringify(appData));
-            localStorage.setItem('kolbo-tree-lastSave', new Date().toISOString());
-        }
-
-        function loadLocalStorage() {
-            const saved = localStorage.getItem('kolbo-tree-data');
-            if (saved) {
-                appData = JSON.parse(saved);
-                renderTree();
-            }
-        }
-
-        function saveToFile() {
-            saveLocalStorage();
-            const dataStr = JSON.stringify(appData, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(dataBlob);
-            link.download = `kolbo-tree-${new Date().toISOString().split('T')[0]}.json`;
-            link.click();
-
-            hasChanges = false;
-            document.getElementById('saveStatus').textContent = '✅ שמור בהצלחה!';
-            document.getElementById('saveStatus').className = 'save-indicator saved';
-            setTimeout(() => {
-                document.getElementById('saveStatus').textContent = '💾 שינויים לא שמורים';
-                document.getElementById('saveStatus').className = 'save-indicator unsaved';
-            }, 3000);
-        }
-
-        function downloadCSV() {
-            let csv = 'קבוצה,קטגוריה,תת-קטגוריה,ID,מוצרים,סמוני\n';
-            appData.groups.forEach(group => {
-                group.categories.forEach(cat => {
-                    cat.subcategories.forEach(subcat => {
-                        csv += `"${group.name}","${cat.name}","${subcat.name}","${subcat.commax_id}","${subcat.itemCount}","${subcat.checked ? 'כן' : 'לא'}"\n`;
+        
+        function renderGridView() {
+            const container = document.getElementById('gridView');
+            container.innerHTML = '';
+            
+            const groups = applyFilters(data.groups);
+            
+            groups.forEach(group => {
+                group.departments.forEach(dept => {
+                    dept.subcategories.forEach(subcat => {
+                        const card = document.createElement('div');
+                        card.className = 'card' + (subcat.checked ? ' checked' : '');
+                        
+                        const titleEl = document.createElement('div');
+                        titleEl.className = 'card-title';
+                        titleEl.textContent = subcat.name;
+                        
+                        const metaEl = document.createElement('div');
+                        metaEl.className = 'card-meta';
+                        metaEl.innerHTML = `<strong>${group.name}</strong><br>${dept.name}<br>${subcat.itemCount} items | #${subcat.commax_id}`;
+                        
+                        const checkboxContainer = document.createElement('div');
+                        checkboxContainer.className = 'card-checkbox';
+                        
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.checked = subcat.checked;
+                        checkbox.style.width = '20px';
+                        checkbox.style.height = '20px';
+                        checkbox.onchange = () => {
+                            subcat.checked = checkbox.checked;
+                            card.classList.toggle('checked');
+                            updateStats();
+                            saveState();
+                        };
+                        
+                        checkboxContainer.appendChild(checkbox);
+                        
+                        card.appendChild(titleEl);
+                        card.appendChild(metaEl);
+                        card.appendChild(checkboxContainer);
+                        
+                        container.appendChild(card);
                     });
                 });
             });
-
-            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `kolbo-tree-${new Date().toISOString().split('T')[0]}.csv`;
-            link.click();
         }
-
-        function resetChanges() {
-            if (confirm('האם אתה בטוח שברצונך לביטול כל השינויים?')) {
-                localStorage.removeItem('kolbo-tree-data');
-                loadData();
-                hasChanges = false;
+        
+        function applyFilters(groups) {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const groupFilter = document.getElementById('groupFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+            
+            let filtered = groups.filter(group => {
+                if (groupFilter && group.name !== groupFilter) return false;
+                
+                group.departments = group.departments.filter(dept => {
+                    dept.subcategories = dept.subcategories.filter(subcat => {
+                        return !searchTerm || 
+                            subcat.name.toLowerCase().includes(searchTerm) ||
+                            group.name.toLowerCase().includes(searchTerm) ||
+                            dept.name.toLowerCase().includes(searchTerm);
+                    });
+                    return dept.subcategories.length > 0;
+                });
+                
+                return group.departments.length > 0;
+            });
+            
+            // Apply sorting
+            filtered = filtered.map(group => ({
+                ...group,
+                departments: group.departments.map(dept => ({
+                    ...dept,
+                    subcategories: sortBy === 'name' 
+                        ? dept.subcategories.sort((a, b) => a.name.localeCompare(b.name))
+                        : dept.subcategories.sort((a, b) => b.itemCount - a.itemCount)
+                })).sort((a, b) => sortBy === 'name' 
+                    ? a.name.localeCompare(b.name)
+                    : b.itemCount - a.itemCount)
+            })).sort((a, b) => sortBy === 'name' 
+                ? a.name.localeCompare(b.name)
+                : b.itemCount - a.itemCount);
+            
+            return filtered;
+        }
+        
+        function saveState() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+        
+        function loadSavedState() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    const savedData = JSON.parse(saved);
+                    // Merge saved checked/notes states
+                    data.groups.forEach((group, gi) => {
+                        if (savedData.groups[gi]) {
+                            group.departments.forEach((dept, di) => {
+                                if (savedData.groups[gi].departments[di]) {
+                                    dept.subcategories.forEach((subcat, si) => {
+                                        if (savedData.groups[gi].departments[di].subcategories[si]) {
+                                            const saved = savedData.groups[gi].departments[di].subcategories[si];
+                                            subcat.checked = saved.checked;
+                                            subcat.notes = saved.notes;
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                } catch (e) {
+                    console.warn('Could not load saved state:', e);
+                }
             }
         }
-
-        function updateStats() {
-            if (!appData) return;
-            document.getElementById('groupCount').textContent = appData.groups.length;
-            document.getElementById('categoryCount').textContent = appData.metadata.total_categories;
-            document.getElementById('subcategoryCount').textContent = appData.metadata.total_subcategories;
-            document.getElementById('itemCount').textContent = (appData.metadata.total_items / 1000).toFixed(0) + 'K';
+        
+        function confirmDelete(group, dept, subcat) {
+            currentDeleteTarget = { group, dept, subcat };
+            document.getElementById('confirmMessage').textContent = 
+                `Delete "${subcat.name}"? This action cannot be undone.`;
+            document.getElementById('confirmModal').classList.add('active');
         }
-
-        // Initialize on page load
-        loadData();
+        
+        function closeModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+            currentDeleteTarget = null;
+        }
+        
+        document.getElementById('confirmBtn').onclick = () => {
+            if (!currentDeleteTarget) return;
+            const { group, dept, subcat } = currentDeleteTarget;
+            const subcatIndex = dept.subcategories.indexOf(subcat);
+            if (subcatIndex > -1) {
+                dept.subcategories.splice(subcatIndex, 1);
+                saveState();
+                render();
+                updateStats();
+                showToast(`Deleted "${subcat.name}"`, 'warning');
+            }
+            closeModal();
+        };
+        
+        document.getElementById('viewToggle').onclick = () => {
+            isGridView = !isGridView;
+            const btn = document.getElementById('viewToggle');
+            btn.textContent = isGridView ? '🌳 Tree View' : '📊 Tree View';
+            btn.classList.toggle('active', !isGridView);
+            
+            document.getElementById('treeView').style.display = isGridView ? 'none' : 'block';
+            document.getElementById('gridView').classList.toggle('active', isGridView);
+            
+            render();
+        };
+        
+        document.getElementById('expandAllBtn').onclick = () => {
+            document.querySelectorAll('.group').forEach(el => {
+                el.classList.add('expanded');
+                el.querySelector('.group-content').classList.add('expanded');
+                el.querySelector('.toggle').textContent = '▼';
+            });
+            document.querySelectorAll('.subcategories').forEach(el => {
+                el.classList.add('expanded');
+            });
+        };
+        
+        document.getElementById('collapseAllBtn').onclick = () => {
+            document.querySelectorAll('.group').forEach(el => {
+                el.classList.remove('expanded');
+                el.querySelector('.group-content').classList.remove('expanded');
+                el.querySelector('.toggle').textContent = '▶️';
+            });
+            document.querySelectorAll('.subcategories').forEach(el => {
+                el.classList.remove('expanded');
+            });
+        };
+        
+        document.getElementById('searchInput').oninput = () => {
+            render();
+        };
+        
+        document.getElementById('groupFilter').onchange = () => {
+            render();
+        };
+        
+        document.getElementById('sortBy').onchange = () => {
+            render();
+        };
+        
+        document.getElementById('downloadBtn').onclick = () => {
+            if (!data) return;
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'kolbo-product-tree.json';
+            link.click();
+            URL.revokeObjectURL(url);
+            showToast('JSON downloaded successfully!');
+        };
+        
+        document.getElementById('exportCsvBtn').onclick = () => {
+            if (!data) return;
+            
+            let csv = 'Group,Department,Subcategory,Items,Commax ID,Checked,Notes\n';
+            
+            data.groups.forEach(group => {
+                group.departments.forEach(dept => {
+                    dept.subcategories.forEach(subcat => {
+                        const row = [
+                            `"${group.name}"`,
+                            `"${dept.name}"`,
+                            `"${subcat.name}"`,
+                            subcat.itemCount,
+                            `#${subcat.commax_id}`,
+                            subcat.checked ? 'Yes' : 'No',
+                            `"${(subcat.notes || '').replace(/"/g, '""')}"`
+                        ];
+                        csv += row.join(',') + '\n';
+                    });
+                });
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'kolbo-product-tree.csv';
+            link.click();
+            URL.revokeObjectURL(url);
+            showToast('CSV exported successfully!');
+        };
+        
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = 'toast ' + type;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+        
+        // Close modal on outside click
+        document.getElementById('confirmModal').onclick = (e) => {
+            if (e.target.id === 'confirmModal') closeModal();
+        };
+        
+        // Load data on page load
+        window.onload = loadData;
     </script>
 </body>
 </html>

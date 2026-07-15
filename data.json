@@ -1,4118 +1,1902 @@
 {
-  "metadata": {
-    "title": "עץ קטגוריות קומקס - מבנה 3 שכבות",
-    "structure": "Level 1 (Business Groups) > Level 2 (Categories) > Level 3 (Subcategories)",
-    "total_groups": 8,
-    "total_categories": 45,
-    "total_subcategories": 465,
-    "total_items": 18995
-  },
   "groups": [
     {
-      "id": "group_1",
-      "name": "בית וריהוט",
-      "icon": "📂",
-      "itemCount": 7797,
-      "subcategoryCount": 163,
-      "categoryCount": 6,
-      "categories": [
+      "id": 1,
+      "name": "אאא",
+      "itemCount": 3,
+      "checked": false,
+      "departments": [
         {
-          "id": "cat_1",
-          "commax_id": "1",
-          "name": "אלקטרוניקה",
-          "itemCount": 596,
-          "subcategoryCount": 18,
-          "subcategories": [
-            {
-              "id": "subcat_2",
-              "commax_id": "2",
-              "name": "אביזרי אפיה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_3",
-              "commax_id": "3",
-              "name": "אביזרי חשמל נלווים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_7",
-              "commax_id": "7",
-              "name": "אביזרי תקשורת",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_13",
-              "commax_id": "13",
-              "name": "אוזניות",
-              "itemCount": 21,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_19",
-              "commax_id": "19",
-              "name": "אלקטרוניקה שונות",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_44",
-              "commax_id": "44",
-              "name": "טיפוח תספורת / גילוח",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_45",
-              "commax_id": "45",
-              "name": "טלפונים",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_51",
-              "commax_id": "51",
-              "name": "כבלים / מפצלים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_56",
-              "commax_id": "56",
-              "name": "כלי עבודה ידניים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_62",
-              "commax_id": "62",
-              "name": "מאווררים / מצננים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_71",
-              "commax_id": "71",
-              "name": "מוצרי חשמל שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_78",
-              "commax_id": "78",
-              "name": "מטענים וכבלים",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_89",
-              "commax_id": "89",
-              "name": "מנעולים וכספות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_96",
-              "commax_id": "96",
-              "name": "מערכות שמע / בידוריות /מיקרופונים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_99",
-              "commax_id": "99",
-              "name": "מקלדות ועכברים",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_112",
-              "commax_id": "112",
-              "name": "סוללות ופנסים",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_144",
-              "commax_id": "144",
-              "name": "קטלני יתושים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_157",
-              "commax_id": "157",
-              "name": "שלטים אוניברסליים למזגן",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_6",
-          "commax_id": "6",
-          "name": "לבית",
-          "itemCount": 1204,
-          "subcategoryCount": 73,
-          "subcategories": [
-            {
-              "id": "subcat_1",
-              "commax_id": "1",
-              "name": "אביזרי אמבטיה/אסלה",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_2",
-              "commax_id": "2",
-              "name": "אביזרי אפיה",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_3",
-              "commax_id": "3",
-              "name": "אביזרי חשמל נלווים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_4",
-              "commax_id": "4",
-              "name": "אביזרי מטבח",
-              "itemCount": 32,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 112,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_10",
-              "commax_id": "10",
-              "name": "אביזרים לכיור",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_16",
-              "commax_id": "16",
-              "name": "אחסון וארגון",
-              "itemCount": 73,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_17",
-              "commax_id": "17",
-              "name": "אטמים / פקקים לאמבטיה וכיור",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_19",
-              "commax_id": "19",
-              "name": "אלקטרוניקה שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_20",
-              "commax_id": "20",
-              "name": "אקססוריז לבית",
-              "itemCount": 108,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_27",
-              "commax_id": "27",
-              "name": "גביעים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_28",
-              "commax_id": "28",
-              "name": "גוויס / קופסאות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_31",
-              "commax_id": "31",
-              "name": "גריל גז",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_32",
-              "commax_id": "32",
-              "name": "דשא סינטטי",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_34",
-              "commax_id": "34",
-              "name": "הגשה",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_35",
-              "commax_id": "35",
-              "name": "הדברה והרחקת מזיקים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_36",
-              "commax_id": "36",
-              "name": "ווילונות / מוטות לווילון אמבטיה",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_38",
-              "commax_id": "38",
-              "name": "חבלים / חבקים/ שרשראות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_43",
-              "commax_id": "43",
-              "name": "טיגון / בישול / אפיה",
-              "itemCount": 10,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_44",
-              "commax_id": "44",
-              "name": "טיפוח תספורת / גילוח",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_45",
-              "commax_id": "45",
-              "name": "טלפונים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_46",
-              "commax_id": "46",
-              "name": "טרמוסים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_47",
-              "commax_id": "47",
-              "name": "ידיות לארונות/ דלתות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_48",
-              "commax_id": "48",
-              "name": "יודאיקה",
-              "itemCount": 80,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_50",
-              "commax_id": "50",
-              "name": "כביסה וגיהוץ",
-              "itemCount": 35,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_53",
-              "commax_id": "53",
-              "name": "כוסות לשתייה ומתקנים",
-              "itemCount": 10,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_57",
-              "commax_id": "57",
-              "name": "כלי ששת",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_58",
-              "commax_id": "58",
-              "name": "כסאות ושרפרפים",
-              "itemCount": 28,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_60",
-              "commax_id": "60",
-              "name": "לבית שונות",
-              "itemCount": 31,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_62",
-              "commax_id": "62",
-              "name": "מאווררים / מצננים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_66",
-              "commax_id": "66",
-              "name": "מגהצים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_67",
-              "commax_id": "67",
-              "name": "מדפים ונושאי מדף / זוויות",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_71",
-              "commax_id": "71",
-              "name": "מוצרי חשמל שונות",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_72",
-              "commax_id": "72",
-              "name": "מוצרי ים / בריכה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_75",
-              "commax_id": "75",
-              "name": "מחלקת ילדים / תינוקות",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_79",
-              "commax_id": "79",
-              "name": "מיטות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_80",
-              "commax_id": "80",
-              "name": "מייבש כביסה",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_81",
-              "commax_id": "81",
-              "name": "מייבשי כלים וסכומונים",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_87",
-              "commax_id": "87",
-              "name": "מנורות שולחן ולילה",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_88",
-              "commax_id": "88",
-              "name": "מנעולים / צילינדרים לדלתות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_89",
-              "commax_id": "89",
-              "name": "מנעולים וכספות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_93",
-              "commax_id": "93",
-              "name": "מסננות / מסחטות",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_97",
-              "commax_id": "97",
-              "name": "מפות שולחן- לפי מטר",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_100",
-              "commax_id": "100",
-              "name": "מראות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_103",
-              "commax_id": "103",
-              "name": "משקלים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_107",
-              "commax_id": "107",
-              "name": "נורות שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_109",
-              "commax_id": "109",
-              "name": "סט סכו\"ם",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_110",
-              "commax_id": "110",
-              "name": "סוכות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_112",
-              "commax_id": "112",
-              "name": "סוללות ופנסים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_113",
-              "commax_id": "113",
-              "name": "סולמות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_115",
-              "commax_id": "115",
-              "name": "סירים ומחבתות",
-              "itemCount": 28,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_116",
-              "commax_id": "116",
-              "name": "סכינים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_117",
-              "commax_id": "117",
-              "name": "סלסלאות / קופסאות אוכל",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_120",
-              "commax_id": "120",
-              "name": "סרטים ודבקים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_121",
-              "commax_id": "121",
-              "name": "עגלות שוק / תיקי שוק",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_124",
-              "commax_id": "124",
-              "name": "פחים וטואלט",
-              "itemCount": 25,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_125",
-              "commax_id": "125",
-              "name": "פרזול שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_127",
-              "commax_id": "127",
-              "name": "פמוטים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_132",
-              "commax_id": "132",
-              "name": "צידניות ומיכלי מים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_138",
-              "commax_id": "138",
-              "name": "צלחות",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_140",
-              "commax_id": "140",
-              "name": "צנצנות",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_142",
-              "commax_id": "142",
-              "name": "קומקומים / מיחמים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_144",
-              "commax_id": "144",
-              "name": "קטלני יתושים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_148",
-              "commax_id": "148",
-              "name": "קערות / צלוחיות",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_149",
-              "commax_id": "149",
-              "name": "ראש השנה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_153",
-              "commax_id": "153",
-              "name": "שולחנות",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_154",
-              "commax_id": "154",
-              "name": "שטיחי מטבח",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_155",
-              "commax_id": "155",
-              "name": "שטיחים לאמבט",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_157",
-              "commax_id": "157",
-              "name": "שלטים אוניברסליים למזגן",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_159",
-              "commax_id": "159",
-              "name": "שעונים דקורטיביים",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_163",
-              "commax_id": "163",
-              "name": "תליה / תופסנים",
-              "itemCount": 36,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_167",
-              "commax_id": "167",
-              "name": "שעונים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_171",
-              "commax_id": "171",
-              "name": "נטלות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_100",
-          "commax_id": "100",
-          "name": "פלסטיקה",
-          "itemCount": 195,
-          "subcategoryCount": 8,
-          "subcategories": [
-            {
-              "id": "subcat_4",
-              "commax_id": "4",
-              "name": "אביזרי מטבח",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_16",
-              "commax_id": "16",
-              "name": "אחסון וארגון",
-              "itemCount": 17,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_53",
-              "commax_id": "53",
-              "name": "כוסות לשתייה ומתקנים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_58",
-              "commax_id": "58",
-              "name": "כסאות ושרפרפים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_60",
-              "commax_id": "60",
-              "name": "לבית שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_81",
-              "commax_id": "81",
-              "name": "מייבשי כלים וסכומונים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_117",
-              "commax_id": "117",
-              "name": "סלסלאות / קופסאות אוכל",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_124",
-              "commax_id": "124",
-              "name": "פחים וטואלט",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_200",
-          "commax_id": "200",
-          "name": "זכוכית",
-          "itemCount": 73,
-          "subcategoryCount": 4,
-          "subcategories": [
-            {
-              "id": "subcat_20",
-              "commax_id": "20",
-              "name": "אקססוריז לבית",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_53",
-              "commax_id": "53",
-              "name": "כוסות לשתייה ומתקנים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_127",
-              "commax_id": "127",
-              "name": "פמוטים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_148",
-              "commax_id": "148",
-              "name": "קערות / צלוחיות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_300",
-          "commax_id": "300",
-          "name": "כלי בית",
-          "itemCount": 5293,
-          "subcategoryCount": 45,
-          "subcategories": [
-            {
-              "id": "subcat_1",
-              "commax_id": "1",
-              "name": "אביזרי אמבטיה/אסלה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_2",
-              "commax_id": "2",
-              "name": "אביזרי אפיה",
-              "itemCount": 17,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_4",
-              "commax_id": "4",
-              "name": "אביזרי מטבח",
-              "itemCount": 80,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 51,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_9",
-              "commax_id": "9",
-              "name": "אביזרים לבריכה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_10",
-              "commax_id": "10",
-              "name": "אביזרים לכיור",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_16",
-              "commax_id": "16",
-              "name": "אחסון וארגון",
-              "itemCount": 24,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_17",
-              "commax_id": "17",
-              "name": "אטמים / פקקים לאמבטיה וכיור",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_20",
-              "commax_id": "20",
-              "name": "אקססוריז לבית",
-              "itemCount": 48,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_23",
-              "commax_id": "23",
-              "name": "ברזים ומחברי גינה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_27",
-              "commax_id": "27",
-              "name": "גביעים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_28",
-              "commax_id": "28",
-              "name": "גוויס / קופסאות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_34",
-              "commax_id": "34",
-              "name": "הגשה",
-              "itemCount": 13,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_42",
-              "commax_id": "42",
-              "name": "חנוכה",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_43",
-              "commax_id": "43",
-              "name": "טיגון / בישול / אפיה",
-              "itemCount": 14,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_46",
-              "commax_id": "46",
-              "name": "טרמוסים",
-              "itemCount": 19,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_48",
-              "commax_id": "48",
-              "name": "יודאיקה",
-              "itemCount": 17,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_50",
-              "commax_id": "50",
-              "name": "כביסה וגיהוץ",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_53",
-              "commax_id": "53",
-              "name": "כוסות לשתייה ומתקנים",
-              "itemCount": 57,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_57",
-              "commax_id": "57",
-              "name": "כלי ששת",
-              "itemCount": 31,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_58",
-              "commax_id": "58",
-              "name": "כסאות ושרפרפים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_60",
-              "commax_id": "60",
-              "name": "לבית שונות",
-              "itemCount": 9,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_70",
-              "commax_id": "70",
-              "name": "מוצרי חשמל קטנים למטבח",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_79",
-              "commax_id": "79",
-              "name": "מיטות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_81",
-              "commax_id": "81",
-              "name": "מייבשי כלים וסכומונים",
-              "itemCount": 21,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_82",
-              "commax_id": "82",
-              "name": "מיקסרים / בלנדרים / מעבדי מזון",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_89",
-              "commax_id": "89",
-              "name": "מנעולים וכספות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_93",
-              "commax_id": "93",
-              "name": "מסננות / מסחטות",
-              "itemCount": 16,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_100",
-              "commax_id": "100",
-              "name": "מראות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_103",
-              "commax_id": "103",
-              "name": "משקלים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_109",
-              "commax_id": "109",
-              "name": "סט סכו\"ם",
-              "itemCount": 43,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_115",
-              "commax_id": "115",
-              "name": "סירים ומחבתות",
-              "itemCount": 127,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_116",
-              "commax_id": "116",
-              "name": "סכינים",
-              "itemCount": 31,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_117",
-              "commax_id": "117",
-              "name": "סלסלאות / קופסאות אוכל",
-              "itemCount": 20,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_124",
-              "commax_id": "124",
-              "name": "פחים וטואלט",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_127",
-              "commax_id": "127",
-              "name": "פמוטים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_132",
-              "commax_id": "132",
-              "name": "צידניות ומיכלי מים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_138",
-              "commax_id": "138",
-              "name": "צלחות",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_140",
-              "commax_id": "140",
-              "name": "צנצנות",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_142",
-              "commax_id": "142",
-              "name": "קומקומים / מיחמים",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_147",
-              "commax_id": "147",
-              "name": "קנקני שתיה",
-              "itemCount": 10,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_148",
-              "commax_id": "148",
-              "name": "קערות / צלוחיות",
-              "itemCount": 47,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_153",
-              "commax_id": "153",
-              "name": "שולחנות",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_163",
-              "commax_id": "163",
-              "name": "תליה / תופסנים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_167",
-              "commax_id": "167",
-              "name": "שעונים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_400",
-          "commax_id": "400",
-          "name": "כתר",
-          "itemCount": 436,
-          "subcategoryCount": 15,
-          "subcategories": [
-            {
-              "id": "subcat_1",
-              "commax_id": "1",
-              "name": "אביזרי אמבטיה/אסלה",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_4",
-              "commax_id": "4",
-              "name": "אביזרי מטבח",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_16",
-              "commax_id": "16",
-              "name": "אחסון וארגון",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_50",
-              "commax_id": "50",
-              "name": "כביסה וגיהוץ",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_58",
-              "commax_id": "58",
-              "name": "כסאות ושרפרפים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_75",
-              "commax_id": "75",
-              "name": "מחלקת ילדים / תינוקות",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_77",
-              "commax_id": "77",
-              "name": "מחסנים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_81",
-              "commax_id": "81",
-              "name": "מייבשי כלים וסכומונים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_113",
-              "commax_id": "113",
-              "name": "סולמות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_117",
-              "commax_id": "117",
-              "name": "סלסלאות / קופסאות אוכל",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_124",
-              "commax_id": "124",
-              "name": "פחים וטואלט",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_132",
-              "commax_id": "132",
-              "name": "צידניות ומיכלי מים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_153",
-              "commax_id": "153",
-              "name": "שולחנות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_172",
-              "commax_id": "172",
-              "name": "ארונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "group_2",
-      "name": "אינסטלציה וחשמל",
-      "icon": "📂",
-      "itemCount": 3685,
-      "subcategoryCount": 85,
-      "categoryCount": 4,
-      "categories": [
-        {
-          "id": "cat_2",
-          "commax_id": "2",
-          "name": "אינסטלציה ואמבט",
-          "itemCount": 246,
-          "subcategoryCount": 20,
-          "subcategories": [
-            {
-              "id": "subcat_1",
-              "commax_id": "1",
-              "name": "אביזרי אמבטיה/אסלה",
-              "itemCount": 38,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_8",
-              "commax_id": "8",
-              "name": "אביזרים לברזים ופיות",
-              "itemCount": 23,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_15",
-              "commax_id": "15",
-              "name": "אומים ברגים ודיבלים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_17",
-              "commax_id": "17",
-              "name": "אטמים / פקקים לאמבטיה וכיור",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_18",
-              "commax_id": "18",
-              "name": "אינסטלציה שונות",
-              "itemCount": 18,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_22",
-              "commax_id": "22",
-              "name": "ברזי ניל / מסוט",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_23",
-              "commax_id": "23",
-              "name": "ברזים ומחברי גינה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_24",
-              "commax_id": "24",
-              "name": "ברזים לכיור",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_30",
-              "commax_id": "30",
-              "name": "גלגלים",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_36",
-              "commax_id": "36",
-              "name": "ווילונות / מוטות לווילון אמבטיה",
-              "itemCount": 13,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_54",
-              "commax_id": "54",
-              "name": "כימיקלים / פתיחת סתימות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_80",
-              "commax_id": "80",
-              "name": "מייבש כביסה",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_83",
-              "commax_id": "83",
-              "name": "מכסים ורשתות ביוב",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_95",
-              "commax_id": "95",
-              "name": "מערכות לשטיפה היגיינה וחלקיהם",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_108",
-              "commax_id": "108",
-              "name": "ניאגרות וחלקיהם",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_114",
-              "commax_id": "114",
-              "name": "סיפונים וחלקיהם",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_123",
-              "commax_id": "123",
-              "name": "ערכות מקלחת מזלפים וחלקיהם",
-              "itemCount": 34,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_134",
-              "commax_id": "134",
-              "name": "צינורות / מזלפים / מערכות רחצה",
-              "itemCount": 21,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_135",
-              "commax_id": "135",
-              "name": "צינורות וחלקיהם",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_155",
-              "commax_id": "155",
-              "name": "שטיחים לאמבט",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_4",
-          "commax_id": "4",
-          "name": "חשמל ותאורה",
-          "itemCount": 405,
-          "subcategoryCount": 29,
-          "subcategories": [
-            {
-              "id": "subcat_3",
-              "commax_id": "3",
-              "name": "אביזרי חשמל נלווים",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_26",
-              "commax_id": "26",
-              "name": "בתי נורה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_28",
-              "commax_id": "28",
-              "name": "גוויס / קופסאות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_29",
-              "commax_id": "29",
-              "name": "גופי תאורה - תליה",
-              "itemCount": 85,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_43",
-              "commax_id": "43",
-              "name": "טיגון / בישול / אפיה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_44",
-              "commax_id": "44",
-              "name": "טיפוח תספורת / גילוח",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_51",
-              "commax_id": "51",
-              "name": "כבלים / מפצלים",
-              "itemCount": 9,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_52",
-              "commax_id": "52",
-              "name": "כבלים מאריכים/ כבלי חשמל",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_61",
-              "commax_id": "61",
-              "name": "מאווררי תקרה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_71",
-              "commax_id": "71",
-              "name": "מוצרי חשמל שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_87",
-              "commax_id": "87",
-              "name": "מנורות שולחן ולילה",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_90",
-              "commax_id": "90",
-              "name": "מסוריים חשמליים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_105",
-              "commax_id": "105",
-              "name": "נורות הלוגן / P.L",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_106",
-              "commax_id": "106",
-              "name": "נורות ולדים",
-              "itemCount": 61,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_107",
-              "commax_id": "107",
-              "name": "נורות שונות",
-              "itemCount": 10,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_112",
-              "commax_id": "112",
-              "name": "סוללות ופנסים",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_119",
-              "commax_id": "119",
-              "name": "סרטי לד",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_120",
-              "commax_id": "120",
-              "name": "סרטים ודבקים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_126",
-              "commax_id": "126",
-              "name": "פלורסנטים וגופים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_129",
-              "commax_id": "129",
-              "name": "פרוזקטורים ותאורות חירום",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_139",
-              "commax_id": "139",
-              "name": "צמודי תקרה",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_150",
-              "commax_id": "150",
-              "name": "רבי שקע / מפצלים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_151",
-              "commax_id": "151",
-              "name": "רדיאטורים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_157",
-              "commax_id": "157",
-              "name": "שלטים אוניברסליים למזגן",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_158",
-              "commax_id": "158",
-              "name": "שנאים / מעבירים / מגני ברקים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_159",
-              "commax_id": "159",
-              "name": "שעונים דקורטיביים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_161",
-              "commax_id": "161",
-              "name": "שקעים / מפסקים / מתגים",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_164",
-              "commax_id": "164",
-              "name": "תנורי חימום",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_168",
-              "commax_id": "168",
-              "name": "פנל לד",
-              "itemCount": 30,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_720",
-          "commax_id": "720",
-          "name": "חשמל",
-          "itemCount": 1753,
-          "subcategoryCount": 19,
-          "subcategories": [
-            {
-              "id": "subcat_3",
-              "commax_id": "3",
-              "name": "אביזרי חשמל נלווים",
-              "itemCount": 52,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_28",
-              "commax_id": "28",
-              "name": "גוויס / קופסאות",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_29",
-              "commax_id": "29",
-              "name": "גופי תאורה - תליה",
-              "itemCount": 13,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_38",
-              "commax_id": "38",
-              "name": "חבלים / חבקים/ שרשראות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_43",
-              "commax_id": "43",
-              "name": "טיגון / בישול / אפיה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_44",
-              "commax_id": "44",
-              "name": "טיפוח תספורת / גילוח",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_51",
-              "commax_id": "51",
-              "name": "כבלים / מפצלים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_52",
-              "commax_id": "52",
-              "name": "כבלים מאריכים/ כבלי חשמל",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_63",
-              "commax_id": "63",
-              "name": "מאמ\"ת ופחת",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_65",
-              "commax_id": "65",
-              "name": "מברגות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_71",
-              "commax_id": "71",
-              "name": "מוצרי חשמל שונות",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_98",
-              "commax_id": "98",
-              "name": "מפזרי חום",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_120",
-              "commax_id": "120",
-              "name": "סרטים ודבקים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_142",
-              "commax_id": "142",
-              "name": "קומקומים / מיחמים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_150",
-              "commax_id": "150",
-              "name": "רבי שקע / מפצלים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_157",
-              "commax_id": "157",
-              "name": "שלטים אוניברסליים למזגן",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_158",
-              "commax_id": "158",
-              "name": "שנאים / מעבירים / מגני ברקים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_161",
-              "commax_id": "161",
-              "name": "שקעים / מפסקים / מתגים",
-              "itemCount": 32,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_730",
-          "commax_id": "730",
-          "name": "אינסטלציה",
-          "itemCount": 1281,
-          "subcategoryCount": 17,
-          "subcategories": [
-            {
-              "id": "subcat_1",
-              "commax_id": "1",
-              "name": "אביזרי אמבטיה/אסלה",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_8",
-              "commax_id": "8",
-              "name": "אביזרים לברזים ופיות",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_17",
-              "commax_id": "17",
-              "name": "אטמים / פקקים לאמבטיה וכיור",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_18",
-              "commax_id": "18",
-              "name": "אינסטלציה שונות",
-              "itemCount": 79,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_22",
-              "commax_id": "22",
-              "name": "ברזי ניל / מסוט",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_24",
-              "commax_id": "24",
-              "name": "ברזים לכיור",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_54",
-              "commax_id": "54",
-              "name": "כימיקלים / פתיחת סתימות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_74",
-              "commax_id": "74",
-              "name": "מחברי נחושת / כרום ומערכות צנרת",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_83",
-              "commax_id": "83",
-              "name": "מכסים ורשתות ביוב",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_95",
-              "commax_id": "95",
-              "name": "מערכות לשטיפה היגיינה וחלקיהם",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_108",
-              "commax_id": "108",
-              "name": "ניאגרות וחלקיהם",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_134",
-              "commax_id": "134",
-              "name": "צינורות / מזלפים / מערכות רחצה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_135",
-              "commax_id": "135",
-              "name": "צינורות וחלקיהם",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_141",
-              "commax_id": "141",
-              "name": "צנרת ניפלים מגולוונים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_165",
-              "commax_id": "165",
-              "name": "תעלות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_167",
-              "commax_id": "167",
-              "name": "שעונים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "group_3",
-      "name": "גינה וחוץ",
-      "icon": "📂",
-      "itemCount": 469,
-      "subcategoryCount": 30,
-      "categoryCount": 5,
-      "categories": [
-        {
-          "id": "cat_3",
-          "commax_id": "3",
-          "name": "גינה חוץ וקמפינג",
-          "itemCount": 112,
-          "subcategoryCount": 17,
-          "subcategories": [
-            {
-              "id": "subcat_9",
-              "commax_id": "9",
-              "name": "אביזרים לבריכה",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_23",
-              "commax_id": "23",
-              "name": "ברזים ומחברי גינה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_31",
-              "commax_id": "31",
-              "name": "גריל גז",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_32",
-              "commax_id": "32",
-              "name": "דשא סינטטי",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_38",
-              "commax_id": "38",
-              "name": "חבלים / חבקים/ שרשראות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_55",
-              "commax_id": "55",
-              "name": "כלי גינון והשקיה",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_58",
-              "commax_id": "58",
-              "name": "כסאות ושרפרפים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_72",
-              "commax_id": "72",
-              "name": "מוצרי ים / בריכה",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_75",
-              "commax_id": "75",
-              "name": "מחלקת ילדים / תינוקות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_86",
-              "commax_id": "86",
-              "name": "מנגלים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_104",
-              "commax_id": "104",
-              "name": "נדנדות, מגלשות וערסלים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_132",
-              "commax_id": "132",
-              "name": "צידניות ומיכלי מים",
-              "itemCount": 16,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_133",
-              "commax_id": "133",
-              "name": "ציליות ושמשיות",
-              "itemCount": 28,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_135",
-              "commax_id": "135",
-              "name": "צינורות וחלקיהם",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_145",
-              "commax_id": "145",
-              "name": "קמפינג וטיולים",
-              "itemCount": 13,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_146",
-              "commax_id": "146",
-              "name": "קמפינג ושטח",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_152",
-              "commax_id": "152",
-              "name": "רשתות וברזנטים",
-              "itemCount": 10,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_770",
-          "commax_id": "770",
-          "name": "קמפינג",
-          "itemCount": 87,
-          "subcategoryCount": 1,
-          "subcategories": [
-            {
-              "id": "subcat_133",
-              "commax_id": "133",
-              "name": "ציליות ושמשיות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_780",
-          "commax_id": "780",
-          "name": "מוצרי ים",
-          "itemCount": 146,
-          "subcategoryCount": 3,
-          "subcategories": [
-            {
-              "id": "subcat_9",
-              "commax_id": "9",
-              "name": "אביזרים לבריכה",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_25",
-              "commax_id": "25",
-              "name": "בריכות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_72",
-              "commax_id": "72",
-              "name": "מוצרי ים / בריכה",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_790",
-          "commax_id": "790",
-          "name": "מחלקת חוץ.",
-          "itemCount": 65,
-          "subcategoryCount": 3,
-          "subcategories": [
-            {
-              "id": "subcat_25",
-              "commax_id": "25",
-              "name": "בריכות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_145",
-              "commax_id": "145",
-              "name": "קמפינג וטיולים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_152",
-              "commax_id": "152",
-              "name": "רשתות וברזנטים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_800",
-          "commax_id": "800",
-          "name": "מוצרי גינה",
-          "itemCount": 59,
-          "subcategoryCount": 6,
-          "subcategories": [
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_23",
-              "commax_id": "23",
-              "name": "ברזים ומחברי גינה",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_25",
-              "commax_id": "25",
-              "name": "בריכות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_55",
-              "commax_id": "55",
-              "name": "כלי גינון והשקיה",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_104",
-              "commax_id": "104",
-              "name": "נדנדות, מגלשות וערסלים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_135",
-              "commax_id": "135",
-              "name": "צינורות וחלקיהם",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "group_4",
-      "name": "כלי עבודה וגינון",
-      "icon": "📂",
-      "itemCount": 1009,
-      "subcategoryCount": 21,
-      "categoryCount": 2,
-      "categories": [
-        {
-          "id": "cat_5",
-          "commax_id": "5",
-          "name": "כלי עבודה וגינון",
-          "itemCount": 125,
-          "subcategoryCount": 10,
-          "subcategories": [
-            {
-              "id": "subcat_11",
-              "commax_id": "11",
-              "name": "אביזרים לכלי עבודה",
-              "itemCount": 16,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_21",
-              "commax_id": "21",
-              "name": "ביטים ומקדחים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_23",
-              "commax_id": "23",
-              "name": "ברזים ומחברי גינה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_55",
-              "commax_id": "55",
-              "name": "כלי גינון והשקיה",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_56",
-              "commax_id": "56",
-              "name": "כלי עבודה ידניים",
-              "itemCount": 31,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_65",
-              "commax_id": "65",
-              "name": "מברגות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_90",
-              "commax_id": "90",
-              "name": "מסוריים חשמליים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_93",
-              "commax_id": "93",
-              "name": "מסננות / מסחטות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_113",
-              "commax_id": "113",
-              "name": "סולמות",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_135",
-              "commax_id": "135",
-              "name": "צינורות וחלקיהם",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_750",
-          "commax_id": "750",
-          "name": "כלי עבודה",
-          "itemCount": 884,
-          "subcategoryCount": 11,
-          "subcategories": [
-            {
-              "id": "subcat_1",
-              "commax_id": "1",
-              "name": "אביזרי אמבטיה/אסלה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_11",
-              "commax_id": "11",
-              "name": "אביזרים לכלי עבודה",
-              "itemCount": 16,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_15",
-              "commax_id": "15",
-              "name": "אומים ברגים ודיבלים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_21",
-              "commax_id": "21",
-              "name": "ביטים ומקדחים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_56",
-              "commax_id": "56",
-              "name": "כלי עבודה ידניים",
-              "itemCount": 61,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_60",
-              "commax_id": "60",
-              "name": "לבית שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_73",
-              "commax_id": "73",
-              "name": "מזרנים ומשאבות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_90",
-              "commax_id": "90",
-              "name": "מסוריים חשמליים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_102",
-              "commax_id": "102",
-              "name": "משחזות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_112",
-              "commax_id": "112",
-              "name": "סוללות ופנסים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_113",
-              "commax_id": "113",
-              "name": "סולמות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "group_5",
-      "name": "צבע ושיפוץ",
-      "icon": "📂",
-      "itemCount": 545,
-      "subcategoryCount": 13,
-      "categoryCount": 2,
-      "categories": [
-        {
-          "id": "cat_10",
-          "commax_id": "10",
-          "name": "צבע ושיפוץ",
-          "itemCount": 112,
-          "subcategoryCount": 9,
-          "subcategories": [
-            {
-              "id": "subcat_12",
-              "commax_id": "12",
-              "name": "אביזרים לצביעה",
-              "itemCount": 9,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_35",
-              "commax_id": "35",
-              "name": "הדברה והרחקת מזיקים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_39",
-              "commax_id": "39",
-              "name": "חומרי איטום / סיליקונים",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_54",
-              "commax_id": "54",
-              "name": "כימיקלים / פתיחת סתימות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_60",
-              "commax_id": "60",
-              "name": "לבית שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_118",
-              "commax_id": "118",
-              "name": "ספריי צבע",
-              "itemCount": 29,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_120",
-              "commax_id": "120",
-              "name": "סרטים ודבקים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_131",
-              "commax_id": "131",
-              "name": "צבעי קיר ותקרה",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_170",
-              "commax_id": "170",
-              "name": "קרניזים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_710",
-          "commax_id": "710",
-          "name": "צבע",
-          "itemCount": 433,
-          "subcategoryCount": 4,
-          "subcategories": [
-            {
-              "id": "subcat_12",
-              "commax_id": "12",
-              "name": "אביזרים לצביעה",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_118",
-              "commax_id": "118",
-              "name": "ספריי צבע",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_130",
-              "commax_id": "130",
-              "name": "צבעי עץ / מתכת",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_131",
-              "commax_id": "131",
-              "name": "צבעי קיר ותקרה",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "group_6",
-      "name": "מוצרים עונתיים",
-      "icon": "📂",
-      "itemCount": 25,
-      "subcategoryCount": 15,
-      "categoryCount": 1,
-      "categories": [
-        {
-          "id": "cat_8",
-          "commax_id": "8",
-          "name": "מוצרים עונתיים וחגים",
-          "itemCount": 25,
-          "subcategoryCount": 15,
-          "subcategories": [
-            {
-              "id": "subcat_3",
-              "commax_id": "3",
-              "name": "אביזרי חשמל נלווים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_9",
-              "commax_id": "9",
-              "name": "אביזרים לבריכה",
-              "itemCount": 19,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_25",
-              "commax_id": "25",
-              "name": "בריכות",
-              "itemCount": 51,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_27",
-              "commax_id": "27",
-              "name": "גביעים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_42",
-              "commax_id": "42",
-              "name": "חנוכה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_58",
-              "commax_id": "58",
-              "name": "כסאות ושרפרפים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_61",
-              "commax_id": "61",
-              "name": "מאווררי תקרה",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_62",
-              "commax_id": "62",
-              "name": "מאווררים / מצננים",
-              "itemCount": 21,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_72",
-              "commax_id": "72",
-              "name": "מוצרי ים / בריכה",
-              "itemCount": 24,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_101",
-              "commax_id": "101",
-              "name": "משאבות חשמליות לבריכה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_104",
-              "commax_id": "104",
-              "name": "נדנדות, מגלשות וערסלים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_110",
-              "commax_id": "110",
-              "name": "סוכות",
-              "itemCount": 15,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_128",
-              "commax_id": "128",
-              "name": "פסח",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_132",
-              "commax_id": "132",
-              "name": "צידניות ומיכלי מים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_149",
-              "commax_id": "149",
-              "name": "ראש השנה",
-              "itemCount": 15,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "group_7",
-      "name": "פרזול ואביזרים",
-      "icon": "📂",
-      "itemCount": 3120,
-      "subcategoryCount": 47,
-      "categoryCount": 2,
-      "categories": [
-        {
-          "id": "cat_9",
-          "commax_id": "9",
-          "name": "פרזול",
-          "itemCount": 552,
-          "subcategoryCount": 31,
-          "subcategories": [
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_8",
-              "commax_id": "8",
-              "name": "אביזרים לברזים ופיות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_15",
-              "commax_id": "15",
-              "name": "אומים ברגים ודיבלים",
-              "itemCount": 51,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_20",
-              "commax_id": "20",
-              "name": "אקססוריז לבית",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_21",
-              "commax_id": "21",
-              "name": "ביטים ומקדחים",
-              "itemCount": 44,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_22",
-              "commax_id": "22",
-              "name": "ברזי ניל / מסוט",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_30",
-              "commax_id": "30",
-              "name": "גלגלים",
-              "itemCount": 25,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_33",
-              "commax_id": "33",
-              "name": "הגבהות ומחליקי רהיטים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_36",
-              "commax_id": "36",
-              "name": "ווילונות / מוטות לווילון אמבטיה",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_38",
-              "commax_id": "38",
-              "name": "חבלים / חבקים/ שרשראות",
-              "itemCount": 16,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_41",
-              "commax_id": "41",
-              "name": "חלקי תריס",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_47",
-              "commax_id": "47",
-              "name": "ידיות לארונות/ דלתות",
-              "itemCount": 51,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_56",
-              "commax_id": "56",
-              "name": "כלי עבודה ידניים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_60",
-              "commax_id": "60",
-              "name": "לבית שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_65",
-              "commax_id": "65",
-              "name": "מברגות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_67",
-              "commax_id": "67",
-              "name": "מדפים ונושאי מדף / זוויות",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_68",
-              "commax_id": "68",
-              "name": "מוטות וילון / צינורות ומחזיקי צינור",
-              "itemCount": 14,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_88",
-              "commax_id": "88",
-              "name": "מנעולים / צילינדרים לדלתות",
-              "itemCount": 65,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_89",
-              "commax_id": "89",
-              "name": "מנעולים וכספות",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_91",
-              "commax_id": "91",
-              "name": "מסילות למגירה",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_92",
-              "commax_id": "92",
-              "name": "מסמרים / נעצים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_94",
-              "commax_id": "94",
-              "name": "מעצורי דלת",
-              "itemCount": 9,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_113",
-              "commax_id": "113",
-              "name": "סולמות",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_125",
-              "commax_id": "125",
-              "name": "פרזול שונות",
-              "itemCount": 57,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_135",
-              "commax_id": "135",
-              "name": "צינורות וחלקיהם",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_136",
-              "commax_id": "136",
-              "name": "צינורות וחלקיהם",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_137",
-              "commax_id": "137",
-              "name": "צירים",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_156",
-              "commax_id": "156",
-              "name": "שכפול מפתחות / מחזיקי מפתחות",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_160",
-              "commax_id": "160",
-              "name": "שערים /נעילת בטיחות לילדים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_163",
-              "commax_id": "163",
-              "name": "תליה / תופסנים",
-              "itemCount": 14,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_166",
-              "commax_id": "166",
-              "name": "בריחים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_700",
-          "commax_id": "700",
-          "name": "פרזול",
-          "itemCount": 2568,
-          "subcategoryCount": 16,
-          "subcategories": [
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_11",
-              "commax_id": "11",
-              "name": "אביזרים לכלי עבודה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_15",
-              "commax_id": "15",
-              "name": "אומים ברגים ודיבלים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_21",
-              "commax_id": "21",
-              "name": "ביטים ומקדחים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_30",
-              "commax_id": "30",
-              "name": "גלגלים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_38",
-              "commax_id": "38",
-              "name": "חבלים / חבקים/ שרשראות",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_47",
-              "commax_id": "47",
-              "name": "ידיות לארונות/ דלתות",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_67",
-              "commax_id": "67",
-              "name": "מדפים ונושאי מדף / זוויות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_68",
-              "commax_id": "68",
-              "name": "מוטות וילון / צינורות ומחזיקי צינור",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_71",
-              "commax_id": "71",
-              "name": "מוצרי חשמל שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_88",
-              "commax_id": "88",
-              "name": "מנעולים / צילינדרים לדלתות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_92",
-              "commax_id": "92",
-              "name": "מסמרים / נעצים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_94",
-              "commax_id": "94",
-              "name": "מעצורי דלת",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_148",
-              "commax_id": "148",
-              "name": "קערות / צלוחיות",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_163",
-              "commax_id": "163",
-              "name": "תליה / תופסנים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_166",
-              "commax_id": "166",
-              "name": "בריחים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "group_8",
-      "name": "מיוחד",
-      "icon": "📂",
-      "itemCount": 2345,
-      "subcategoryCount": 81,
-      "categoryCount": 22,
-      "categories": [
-        {
-          "id": "cat_7",
-          "commax_id": "7",
-          "name": "מבצעים",
-          "itemCount": 5,
-          "subcategoryCount": 0,
-          "subcategories": []
-        },
-        {
-          "id": "cat_90",
-          "commax_id": "90",
-          "name": "כללי",
-          "itemCount": 11,
-          "subcategoryCount": 3,
-          "subcategories": [
-            {
-              "id": "subcat_4",
-              "commax_id": "4",
-              "name": "אביזרי מטבח",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_53",
-              "commax_id": "53",
-              "name": "כוסות לשתייה ומתקנים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_89",
-              "commax_id": "89",
-              "name": "מנעולים וכספות",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_500",
-          "commax_id": "500",
-          "name": "מזגנים",
-          "itemCount": 79,
-          "subcategoryCount": 2,
-          "subcategories": [
-            {
-              "id": "subcat_62",
-              "commax_id": "62",
-              "name": "מאווררים / מצננים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_157",
-              "commax_id": "157",
-              "name": "שלטים אוניברסליים למזגן",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_740",
-          "commax_id": "740",
-          "name": "מנעולים",
-          "itemCount": 348,
-          "subcategoryCount": 3,
-          "subcategories": [
-            {
-              "id": "subcat_88",
-              "commax_id": "88",
-              "name": "מנעולים / צילינדרים לדלתות",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_89",
-              "commax_id": "89",
-              "name": "מנעולים וכספות",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_160",
-              "commax_id": "160",
-              "name": "שערים /נעילת בטיחות לילדים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_760",
-          "commax_id": "760",
-          "name": "כמיקלים",
-          "itemCount": 490,
-          "subcategoryCount": 5,
-          "subcategories": [
-            {
-              "id": "subcat_9",
-              "commax_id": "9",
-              "name": "אביזרים לבריכה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_35",
-              "commax_id": "35",
-              "name": "הדברה והרחקת מזיקים",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_39",
-              "commax_id": "39",
-              "name": "חומרי איטום / סיליקונים",
-              "itemCount": 7,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_54",
-              "commax_id": "54",
-              "name": "כימיקלים / פתיחת סתימות",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_120",
-              "commax_id": "120",
-              "name": "סרטים ודבקים",
-              "itemCount": 9,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_820",
-          "commax_id": "820",
-          "name": "דבקים",
-          "itemCount": 236,
-          "subcategoryCount": 3,
-          "subcategories": [
-            {
-              "id": "subcat_35",
-              "commax_id": "35",
-              "name": "הדברה והרחקת מזיקים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_39",
-              "commax_id": "39",
-              "name": "חומרי איטום / סיליקונים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_120",
-              "commax_id": "120",
-              "name": "סרטים ודבקים",
-              "itemCount": 37,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_821",
-          "commax_id": "821",
-          "name": "תאורה",
-          "itemCount": 405,
-          "subcategoryCount": 8,
-          "subcategories": [
-            {
-              "id": "subcat_29",
-              "commax_id": "29",
-              "name": "גופי תאורה - תליה",
-              "itemCount": 47,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_87",
-              "commax_id": "87",
-              "name": "מנורות שולחן ולילה",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_106",
-              "commax_id": "106",
-              "name": "נורות ולדים",
-              "itemCount": 11,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_107",
-              "commax_id": "107",
-              "name": "נורות שונות",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_112",
-              "commax_id": "112",
-              "name": "סוללות ופנסים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_126",
-              "commax_id": "126",
-              "name": "פלורסנטים וגופים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_129",
-              "commax_id": "129",
-              "name": "פרוזקטורים ותאורות חירום",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_168",
-              "commax_id": "168",
-              "name": "פנל לד",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_822",
-          "commax_id": "822",
-          "name": "חשמל כלי בית",
-          "itemCount": 322,
-          "subcategoryCount": 23,
-          "subcategories": [
-            {
-              "id": "subcat_3",
-              "commax_id": "3",
-              "name": "אביזרי חשמל נלווים",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_4",
-              "commax_id": "4",
-              "name": "אביזרי מטבח",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_20",
-              "commax_id": "20",
-              "name": "אקססוריז לבית",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_43",
-              "commax_id": "43",
-              "name": "טיגון / בישול / אפיה",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_44",
-              "commax_id": "44",
-              "name": "טיפוח תספורת / גילוח",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_46",
-              "commax_id": "46",
-              "name": "טרמוסים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_50",
-              "commax_id": "50",
-              "name": "כביסה וגיהוץ",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_60",
-              "commax_id": "60",
-              "name": "לבית שונות",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_62",
-              "commax_id": "62",
-              "name": "מאווררים / מצננים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_66",
-              "commax_id": "66",
-              "name": "מגהצים",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_70",
-              "commax_id": "70",
-              "name": "מוצרי חשמל קטנים למטבח",
-              "itemCount": 35,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_71",
-              "commax_id": "71",
-              "name": "מוצרי חשמל שונות",
-              "itemCount": 20,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_82",
-              "commax_id": "82",
-              "name": "מיקסרים / בלנדרים / מעבדי מזון",
-              "itemCount": 24,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_86",
-              "commax_id": "86",
-              "name": "מנגלים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_93",
-              "commax_id": "93",
-              "name": "מסננות / מסחטות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_98",
-              "commax_id": "98",
-              "name": "מפזרי חום",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_101",
-              "commax_id": "101",
-              "name": "משאבות חשמליות לבריכה",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_115",
-              "commax_id": "115",
-              "name": "סירים ומחבתות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_116",
-              "commax_id": "116",
-              "name": "סכינים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_142",
-              "commax_id": "142",
-              "name": "קומקומים / מיחמים",
-              "itemCount": 31,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_151",
-              "commax_id": "151",
-              "name": "רדיאטורים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_164",
-              "commax_id": "164",
-              "name": "תנורי חימום",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_823",
-          "commax_id": "823",
-          "name": "חשמל כלי עבודה",
-          "itemCount": 51,
-          "subcategoryCount": 11,
-          "subcategories": [
-            {
-              "id": "subcat_11",
-              "commax_id": "11",
-              "name": "אביזרים לכלי עבודה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_15",
-              "commax_id": "15",
-              "name": "אומים ברגים ודיבלים",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_21",
-              "commax_id": "21",
-              "name": "ביטים ומקדחים",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_56",
-              "commax_id": "56",
-              "name": "כלי עבודה ידניים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_65",
-              "commax_id": "65",
-              "name": "מברגות",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_71",
-              "commax_id": "71",
-              "name": "מוצרי חשמל שונות",
-              "itemCount": 9,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_78",
-              "commax_id": "78",
-              "name": "מטענים וכבלים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_90",
-              "commax_id": "90",
-              "name": "מסוריים חשמליים",
-              "itemCount": 10,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_95",
-              "commax_id": "95",
-              "name": "מערכות לשטיפה היגיינה וחלקיהם",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_101",
-              "commax_id": "101",
-              "name": "משאבות חשמליות לבריכה",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_102",
-              "commax_id": "102",
-              "name": "משחזות",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_824",
-          "commax_id": "824",
-          "name": "חומרי ניקיון",
-          "itemCount": 59,
-          "subcategoryCount": 2,
-          "subcategories": [
-            {
-              "id": "subcat_5",
-              "commax_id": "5",
-              "name": "אביזרי ניקיון לבית",
-              "itemCount": 19,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_76",
-              "commax_id": "76",
-              "name": "מחלקת רכב",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_825",
-          "commax_id": "825",
-          "name": "ברזים",
-          "itemCount": 34,
-          "subcategoryCount": 6,
-          "subcategories": [
-            {
-              "id": "subcat_8",
-              "commax_id": "8",
-              "name": "אביזרים לברזים ופיות",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_18",
-              "commax_id": "18",
-              "name": "אינסטלציה שונות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_22",
-              "commax_id": "22",
-              "name": "ברזי ניל / מסוט",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_23",
-              "commax_id": "23",
-              "name": "ברזים ומחברי גינה",
-              "itemCount": 5,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_24",
-              "commax_id": "24",
-              "name": "ברזים לכיור",
-              "itemCount": 159,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_67",
-              "commax_id": "67",
-              "name": "מדפים ונושאי מדף / זוויות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_826",
-          "commax_id": "826",
-          "name": "מוצרי חורף",
-          "itemCount": 52,
-          "subcategoryCount": 5,
-          "subcategories": [
-            {
-              "id": "subcat_46",
-              "commax_id": "46",
-              "name": "טרמוסים",
-              "itemCount": 2,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_69",
-              "commax_id": "69",
-              "name": "מוצרי חורף",
-              "itemCount": 12,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_98",
-              "commax_id": "98",
-              "name": "מפזרי חום",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_151",
-              "commax_id": "151",
-              "name": "רדיאטורים",
-              "itemCount": 6,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_164",
-              "commax_id": "164",
-              "name": "תנורי חימום",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_827",
-          "commax_id": "827",
-          "name": "מוצרי חג חנוכה",
-          "itemCount": 1,
-          "subcategoryCount": 1,
-          "subcategories": [
-            {
-              "id": "subcat_42",
-              "commax_id": "42",
-              "name": "חנוכה",
-              "itemCount": 226,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_828",
-          "commax_id": "828",
-          "name": "מוצרי חג פורים",
-          "itemCount": 8,
-          "subcategoryCount": 0,
-          "subcategories": []
-        },
-        {
-          "id": "cat_829",
-          "commax_id": "829",
-          "name": "מוצרי חג פסח",
-          "itemCount": 46,
-          "subcategoryCount": 2,
-          "subcategories": [
-            {
-              "id": "subcat_128",
-              "commax_id": "128",
-              "name": "פסח",
-              "itemCount": 8,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_148",
-              "commax_id": "148",
-              "name": "קערות / צלוחיות",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_830",
-          "commax_id": "830",
-          "name": "מוצרי ראש השנה",
-          "itemCount": 5,
-          "subcategoryCount": 1,
-          "subcategories": [
-            {
-              "id": "subcat_149",
-              "commax_id": "149",
-              "name": "ראש השנה",
-              "itemCount": 3,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_831",
-          "commax_id": "831",
-          "name": "מוצרי חג סוכות",
-          "itemCount": 139,
-          "subcategoryCount": 3,
-          "subcategories": [
-            {
-              "id": "subcat_16",
-              "commax_id": "16",
-              "name": "אחסון וארגון",
-              "itemCount": 1,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_32",
-              "commax_id": "32",
-              "name": "דשא סינטטי",
-              "itemCount": 4,
-              "checked": false,
-              "notes": ""
-            },
-            {
-              "id": "subcat_110",
-              "commax_id": "110",
-              "name": "סוכות",
-              "itemCount": 190,
-              "checked": false,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "id": "cat_833",
-          "commax_id": "833",
-          "name": "אביזרים לרכב",
-          "itemCount": 5,
-          "subcategoryCount": 0,
-          "subcategories": []
-        },
-        {
-          "id": "cat_834",
-          "commax_id": "834",
+          "id": 1,
           "name": "חומרי בנין",
-          "itemCount": 12,
-          "subcategoryCount": 1,
+          "itemCount": 16,
+          "checked": false,
           "subcategories": [
             {
-              "id": "subcat_39",
-              "commax_id": "39",
-              "name": "חומרי איטום / סיליקונים",
-              "itemCount": 4,
+              "id": 1,
+              "name": "טיגון / בישול / אפיה",
+              "itemCount": 31,
+              "commax_id": 89,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 2,
+              "name": "מנעולים / צילינדרים לדלתות",
+              "itemCount": 73,
+              "commax_id": 90,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 3,
+              "name": "צינורות / מזלפים / מערכות רחצה",
+              "itemCount": 27,
+              "commax_id": 91,
               "checked": false,
               "notes": ""
             }
           ]
         },
         {
-          "id": "cat_835",
-          "commax_id": "835",
+          "id": 2,
+          "name": "מנעולים",
+          "itemCount": 362,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 4,
+              "name": "ביטים ומקדחים",
+              "itemCount": 52,
+              "commax_id": 92,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 5,
+              "name": "מגהצים",
+              "itemCount": 6,
+              "commax_id": 93,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 6,
+              "name": "סוללות ופנסים",
+              "itemCount": 22,
+              "commax_id": 94,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 7,
+              "name": "שעונים דקורטיביים",
+              "itemCount": 10,
+              "commax_id": 95,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "אביזרי חשמל",
+      "itemCount": 174,
+      "checked": false,
+      "departments": [
+        {
+          "id": 3,
+          "name": "אלקטרוניקה",
+          "itemCount": 695,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 8,
+              "name": "אביזרי אמבטיה/אסלה",
+              "itemCount": 88,
+              "commax_id": 96,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 9,
+              "name": "יודאיקה",
+              "itemCount": 105,
+              "commax_id": 97,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 10,
+              "name": "מסננות / מסחטות",
+              "itemCount": 23,
+              "commax_id": 98,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 11,
+              "name": "צנצנות",
+              "itemCount": 17,
+              "commax_id": 99,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 4,
           "name": "הייגינה",
           "itemCount": 5,
-          "subcategoryCount": 0,
-          "subcategories": []
-        },
-        {
-          "id": "cat_836",
-          "commax_id": "836",
-          "name": "מפתחות",
-          "itemCount": 1,
-          "subcategoryCount": 1,
+          "checked": false,
           "subcategories": [
             {
-              "id": "subcat_156",
-              "commax_id": "156",
-              "name": "שכפול מפתחות / מחזיקי מפתחות",
-              "itemCount": 2,
+              "id": 12,
+              "name": "טיפוח תספורת / גילוח",
+              "itemCount": 24,
+              "commax_id": 100,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 13,
+              "name": "מנעולים וכספות",
+              "itemCount": 61,
+              "commax_id": 101,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 14,
+              "name": "צינורות וחלקיהם",
+              "itemCount": 1,
+              "commax_id": 102,
               "checked": false,
               "notes": ""
             }
           ]
         },
         {
-          "id": "cat_837",
-          "commax_id": "837",
-          "name": "חמסה - הכל ב5 שקל",
-          "itemCount": 31,
-          "subcategoryCount": 1,
+          "id": 5,
+          "name": "כמיקלים",
+          "itemCount": 524,
+          "checked": false,
           "subcategories": [
             {
-              "id": "subcat_169",
-              "commax_id": "169",
+              "id": 15,
+              "name": "ברזים ומחברי גינה",
+              "itemCount": 11,
+              "commax_id": 103,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 16,
+              "name": "מוטות וילון / צינורות ומחזיקי צינור",
+              "itemCount": 15,
+              "commax_id": 104,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 17,
+              "name": "סיפונים וחלקיהם",
+              "itemCount": 3,
+              "commax_id": 105,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 18,
+              "name": "שקעים / מפסקים / מתגים",
+              "itemCount": 43,
+              "commax_id": 106,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "אינסטלציה",
+      "itemCount": 190,
+      "checked": false,
+      "departments": [
+        {
+          "id": 6,
+          "name": "אינסטלציה ואמבט",
+          "itemCount": 446,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 19,
+              "name": "אביזרי אפיה",
+              "itemCount": 25,
+              "commax_id": 107,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 20,
+              "name": "יום העצמאות",
+              "itemCount": 0,
+              "commax_id": 108,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 21,
+              "name": "מעצורי דלת",
+              "itemCount": 13,
+              "commax_id": 109,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 22,
+              "name": "צנרת ניפלים מגולוונים",
+              "itemCount": 5,
+              "commax_id": 110,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "מפתחות",
+          "itemCount": 3,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 23,
+              "name": "טלפונים",
+              "itemCount": 10,
+              "commax_id": 111,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 24,
+              "name": "מסוריים חשמליים",
+              "itemCount": 13,
+              "commax_id": 112,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 25,
+              "name": "צירים",
+              "itemCount": 12,
+              "commax_id": 113,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "קמפינג",
+          "itemCount": 88,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 26,
+              "name": "ברזים לכיור",
+              "itemCount": 166,
+              "commax_id": 114,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 27,
+              "name": "מוצרי חורף",
+              "itemCount": 12,
+              "commax_id": 115,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 28,
+              "name": "סירים ומחבתות",
+              "itemCount": 157,
+              "commax_id": 116,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 29,
+              "name": "תושבות לרכב",
+              "itemCount": 0,
+              "commax_id": 117,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "ארגון וסידור הבית",
+      "itemCount": 111,
+      "checked": false,
+      "departments": [
+        {
+          "id": 9,
+          "name": "גינה חוץ וקמפינג",
+          "itemCount": 215,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 30,
+              "name": "אביזרי חשמל נלווים",
+              "itemCount": 73,
+              "commax_id": 118,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 31,
+              "name": "כביסה וגיהוץ",
+              "itemCount": 42,
+              "commax_id": 119,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 32,
+              "name": "מערכות לשטיפה היגיינה וחלקיהם",
+              "itemCount": 5,
+              "commax_id": 120,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 33,
+              "name": "קומקומים / מיחמים",
+              "itemCount": 46,
+              "commax_id": 121,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "חמסה - הכל ב5 שקל",
+          "itemCount": 31,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 34,
+              "name": "טרמוסים",
+              "itemCount": 23,
+              "commax_id": 122,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 35,
+              "name": "מסילות למגירה",
+              "itemCount": 6,
+              "commax_id": 123,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 36,
+              "name": "צלחות",
+              "itemCount": 16,
+              "commax_id": 124,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "מוצרי ים",
+          "itemCount": 157,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 37,
+              "name": "בריכות",
+              "itemCount": 60,
+              "commax_id": 125,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 38,
+              "name": "מוצרי חשמל קטנים למטבח",
+              "itemCount": 39,
+              "commax_id": 126,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 39,
+              "name": "סכינים",
+              "itemCount": 39,
+              "commax_id": 127,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 40,
+              "name": "תליה / תופסנים",
+              "itemCount": 55,
+              "commax_id": 128,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "בישול ואפיה",
+      "itemCount": 216,
+      "checked": false,
+      "departments": [
+        {
+          "id": 12,
+          "name": "גנים וילדים",
+          "itemCount": 0,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 41,
+              "name": "ידיות לארונות/ דלתות",
+              "itemCount": 55,
+              "commax_id": 129,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 42,
+              "name": "מסמרים / נעצים",
+              "itemCount": 5,
+              "commax_id": 130,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 43,
+              "name": "צמודי תקרה",
+              "itemCount": 12,
+              "commax_id": 131,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "חשמל ותאורה",
+          "itemCount": 692,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 44,
+              "name": "אביזרי מטבח",
+              "itemCount": 121,
+              "commax_id": 132,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 45,
+              "name": "כבלים / מפצלים",
+              "itemCount": 19,
+              "commax_id": 133,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 46,
+              "name": "מערכות שמע / בידוריות /מיקרופונים",
+              "itemCount": 4,
+              "commax_id": 134,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 47,
+              "name": "קוצבי זמן",
+              "itemCount": 0,
+              "commax_id": 135,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "מחלקת חוץ.",
+          "itemCount": 69,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 48,
+              "name": "בתי נורה",
+              "itemCount": 1,
+              "commax_id": 136,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 49,
+              "name": "מוצרי חשמל שונות",
+              "itemCount": 42,
+              "commax_id": 137,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 50,
+              "name": "סלסלאות / קופסאות אוכל",
+              "itemCount": 41,
+              "commax_id": 138,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 51,
+              "name": "תנורי חימום",
+              "itemCount": 12,
+              "commax_id": 139,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "ברזים",
+      "itemCount": 48,
+      "checked": false,
+      "departments": [
+        {
+          "id": 15,
+          "name": "כלי עבודה וגינון",
+          "itemCount": 197,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 52,
+              "name": "אביזרי ניקיון לבית",
+              "itemCount": 307,
+              "commax_id": 140,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 53,
+              "name": "כבלים מאריכים/ כבלי חשמל",
+              "itemCount": 15,
+              "commax_id": 141,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 54,
+              "name": "מפות שולחן- לפי מטר",
+              "itemCount": 8,
+              "commax_id": 142,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 55,
+              "name": "קטלני יתושים",
+              "itemCount": 3,
+              "commax_id": 143,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "מוצרי גינה",
+          "itemCount": 72,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 56,
+              "name": "גביעים",
+              "itemCount": 6,
+              "commax_id": 144,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 57,
+              "name": "מוצרי ים / בריכה",
+              "itemCount": 36,
+              "commax_id": 145,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 58,
+              "name": "ספריי צבע",
+              "itemCount": 38,
+              "commax_id": 146,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 59,
+              "name": "תעלות",
+              "itemCount": 1,
+              "commax_id": 147,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "חגים",
+      "itemCount": 199,
+      "checked": false,
+      "departments": [
+        {
+          "id": 17,
+          "name": "אביזרי אמבט / טואלט",
+          "itemCount": 277,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 60,
+              "name": "בריחים",
+              "itemCount": 4,
+              "commax_id": 148,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 61,
+              "name": "גוויס / קופסאות",
+              "itemCount": 16,
+              "commax_id": 149,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 62,
+              "name": "מזרנים ומשאבות",
+              "itemCount": 1,
+              "commax_id": 150,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 63,
+              "name": "סרטי לד",
+              "itemCount": 4,
+              "commax_id": 151,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "לבית",
+          "itemCount": 2005,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 64,
+              "name": "אביזרי תבריג",
+              "itemCount": 1,
+              "commax_id": 152,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 65,
+              "name": "כוסות לשתייה ומתקנים",
+              "itemCount": 72,
+              "commax_id": 153,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 66,
+              "name": "מפזרי חום",
+              "itemCount": 11,
+              "commax_id": 154,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 67,
+              "name": "קמפינג וטיולים",
+              "itemCount": 14,
+              "commax_id": 155,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "חורף",
+      "itemCount": 13,
+      "checked": false,
+      "departments": [
+        {
+          "id": 19,
+          "name": "דבקים",
+          "itemCount": 279,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 68,
+              "name": "גופי תאורה - תליה",
+              "itemCount": 360,
+              "commax_id": 156,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 69,
+              "name": "מחברי נחושת / כרום ומערכות צנרת",
+              "itemCount": 1,
+              "commax_id": 157,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 70,
+              "name": "סרטים ודבקים",
+              "itemCount": 57,
+              "commax_id": 158,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 71,
+              "name": "שעונים",
+              "itemCount": 4,
+              "commax_id": 159,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "מבצעים",
+          "itemCount": 5,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 72,
+              "name": "אביזרי תקשורת",
+              "itemCount": 3,
+              "commax_id": 160,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 73,
+              "name": "כימיקלים / פתיחת סתימות",
+              "itemCount": 15,
+              "commax_id": 161,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 74,
+              "name": "מקלדות ועכברים",
+              "itemCount": 12,
+              "commax_id": 162,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 75,
+              "name": "קמפינג ושטח",
+              "itemCount": 7,
+              "commax_id": 163,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "חמסה - הכל ב5 שקל",
+      "itemCount": 30,
+      "checked": false,
+      "departments": [
+        {
+          "id": 21,
+          "name": "אביזרים לרכב",
+          "itemCount": 5,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 76,
+              "name": "חנוכה",
+              "itemCount": 234,
+              "commax_id": 164,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 77,
+              "name": "מנורות שולחן ולילה",
+              "itemCount": 23,
+              "commax_id": 165,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 78,
+              "name": "ציליות ושמשיות",
+              "itemCount": 29,
+              "commax_id": 166,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "name": "אינסטלציה",
+          "itemCount": 1405,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 79,
+              "name": "אקססוריז לבית",
+              "itemCount": 183,
+              "commax_id": 167,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 80,
+              "name": "מברגות",
+              "itemCount": 17,
+              "commax_id": 168,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 81,
+              "name": "סוללות גיבוי",
+              "itemCount": 0,
+              "commax_id": 169,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 82,
+              "name": "שנאים / מעבירים / מגני ברקים",
+              "itemCount": 3,
+              "commax_id": 170,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "כלי גינה ידניים",
+      "itemCount": 24,
+      "checked": false,
+      "departments": [
+        {
+          "id": 23,
+          "name": "חשמל",
+          "itemCount": 1902,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 83,
+              "name": "אלקטרוניקה שונות",
+              "itemCount": 12,
+              "commax_id": 171,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 84,
+              "name": "מבצעי השבוע",
+              "itemCount": 0,
+              "commax_id": 172,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 85,
+              "name": "סוכות",
+              "itemCount": 207,
+              "commax_id": 173,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 86,
+              "name": "שלטים אוניברסליים למזגן",
+              "itemCount": 13,
+              "commax_id": 174,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "מוצרי חג שבועות",
+          "itemCount": 0,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 87,
+              "name": "חלקי תריס",
+              "itemCount": 1,
+              "commax_id": 175,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 88,
+              "name": "מנגלים",
+              "itemCount": 5,
+              "commax_id": 176,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 89,
+              "name": "צידניות ומיכלי מים",
+              "itemCount": 24,
+              "commax_id": 177,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "לבית",
+      "itemCount": 390,
+      "checked": false,
+      "departments": [
+        {
+          "id": 25,
+          "name": "מוצרים עונתיים וחגים",
+          "itemCount": 184,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 90,
+              "name": "אביזרים לברזים ופיות",
+              "itemCount": 33,
+              "commax_id": 178,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 91,
+              "name": "כלי גינון והשקיה",
+              "itemCount": 21,
+              "commax_id": 179,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 92,
+              "name": "מראות",
+              "itemCount": 2,
+              "commax_id": 180,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 93,
+              "name": "קנקני שתיה",
+              "itemCount": 10,
+              "commax_id": 181,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "name": "תאורה",
+          "itemCount": 480,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 94,
+              "name": "גלגלים",
+              "itemCount": 32,
+              "commax_id": 182,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 95,
+              "name": "מחלקת ילדים / תינוקות",
+              "itemCount": 9,
+              "commax_id": 183,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 96,
+              "name": "עגלות שוק / תיקי שוק",
+              "itemCount": 4,
+              "commax_id": 184,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 97,
+              "name": "פנל לד",
+              "itemCount": 34,
+              "commax_id": 185,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "מבצעי השבוע",
+      "itemCount": 0,
+      "checked": false,
+      "departments": [
+        {
+          "id": 27,
+          "name": "חשמל כלי בית",
+          "itemCount": 482,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 98,
+              "name": "גריל גז",
+              "itemCount": 3,
+              "commax_id": 186,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 99,
               "name": "חמסה - הכל ב5 שקל",
+              "itemCount": 32,
+              "commax_id": 187,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 100,
+              "name": "מחלקת רכב",
+              "itemCount": 1,
+              "commax_id": 188,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 101,
+              "name": "ערכות גז וקפה",
+              "itemCount": 0,
+              "commax_id": 189,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "name": "פרזול",
+          "itemCount": 2600,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 102,
+              "name": "אביזרים לבריכה",
+              "itemCount": 28,
+              "commax_id": 190,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 103,
+              "name": "אטמים / פקקים לאמבטיה וכיור",
+              "itemCount": 9,
+              "commax_id": 191,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 104,
+              "name": "משאבות חשמליות לבריכה",
+              "itemCount": 4,
+              "commax_id": 192,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 105,
+              "name": "קערות / צלוחיות",
+              "itemCount": 73,
+              "commax_id": 193,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "מבצעי קיץ",
+      "itemCount": 3,
+      "checked": false,
+      "departments": [
+        {
+          "id": 29,
+          "name": "חשמל כלי עבודה",
+          "itemCount": 97,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 106,
+              "name": "דשא סינטטי",
+              "itemCount": 24,
+              "commax_id": 194,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 107,
+              "name": "מחסנים",
+              "itemCount": 2,
+              "commax_id": 195,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 108,
+              "name": "ערכות מקלחת מזלפים וחלקיהם",
+              "itemCount": 41,
+              "commax_id": 196,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 109,
+              "name": "קרניזים",
+              "itemCount": 1,
+              "commax_id": 197,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "name": "צבע ושיפוץ",
+          "itemCount": 176,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 110,
+              "name": "אביזרים לכיור",
+              "itemCount": 11,
+              "commax_id": 198,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 111,
+              "name": "כלי עבודה ידניים",
+              "itemCount": 97,
+              "commax_id": 199,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 112,
+              "name": "משחזות",
+              "itemCount": 5,
+              "commax_id": 200,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 113,
+              "name": "ראש השנה",
+              "itemCount": 19,
+              "commax_id": 201,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "מוצרי חשמל",
+      "itemCount": 186,
+      "checked": false,
+      "departments": [
+        {
+          "id": 31,
+          "name": "חומרי ניקיון",
+          "itemCount": 79,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 114,
+              "name": "הגבהות ומחליקי רהיטים",
+              "itemCount": 5,
+              "commax_id": 202,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 115,
+              "name": "מטענים וכבלים",
+              "itemCount": 9,
+              "commax_id": 203,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 116,
+              "name": "נטלות",
+              "itemCount": 3,
+              "commax_id": 204,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 117,
+              "name": "פחים וטואלט",
+              "itemCount": 40,
+              "commax_id": 205,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "name": "כללי",
+          "itemCount": 18,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 118,
+              "name": "אביזרים לכלי עבודה",
+              "itemCount": 35,
+              "commax_id": 206,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 119,
+              "name": "כלי ששת",
+              "itemCount": 38,
+              "commax_id": 207,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 120,
+              "name": "משקלים",
+              "itemCount": 7,
+              "commax_id": 208,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 121,
+              "name": "רבי שקע / מפצלים",
+              "itemCount": 5,
+              "commax_id": 209,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "מוצרי חשמל לחורף",
+      "itemCount": 17,
+      "checked": false,
+      "departments": [
+        {
+          "id": 33,
+          "name": "ברזים",
+          "itemCount": 207,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 122,
+              "name": "ארונות",
+              "itemCount": 1,
+              "commax_id": 210,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 123,
+              "name": "הגשה",
+              "itemCount": 16,
+              "commax_id": 211,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 124,
+              "name": "מיטות",
+              "itemCount": 4,
+              "commax_id": 212,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 125,
+              "name": "פרזול שונות",
+              "itemCount": 59,
+              "commax_id": 213,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "פלסטיקה",
+          "itemCount": 228,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 126,
+              "name": "אביזרים לצביעה",
+              "itemCount": 15,
+              "commax_id": 214,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 127,
+              "name": "כסאות ושרפרפים",
+              "itemCount": 40,
+              "commax_id": 215,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 128,
+              "name": "נדנדות, מגלשות וערסלים",
+              "itemCount": 7,
+              "commax_id": 216,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 129,
+              "name": "רדיאטורים",
+              "itemCount": 8,
+              "commax_id": 217,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "מוצרי חשמל לקיץ",
+      "itemCount": 13,
+      "checked": false,
+      "departments": [
+        {
+          "id": 35,
+          "name": "זכוכית",
+          "itemCount": 83,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 130,
+              "name": "אוזניות",
+              "itemCount": 21,
+              "commax_id": 218,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 131,
+              "name": "כרטיסי זכרון וזכרונות ניידים",
+              "itemCount": 0,
+              "commax_id": 219,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 132,
+              "name": "נורות הלוגן / P.L",
+              "itemCount": 4,
+              "commax_id": 220,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 133,
+              "name": "רשתות וברזנטים",
+              "itemCount": 14,
+              "commax_id": 221,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "name": "מוצרי חורף",
+          "itemCount": 83,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 134,
+              "name": "הדברה והרחקת מזיקים",
+              "itemCount": 17,
+              "commax_id": 222,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 135,
+              "name": "מייבש כביסה",
+              "itemCount": 5,
+              "commax_id": 223,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 136,
+              "name": "פלורסנטים וגופים",
+              "itemCount": 3,
+              "commax_id": 224,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "עיצוב הבית",
+      "itemCount": 11,
+      "checked": false,
+      "departments": [
+        {
+          "id": 37,
+          "name": "כלי בית",
+          "itemCount": 6074,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 137,
+              "name": "אומגות / רוכבים /בנדים",
+              "itemCount": 0,
+              "commax_id": 225,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 138,
+              "name": "לבית שונות",
+              "itemCount": 50,
+              "commax_id": 226,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 139,
+              "name": "נורות ולדים",
+              "itemCount": 75,
+              "commax_id": 227,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 140,
+              "name": "שולחנות",
+              "itemCount": 8,
+              "commax_id": 228,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "מוצרי חג חנוכה",
+          "itemCount": 227,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 141,
+              "name": "ווילונות / מוטות לווילון אמבטיה",
+              "itemCount": 32,
+              "commax_id": 229,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 142,
+              "name": "מייבשי כלים וסכומונים",
+              "itemCount": 33,
+              "commax_id": 230,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 143,
+              "name": "פמוטים",
+              "itemCount": 7,
+              "commax_id": 231,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "צנרת",
+      "itemCount": 2,
+      "checked": false,
+      "departments": [
+        {
+          "id": 39,
+          "name": "כתר",
+          "itemCount": 479,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 144,
+              "name": "אומים ברגים ודיבלים",
+              "itemCount": 56,
+              "commax_id": 232,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 145,
+              "name": "מאווררי תקרה",
+              "itemCount": 4,
+              "commax_id": 233,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 146,
+              "name": "נורות שונות",
+              "itemCount": 14,
+              "commax_id": 234,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 147,
+              "name": "שטיחי מטבח",
+              "itemCount": 6,
+              "commax_id": 235,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "name": "מוצרי חג פורים",
+          "itemCount": 8,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 148,
+              "name": "וונטות וגלאים",
+              "itemCount": 0,
+              "commax_id": 236,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 149,
+              "name": "מיקסרים / בלנדרים / מעבדי מזון",
+              "itemCount": 29,
+              "commax_id": 237,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 150,
+              "name": "פסח",
+              "itemCount": 11,
+              "commax_id": 238,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "קיץ",
+      "itemCount": 115,
+      "checked": false,
+      "departments": [
+        {
+          "id": 41,
+          "name": "מוצרי חג פסח",
+          "itemCount": 55,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 151,
+              "name": "חבלים / חבקים/ שרשראות",
+              "itemCount": 23,
+              "commax_id": 239,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 152,
+              "name": "מכסים ורשתות ביוב",
+              "itemCount": 12,
+              "commax_id": 240,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 153,
+              "name": "פרוזקטורים ותאורות חירום",
+              "itemCount": 9,
+              "commax_id": 241,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "name": "מזגנים",
+          "itemCount": 81,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 154,
+              "name": "אחסון וארגון",
+              "itemCount": 129,
+              "commax_id": 242,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 155,
+              "name": "מאווררים / מצננים",
               "itemCount": 31,
+              "commax_id": 243,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 156,
+              "name": "ניאגרות וחלקיהם",
+              "itemCount": 13,
+              "commax_id": 244,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 157,
+              "name": "שטיחים לאמבט",
+              "itemCount": 11,
+              "commax_id": 245,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "שירותים ואמבטיה",
+      "itemCount": 92,
+      "checked": false,
+      "departments": [
+        {
+          "id": 43,
+          "name": "כלי עבודה",
+          "itemCount": 970,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 158,
+              "name": "ברזי ניל / מסוט",
+              "itemCount": 11,
+              "commax_id": 246,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 159,
+              "name": "מדפים ונושאי מדף / זוויות",
+              "itemCount": 23,
+              "commax_id": 247,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 160,
+              "name": "סולמות",
+              "itemCount": 17,
+              "commax_id": 248,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 161,
+              "name": "שערים /נעילת בטיחות לילדים",
+              "itemCount": 2,
+              "commax_id": 249,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "name": "מוצרי ראש השנה",
+          "itemCount": 8,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 162,
+              "name": "חומרי איטום / סיליקונים",
+              "itemCount": 22,
+              "commax_id": 250,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 163,
+              "name": "מלחמים",
+              "itemCount": 0,
+              "commax_id": 251,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 164,
+              "name": "צבעי עץ / מתכת",
+              "itemCount": 1,
+              "commax_id": 252,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "תאורה",
+      "itemCount": 233,
+      "checked": false,
+      "departments": [
+        {
+          "id": 45,
+          "name": "מוצרי חג סוכות",
+          "itemCount": 334,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 165,
+              "name": "חימום / טיהור מים וחלקיהם",
+              "itemCount": 0,
+              "commax_id": 253,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 166,
+              "name": "ממירים ונגנים",
+              "itemCount": 0,
+              "commax_id": 254,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 167,
+              "name": "צבעי קיר ותקרה",
+              "itemCount": 13,
+              "commax_id": 255,
+              "checked": false,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "name": "צבע",
+          "itemCount": 450,
+          "checked": false,
+          "subcategories": [
+            {
+              "id": 168,
+              "name": "אינסטלציה שונות",
+              "itemCount": 98,
+              "commax_id": 256,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 169,
+              "name": "מאמ\"ת ופחת",
+              "itemCount": 1,
+              "commax_id": 257,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 170,
+              "name": "סט סכו\"ם",
+              "itemCount": 47,
+              "commax_id": 258,
+              "checked": false,
+              "notes": ""
+            },
+            {
+              "id": 171,
+              "name": "שכפול מפתחות / מחזיקי מפתחות",
+              "itemCount": 7,
+              "commax_id": 259,
               "checked": false,
               "notes": ""
             }
@@ -4120,5 +1904,10 @@
         }
       ]
     }
-  ]
+  ],
+  "metadata": {
+    "totalGroups": 21,
+    "totalDepartments": 46,
+    "totalSubcategories": 171
+  }
 }
