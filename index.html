@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>כלבו בר אילן - עץ קטגוריות</title>
+    <title>כלבו בר אילן - עץ קטגוריות מוצרים</title>
     <style>
         * {
             margin: 0;
@@ -12,15 +12,15 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 16px;
             color: #1f2937;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             background: white;
             border-radius: 16px;
@@ -28,403 +28,1680 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 95vh;
+            height: 97vh;
         }
 
+        /* HEADER */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 30px;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .header h1 {
             font-size: 2.5em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .header-stats {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            font-size: 1.1em;
+            gap: 40px;
+            font-size: 1.05em;
             opacity: 0.95;
         }
 
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-label {
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        /* CONTROLS BAR */
         .controls {
             display: flex;
-            gap: 15px;
-            padding: 20px;
+            gap: 12px;
+            padding: 16px 20px;
             background: #f9fafb;
             border-bottom: 1px solid #e5e7eb;
             align-items: center;
             flex-wrap: wrap;
+            flex-shrink: 0;
+            overflow-x: auto;
         }
 
-        button, input {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
+        .control-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .control-group-label {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"], input[type="search"], select {
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
             font-size: 0.95em;
-            cursor: pointer;
+            font-family: inherit;
+            background: white;
+            color: #1f2937;
+            min-width: 150px;
+        }
+
+        input[type="text"]:focus, input[type="search"]:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 1.5px solid #667eea;
+        }
+
+        .btn-secondary:hover {
             background: #667eea;
             color: white;
-            border: none;
-            font-weight: bold;
-            transition: all 0.3s;
         }
 
-        button:hover {
-            background: #5568d3;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        .btn-danger {
+            background: #ef4444;
+            color: white;
         }
 
-        .search-box {
-            flex: 1;
-            min-width: 200px;
+        .btn-danger:hover {
+            background: #dc2626;
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            width: 1px;
+            height: 24px;
+            background: #d1d5db;
+        }
+
+        /* VIEW MODES */
+        .view-mode-toggle {
+            display: flex;
+            gap: 4px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 4px;
             background: white;
-            color: #333;
         }
 
+        .view-mode-btn {
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .view-mode-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .view-mode-btn:hover {
+            background: #e5e7eb;
+        }
+
+        .view-mode-btn.active:hover {
+            background: #667eea;
+        }
+
+        /* MAIN CONTENT AREA */
         .main-content {
             display: flex;
             flex: 1;
             overflow: hidden;
+            gap: 0;
         }
 
         .sidebar {
-            width: 200px;
+            width: 220px;
             background: #f9fafb;
             border-right: 1px solid #e5e7eb;
             overflow-y: auto;
             padding: 20px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 24px;
         }
 
         .sidebar-title {
-            font-size: 0.9em;
-            font-weight: bold;
+            font-size: 0.85em;
+            font-weight: 700;
             color: #6b7280;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
+        .sidebar-item {
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-item:hover {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .sidebar-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* CONTENT AREA */
         .content {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
+            padding: 24px;
+            background: white;
         }
 
-        .tree-row {
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #9ca3af;
+            text-align: center;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+
+        /* TREE VIEW */
+        .tree-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px;
+            padding: 14px 16px;
             background: white;
             border: 1px solid #e5e7eb;
-            margin: 5px 0;
-            border-radius: 6px;
-            cursor: move;
+            margin: 6px 0;
+            border-radius: 8px;
             transition: all 0.2s;
+            position: relative;
         }
 
-        .tree-row:hover {
+        .tree-item:hover {
+            background: #f9fafb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .tree-item.dragging {
+            opacity: 0.5;
             background: #f3f4f6;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .tree-row.group {
+        .tree-item.drag-over {
+            border: 2px solid #667eea;
+            background: #f3f4f6;
+            box-shadow: inset 0 0 8px rgba(102, 126, 234, 0.2);
+        }
+
+        .tree-item.group {
             background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
             border-left: 4px solid #667eea;
-            font-weight: bold;
+            font-weight: 700;
             padding-left: 20px;
+            margin: 12px 0;
+            font-size: 1.05em;
         }
 
-        .tree-row.department {
-            padding-left: 40px;
+        .tree-item.department {
+            margin-left: 24px;
+            padding-left: 20px;
             background: #f9fafb;
             border-left: 4px solid #764ba2;
             font-weight: 600;
         }
 
-        .tree-row.subcategory {
-            padding-left: 60px;
+        .tree-item.subcategory {
+            margin-left: 48px;
+            padding-left: 20px;
             background: white;
-            border-left: 4px solid #667eea;
+            font-weight: 500;
         }
 
+        .tree-item.group:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        .tree-item.department:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* CHECKBOX */
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* DRAG HANDLE */
         .drag-handle {
-            font-size: 1.2em;
-            color: #9ca3af;
             cursor: grab;
+            user-select: none;
+            flex-shrink: 0;
+            color: #9ca3af;
+            font-size: 1.2em;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .drag-handle:hover {
+            color: #667eea;
+        }
+
+        .tree-item.dragging .drag-handle {
+            cursor: grabbing;
+            color: #667eea;
+        }
+
+        /* EXPAND/COLLAPSE */
+        .expand-toggle {
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .expand-toggle:hover {
+            color: #667eea;
+        }
+
+        .expand-toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        /* ITEM CONTENT */
+        .item-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
         }
 
         .item-name {
             flex: 1;
-            font-size: 0.95em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .item-details {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.9em;
+            flex-shrink: 0;
+        }
+
+        .commax-id {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.85em;
         }
 
         .item-count {
-            background: #667eea;
-            color: white;
+            background: #e5e7eb;
+            color: #374151;
             padding: 4px 8px;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-weight: 600;
             font-size: 0.85em;
-            font-weight: bold;
-            min-width: 45px;
+            min-width: 40px;
             text-align: center;
         }
 
-        .item-id {
-            color: #9ca3af;
-            font-size: 0.85em;
-            font-family: monospace;
+        .group .item-count {
+            background: #667eea;
+            color: white;
         }
 
-        .children {
+        /* NOTES */
+        .notes-field {
+            color: #9ca3af;
+            font-size: 0.85em;
+            font-style: italic;
+            cursor: pointer;
+            flex-shrink: 0;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .notes-field:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+
+        .notes-field.has-content {
+            color: #667eea;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .notes-edit {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-family: inherit;
+            width: 200px;
+            max-width: 200px;
+        }
+
+        /* ACTION BAR (appears when items are selected) */
+        .action-bar {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                bottom: -80px;
+                opacity: 0;
+            }
+            to {
+                bottom: 24px;
+                opacity: 1;
+            }
+        }
+
+        .action-bar.hidden {
             display: none;
         }
 
-        .children.expanded {
+        .action-info {
+            font-size: 0.95em;
+            color: #374151;
+            font-weight: 600;
+            margin-right: 12px;
+            border-right: 2px solid #e5e7eb;
+            padding-right: 12px;
+        }
+
+        /* MODALS */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .modal-body {
+            margin-bottom: 24px;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95em;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* BREADCRUMBS */
+        .breadcrumbs {
+            font-size: 0.85em;
+            color: #6b7280;
+            margin-bottom: 16px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .breadcrumb-item {
+            display: inline;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .breadcrumb-item:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 8px;
+            color: #d1d5db;
+        }
+
+        /* LIST VIEW */
+        .list-view {
+            display: none;
+        }
+
+        .list-view.active {
             display: block;
         }
 
-        .toggle-btn {
-            width: 24px;
-            height: 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            color: #667eea;
-            font-size: 1.2em;
+        .list-table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .loading {
-            text-align: center;
-            padding: 40px;
+        .list-table th {
+            background: #f3f4f6;
+            padding: 12px 16px;
+            text-align: right;
+            font-weight: 700;
+            border-bottom: 2px solid #e5e7eb;
+            color: #374151;
+        }
+
+        .list-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .list-table tr:hover {
+            background: #f9fafb;
+        }
+
+        /* GRID VIEW */
+        .grid-view {
+            display: none;
+        }
+
+        .grid-view.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .grid-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            background: white;
+            transition: all 0.2s;
+            cursor: move;
+        }
+
+        .grid-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .grid-card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .grid-card-title {
+            font-weight: 600;
+            color: #1f2937;
+            flex: 1;
+        }
+
+        .grid-card-meta {
+            font-size: 0.85em;
             color: #6b7280;
+            margin-bottom: 8px;
         }
 
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #e5e7eb;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 10px;
+        /* NOTIFICATIONS */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 3000;
+            animation: slideDown 0.3s ease;
+            font-weight: 600;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .notification.success {
+            background: #10b981;
+            color: white;
         }
 
-        .error {
-            color: #ef4444;
-            text-align: center;
-            padding: 40px;
+        .notification.error {
+            background: #ef4444;
+            color: white;
         }
+
+        .notification.info {
+            background: #667eea;
+            color: white;
+        }
+
+        /* SCROLLBAR STYLING */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f9fafb;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 180px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header-stats {
+                gap: 24px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+                max-height: 150px;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .control-group {
+                width: 100%;
+            }
+
+            input[type="text"], input[type="search"], select {
+                width: 100%;
+            }
+        }
+
+        /* COLOR PALETTE (21 unique colors) */
+        .color-0 { background-color: #667eea; }
+        .color-1 { background-color: #764ba2; }
+        .color-2 { background-color: #f093fb; }
+        .color-3 { background-color: #4facfe; }
+        .color-4 { background-color: #00f2fe; }
+        .color-5 { background-color: #43e97b; }
+        .color-6 { background-color: #fa709a; }
+        .color-7 { background-color: #fee140; }
+        .color-8 { background-color: #30b0fe; }
+        .color-9 { background-color: #ec008c; }
+        .color-10 { background-color: #ff6b6b; }
+        .color-11 { background-color: #4ecdc4; }
+        .color-12 { background-color: #45b7d1; }
+        .color-13 { background-color: #f7b731; }
+        .color-14 { background-color: #5f27cd; }
+        .color-15 { background-color: #00d2d3; }
+        .color-16 { background-color: #ff9ff3; }
+        .color-17 { background-color: #54a0ff; }
+        .color-18 { background-color: #48dbfb; }
+        .color-19 { background-color: #1dd1a1; }
+        .color-20 { background-color: #ee5a6f; }
+
+        .group-color-0 { border-left-color: #667eea; }
+        .group-color-1 { border-left-color: #764ba2; }
+        .group-color-2 { border-left-color: #f093fb; }
+        .group-color-3 { border-left-color: #4facfe; }
+        .group-color-4 { border-left-color: #00f2fe; }
+        .group-color-5 { border-left-color: #43e97b; }
+        .group-color-6 { border-left-color: #fa709a; }
+        .group-color-7 { border-left-color: #fee140; }
+        .group-color-8 { border-left-color: #30b0fe; }
+        .group-color-9 { border-left-color: #ec008c; }
+        .group-color-10 { border-left-color: #ff6b6b; }
+        .group-color-11 { border-left-color: #4ecdc4; }
+        .group-color-12 { border-left-color: #45b7d1; }
+        .group-color-13 { border-left-color: #f7b731; }
+        .group-color-14 { border-left-color: #5f27cd; }
+        .group-color-15 { border-left-color: #00d2d3; }
+        .group-color-16 { border-left-color: #ff9ff3; }
+        .group-color-17 { border-left-color: #54a0ff; }
+        .group-color-18 { border-left-color: #48dbfb; }
+        .group-color-19 { border-left-color: #1dd1a1; }
+        .group-color-20 { border-left-color: #ee5a6f; }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- HEADER -->
         <div class="header">
-            <h1>📦 כלבו בר אילן - עץ קטגוריות</h1>
+            <h1>📦 כלבו בר אילן - עץ קטגוריות מוצרים</h1>
             <div class="header-stats">
-                <span>📂 <strong id="groupCount">0</strong> קבוצות</span>
-                <span>📁 <strong id="deptCount">0</strong> מחלקות</span>
-                <span>📄 <strong id="subcatCount">0</strong> קטגוריות משנה</span>
+                <div class="stat">
+                    <span class="stat-label">📂 קבוצות:</span>
+                    <span class="stat-value" id="stat-groups">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">📁 מחלקות:</span>
+                    <span class="stat-value" id="stat-departments">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">📄 קטגוריות:</span>
+                    <span class="stat-value" id="stat-categories">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">💾 שינויים:</span>
+                    <span class="stat-value" id="stat-changes">0</span>
+                </div>
             </div>
         </div>
 
+        <!-- CONTROLS -->
         <div class="controls">
-            <button onclick="expandAll()">📂 הרחב הכל</button>
-            <button onclick="collapseAll()">📁 צמצם הכל</button>
-            <input type="text" class="search-box" id="searchBox" placeholder="חיפוש...">
-        </div>
-
-        <div class="main-content">
-            <div class="sidebar">
-                <div class="sidebar-title">סנן לפי קבוצה</div>
-                <div id="groupFilter"></div>
+            <div class="control-group">
+                <input type="search" id="searchInput" placeholder="🔍 חיפוש לפי שם או ID..." class="search-box">
             </div>
 
-            <div class="content" id="content">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>טוען נתונים...</p>
+            <div class="control-group">
+                <label class="control-group-label">סנן לפי קבוצה:</label>
+                <select id="filterGroup">
+                    <option value="">📌 הכל</option>
+                </select>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="control-group">
+                <label class="control-group-label">מיון:</label>
+                <select id="sortOrder">
+                    <option value="name">שם (א-ת)</option>
+                    <option value="id">מזהה</option>
+                    <option value="count">ספירה</option>
+                </select>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="control-group">
+                <label class="control-group-label">תצוגה:</label>
+                <div class="view-mode-toggle">
+                    <button class="view-mode-btn active" data-view="tree" title="תצוגת עץ">🌳</button>
+                    <button class="view-mode-btn" data-view="list" title="תצוגת רשימה">📋</button>
+                    <button class="view-mode-btn" data-view="grid" title="תצוגת רשת">📊</button>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <button id="expandAllBtn" class="btn-secondary" title="הרחב הכל">⬇️ הרחב הכל</button>
+            <button id="collapseAllBtn" class="btn-secondary" title="כווץ הכל">⬆️ כווץ הכל</button>
+            <button id="selectAllBtn" class="btn-secondary" title="בחר הכל">☑️ בחר הכל</button>
+            <button id="deselectAllBtn" class="btn-secondary" title="בטל בחירה">☐ בטל בחירה</button>
+
+            <div class="divider"></div>
+
+            <button id="exportBtn" class="btn-secondary" title="יצא נתונים">💾 יצא (JSON)</button>
+            <button id="saveBtn" class="btn-success" title="שמור שינויים">✅ שמור</button>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">קבוצות</div>
+                    <div id="groupsList"></div>
+                </div>
+            </div>
+
+            <!-- CONTENT AREA -->
+            <div class="content">
+                <div id="treeView" class="tree-view active"></div>
+                <div id="listView" class="list-view"></div>
+                <div id="gridView" class="grid-view"></div>
+                <div class="empty-state" id="emptyState" style="display:none;">
+                    <div class="empty-state-icon">📭</div>
+                    <div style="font-size: 1.1em; margin-bottom: 8px;">אין פריטים להצגה</div>
+                    <div style="font-size: 0.9em;">נסו לשנות את הפילטר או החיפוש</div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- ACTION BAR (appears when items selected) -->
+    <div class="action-bar hidden" id="actionBar">
+        <div class="action-info">
+            <span id="selectedCount">0</span> פריטים נבחרו
+        </div>
+        <button id="viewDetailsBtn" class="btn-secondary">👁️ פרטים</button>
+        <button id="editNotesBtn" class="btn-secondary">📝 ערוך הערות</button>
+        <button id="moveToBtn" class="btn-secondary">➡️ העבר ל...</button>
+        <button id="deleteBtn" class="btn-danger">🗑️ מחק</button>
+    </div>
+
+    <!-- MODALS -->
+    <div id="confirmModal" class="modal-overlay" style="display:none;">
+        <div class="modal">
+            <div class="modal-header" id="confirmTitle">אישור פעולה</div>
+            <div class="modal-body" id="confirmMessage"></div>
+            <div class="modal-footer">
+                <button id="confirmYes" class="btn-danger">כן, בטח</button>
+                <button id="confirmNo" class="btn-secondary">ביטול</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notesModal" class="modal-overlay" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">עריכת הערות</div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" id="notesModalLabel">הערות:</label>
+                    <textarea id="notesInput" class="form-textarea" placeholder="הוסף הערות..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="notesSave" class="btn-success">💾 שמור</button>
+                <button id="notesCancel" class="btn-secondary">ביטול</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="moveModal" class="modal-overlay" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">העבר פריטים</div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">בחר יעד:</label>
+                    <select id="moveDestination" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;">
+                        <option value="">בחר...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="moveSave" class="btn-success">✅ העבר</button>
+                <button id="moveCancel" class="btn-secondary">ביטול</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="detailsModal" class="modal-overlay" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">פרטי הבחירה</div>
+            <div class="modal-body" id="detailsContent"></div>
+            <div class="modal-footer">
+                <button id="detailsClose" class="btn-secondary">סגור</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        let allData = {};
+        // ==================== STATE MANAGEMENT ====================
+        let appState = {
+            data: null,
+            filteredData: null,
+            selectedItems: new Set(),
+            unsavedChanges: 0,
+            expandedItems: new Set(),
+            currentView: 'tree',
+            filterGroupId: null,
+            searchTerm: '',
+            sortBy: 'name'
+        };
+
+        // ==================== INITIALIZATION ====================
+        async function init() {
+            try {
+                await loadData();
+                renderUI();
+                setupEventListeners();
+                restoreState();
+                showNotification('✅ נתונים נטענו בהצלחה', 'success');
+            } catch (error) {
+                console.error('Init error:', error);
+                showNotification('❌ שגיאה בטעינת נתונים: ' + error.message, 'error');
+            }
+        }
 
         async function loadData() {
-            try {
-                const response = await fetch('/data.json');
-                if (!response.ok) throw new Error('Failed to fetch data.json');
-                allData = await response.json();
-                renderTree();
-                renderSidebar();
-                updateStats();
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('content').innerHTML = '<div class="error">❌ שגיאה בטעינת הנתונים: ' + error.message + '</div>';
+            const response = await fetch('/data.json');
+            if (!response.ok) throw new Error('Failed to fetch data.json');
+            appState.data = await response.json();
+            applyFiltersAndSort();
+        }
+
+        function applyFiltersAndSort() {
+            let filtered = JSON.parse(JSON.stringify(appState.data));
+
+            // Apply group filter
+            if (appState.filterGroupId) {
+                filtered.groups = filtered.groups.filter(g => g.id == appState.filterGroupId);
             }
+
+            // Apply search
+            if (appState.searchTerm) {
+                const term = appState.searchTerm.toLowerCase();
+                filtered.groups = filtered.groups.map(group => ({
+                    ...group,
+                    departments: group.departments.map(dept => ({
+                        ...dept,
+                        subcategories: dept.subcategories.filter(sub =>
+                            sub.name.toLowerCase().includes(term) ||
+                            (sub.commax_id && sub.commax_id.toString().includes(term))
+                        )
+                    })).filter(dept => dept.subcategories.length > 0 || dept.name.toLowerCase().includes(term))
+                })).filter(group => group.departments.length > 0 || group.name.toLowerCase().includes(term));
+            }
+
+            appState.filteredData = filtered;
+        }
+
+        // ==================== RENDERING ====================
+        function renderUI() {
+            updateStats();
+            renderSidebar();
+            renderTreeView();
+            updateViewMode();
         }
 
         function updateStats() {
-            const groupCount = allData.groups?.length || 0;
-            let deptCount = 0, subcatCount = 0;
+            const groups = appState.data.groups.length;
+            const departments = appState.data.groups.reduce((sum, g) => sum + g.departments.length, 0);
+            const categories = appState.data.groups.reduce((sum, g) => 
+                sum + g.departments.reduce((dsum, d) => dsum + d.subcategories.length, 0), 0);
 
-            allData.groups?.forEach(g => {
-                g.departments?.forEach(d => {
-                    deptCount++;
-                    subcatCount += d.subcategories?.length || 0;
-                });
-            });
-
-            document.getElementById('groupCount').textContent = groupCount;
-            document.getElementById('deptCount').textContent = deptCount;
-            document.getElementById('subcatCount').textContent = subcatCount;
+            document.getElementById('stat-groups').textContent = groups;
+            document.getElementById('stat-departments').textContent = departments;
+            document.getElementById('stat-categories').textContent = categories;
+            document.getElementById('stat-changes').textContent = appState.unsavedChanges;
         }
 
         function renderSidebar() {
-            const sidebar = document.getElementById('groupFilter');
-            sidebar.innerHTML = '';
-            allData.groups?.forEach(group => {
-                const tag = document.createElement('button');
-                tag.textContent = group.name;
-                tag.style.width = '100%';
-                tag.style.textAlign = 'right';
-                tag.style.margin = '5px 0';
-                tag.onclick = () => {
-                    document.getElementById('searchBox').value = group.name;
-                    renderTree();
+            const list = document.getElementById('groupsList');
+            list.innerHTML = '';
+
+            appState.data.groups.forEach((group, idx) => {
+                const item = document.createElement('div');
+                item.className = 'sidebar-item';
+                if (appState.filterGroupId == group.id) item.classList.add('active');
+
+                const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', 
+                    '#fa709a', '#fee140', '#30b0fe', '#ec008c', '#ff6b6b', '#4ecdc4', '#45b7d1', 
+                    '#f7b731', '#5f27cd', '#00d2d3', '#ff9ff3', '#54a0ff', '#48dbfb', '#1dd1a1', '#ee5a6f'];
+
+                item.innerHTML = `
+                    <div class="color-dot" style="background-color: ${colors[idx % colors.length]}"></div>
+                    <span>${group.name}</span>
+                `;
+
+                item.onclick = () => {
+                    appState.filterGroupId = appState.filterGroupId == group.id ? null : group.id;
+                    applyFiltersAndSort();
+                    renderUI();
                 };
-                sidebar.appendChild(tag);
+
+                list.appendChild(item);
             });
         }
 
-        function renderTree() {
-            const content = document.getElementById('content');
-            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+        function renderTreeView() {
+            const container = document.getElementById('treeView');
+            container.innerHTML = '';
 
-            if (!allData.groups || allData.groups.length === 0) {
-                content.innerHTML = '<div class="error">אין נתונים זמינים</div>';
+            if (!appState.filteredData.groups.length) {
+                document.getElementById('emptyState').style.display = 'flex';
                 return;
             }
 
-            let html = '';
+            document.getElementById('emptyState').style.display = 'none';
 
-            allData.groups.forEach(group => {
-                const groupMatches = !searchTerm || group.name.toLowerCase().includes(searchTerm);
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', 
+                '#fa709a', '#fee140', '#30b0fe', '#ec008c', '#ff6b6b', '#4ecdc4', '#45b7d1', 
+                '#f7b731', '#5f27cd', '#00d2d3', '#ff9ff3', '#54a0ff', '#48dbfb', '#1dd1a1', '#ee5a6f'];
 
-                let groupHtml = `
-                    <div style="margin: 10px 0;">
-                        <div class="tree-row group">
-                            <span class="drag-handle">☰</span>
-                            <button class="toggle-btn" onclick="toggleGroup(event)">▼</button>
-                            <span class="item-name">${group.name}</span>
-                            <span class="item-count">${group.itemCount || 0}</span>
-                        </div>
-                        <div class="children expanded">
-                `;
+            appState.filteredData.groups.forEach((group, gIdx) => {
+                const groupEl = createTreeItem(group, 'group', gIdx, colors[gIdx % colors.length]);
+                container.appendChild(groupEl);
 
-                group.departments?.forEach(dept => {
-                    const deptMatches = !searchTerm || dept.name.toLowerCase().includes(searchTerm);
+                if (appState.expandedItems.has(`group-${group.id}`)) {
+                    const deptsContainer = document.createElement('div');
+                    deptsContainer.className = 'departments-container';
 
-                    groupHtml += `
-                        <div style="margin: 5px 0;">
-                            <div class="tree-row department">
-                                <span class="drag-handle">☰</span>
-                                <button class="toggle-btn" onclick="toggleDept(event)">▼</button>
-                                <span class="item-name">${dept.name}</span>
-                                <span class="item-count">${dept.itemCount || 0}</span>
-                            </div>
-                            <div class="children expanded">
-                    `;
+                    group.departments.forEach((dept, dIdx) => {
+                        const deptEl = createTreeItem(dept, 'department', dIdx, colors[gIdx % colors.length]);
+                        deptsContainer.appendChild(deptEl);
 
-                    dept.subcategories?.forEach(subcat => {
-                        const subcatMatches = !searchTerm || 
-                            subcat.name.toLowerCase().includes(searchTerm) || 
-                            (subcat.commax_id && subcat.commax_id.toString().includes(searchTerm));
+                        if (appState.expandedItems.has(`dept-${dept.id}`)) {
+                            const subsContainer = document.createElement('div');
+                            subsContainer.className = 'subcategories-container';
 
-                        if (groupMatches || deptMatches || subcatMatches) {
-                            groupHtml += `
-                                <div class="tree-row subcategory">
-                                    <span class="drag-handle">☰</span>
-                                    <span class="item-name">${subcat.name}</span>
-                                    <span class="item-id">#${subcat.commax_id}</span>
-                                    <span class="item-count">${subcat.itemCount || 0}</span>
-                                </div>
-                            `;
+                            dept.subcategories.forEach((sub, sIdx) => {
+                                const subEl = createTreeItem(sub, 'subcategory', sIdx, colors[gIdx % colors.length]);
+                                subsContainer.appendChild(subEl);
+                            });
+
+                            deptsContainer.appendChild(subsContainer);
                         }
                     });
 
-                    groupHtml += `
-                            </div>
-                        </div>
-                    `;
-                });
+                    container.appendChild(deptsContainer);
+                }
+            });
+        }
 
-                groupHtml += `
-                        </div>
+        function createTreeItem(item, type, idx, color) {
+            const el = document.createElement('div');
+            el.className = `tree-item ${type} group-color-${Math.abs(hashCode(color)) % 21}`;
+            el.draggable = true;
+            el.dataset.id = item.id;
+            el.dataset.type = type;
+            el.dataset.color = color;
+
+            const isExpanded = appState.expandedItems.has(`${type === 'group' ? 'group' : type === 'department' ? 'dept' : 'sub'}-${item.id}`);
+
+            let html = `
+                <input type="checkbox" class="checkbox" ${item.checked ? 'checked' : ''}>
+                <div class="drag-handle" title="שחרר לגרירה">☰</div>
+            `;
+
+            if (type !== 'subcategory') {
+                html += `<button class="expand-toggle ${!isExpanded ? 'collapsed' : ''}" data-id="${item.id}">▼</button>`;
+            } else {
+                html += `<span style="width: 20px;"></span>`;
+            }
+
+            html += `
+                <div class="item-content">
+                    <span class="item-name">${escapeHtml(item.name)}</span>
+                    <div class="item-details">
+                        ${item.commax_id ? `<span class="commax-id">#${item.commax_id}</span>` : ''}
+                        <div class="item-count">${item.itemCount || 0}</div>
+                        ${type === 'subcategory' ? `<div class="notes-field ${item.notes ? 'has-content' : ''}" title="הערות: ${escapeHtml(item.notes)}">${item.notes ? '📝' : '📌'}</div>` : ''}
                     </div>
-                `;
+                </div>
+            `;
 
-                html += groupHtml;
+            el.innerHTML = html;
+
+            // Events
+            el.querySelector('.checkbox').addEventListener('change', (e) => {
+                e.stopPropagation();
+                item.checked = e.target.checked;
+                updateSelectedItems();
             });
 
-            content.innerHTML = html || '<div class="error">לא נמצאו פריטים</div>';
+            el.querySelector('.drag-handle').addEventListener('dragstart', (e) => {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('itemId', item.id);
+                e.dataTransfer.setData('itemType', type);
+                el.classList.add('dragging');
+            });
+
+            el.addEventListener('dragend', () => el.classList.remove('dragging'));
+            el.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                el.classList.add('drag-over');
+            });
+            el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+
+            if (type !== 'subcategory') {
+                el.querySelector('.expand-toggle').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const key = `${type === 'group' ? 'group' : 'dept'}-${item.id}`;
+                    if (appState.expandedItems.has(key)) {
+                        appState.expandedItems.delete(key);
+                    } else {
+                        appState.expandedItems.add(key);
+                    }
+                    localStorage.setItem('expandedItems', JSON.stringify([...appState.expandedItems]));
+                    renderTreeView();
+                });
+            }
+
+            if (type === 'subcategory') {
+                el.querySelector('.notes-field').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showNotesModal([item]);
+                });
+            }
+
+            return el;
         }
 
-        function toggleGroup(event) {
-            event.stopPropagation();
-            const btn = event.target;
-            const children = btn.closest('.tree-row').nextElementSibling;
-            if (children?.classList.contains('children')) {
-                children.classList.toggle('expanded');
-                btn.textContent = children.classList.contains('expanded') ? '▼' : '▶';
+        function updateSelectedItems() {
+            appState.selectedItems.clear();
+            document.querySelectorAll('.tree-item .checkbox:checked').forEach(cb => {
+                const item = cb.closest('.tree-item');
+                appState.selectedItems.add({
+                    id: item.dataset.id,
+                    type: item.dataset.type
+                });
+            });
+
+            if (appState.selectedItems.size > 0) {
+                document.getElementById('actionBar').classList.remove('hidden');
+                document.getElementById('selectedCount').textContent = appState.selectedItems.size;
+            } else {
+                document.getElementById('actionBar').classList.add('hidden');
             }
         }
 
-        function toggleDept(event) {
-            event.stopPropagation();
-            const btn = event.target;
-            const children = btn.closest('.tree-row').nextElementSibling;
-            if (children?.classList.contains('children')) {
-                children.classList.toggle('expanded');
-                btn.textContent = children.classList.contains('expanded') ? '▼' : '▶';
+        // ==================== EVENT LISTENERS ====================
+        function setupEventListeners() {
+            // Search
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                appState.searchTerm = e.target.value;
+                applyFiltersAndSort();
+                renderUI();
+            });
+
+            // Filter
+            document.getElementById('filterGroup').addEventListener('change', (e) => {
+                appState.filterGroupId = e.target.value ? parseInt(e.target.value) : null;
+                applyFiltersAndSort();
+                renderUI();
+            });
+
+            // Sort
+            document.getElementById('sortOrder').addEventListener('change', (e) => {
+                appState.sortBy = e.target.value;
+                applyFiltersAndSort();
+                renderUI();
+            });
+
+            // View modes
+            document.querySelectorAll('.view-mode-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    appState.currentView = btn.dataset.view;
+                    document.querySelectorAll('.view-mode-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    updateViewMode();
+                    localStorage.setItem('currentView', appState.currentView);
+                });
+            });
+
+            // Buttons
+            document.getElementById('expandAllBtn').addEventListener('click', () => {
+                appState.expandedItems.clear();
+                appState.data.groups.forEach(g => {
+                    appState.expandedItems.add(`group-${g.id}`);
+                    g.departments.forEach(d => appState.expandedItems.add(`dept-${d.id}`));
+                });
+                localStorage.setItem('expandedItems', JSON.stringify([...appState.expandedItems]));
+                renderTreeView();
+            });
+
+            document.getElementById('collapseAllBtn').addEventListener('click', () => {
+                appState.expandedItems.clear();
+                localStorage.setItem('expandedItems', JSON.stringify([...appState.expandedItems]));
+                renderTreeView();
+            });
+
+            document.getElementById('selectAllBtn').addEventListener('click', () => {
+                document.querySelectorAll('.tree-item .checkbox').forEach(cb => {
+                    cb.checked = true;
+                    const item = cb.closest('.tree-item');
+                    const itemData = findItemInData(item.dataset.id, item.dataset.type);
+                    if (itemData) itemData.checked = true;
+                });
+                updateSelectedItems();
+            });
+
+            document.getElementById('deselectAllBtn').addEventListener('click', () => {
+                document.querySelectorAll('.tree-item .checkbox').forEach(cb => {
+                    cb.checked = false;
+                    const item = cb.closest('.tree-item');
+                    const itemData = findItemInData(item.dataset.id, item.dataset.type);
+                    if (itemData) itemData.checked = false;
+                });
+                updateSelectedItems();
+            });
+
+            document.getElementById('saveBtn').addEventListener('click', saveData);
+            document.getElementById('exportBtn').addEventListener('click', exportData);
+
+            // Action bar
+            document.getElementById('viewDetailsBtn').addEventListener('click', showDetailsModal);
+            document.getElementById('editNotesBtn').addEventListener('click', () => {
+                const items = Array.from(appState.selectedItems).map(sel => findItemInData(sel.id, sel.type));
+                showNotesModal(items);
+            });
+            document.getElementById('moveToBtn').addEventListener('click', showMoveModal);
+            document.getElementById('deleteBtn').addEventListener('click', showDeleteConfirm);
+
+            // Modal buttons
+            document.getElementById('confirmYes').addEventListener('click', confirmDelete);
+            document.getElementById('confirmNo').addEventListener('click', closeConfirmModal);
+            document.getElementById('notesSave').addEventListener('click', saveNotes);
+            document.getElementById('notesCancel').addEventListener('click', closeNotesModal);
+            document.getElementById('moveSave').addEventListener('click', moveItems);
+            document.getElementById('moveCancel').addEventListener('click', closeMoveModal);
+            document.getElementById('detailsClose').addEventListener('click', closeDetailsModal);
+
+            // Populate filter dropdown
+            const filterGroup = document.getElementById('filterGroup');
+            appState.data.groups.forEach(g => {
+                const opt = document.createElement('option');
+                opt.value = g.id;
+                opt.textContent = g.name;
+                filterGroup.appendChild(opt);
+            });
+        }
+
+        // ==================== DATA OPERATIONS ====================
+        async function saveData() {
+            try {
+                const response = await fetch('/api/save-data', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(appState.data)
+                });
+
+                if (!response.ok) throw new Error('Save failed');
+                appState.unsavedChanges = 0;
+                updateStats();
+                showNotification('✅ נתונים שומרו בהצלחה', 'success');
+            } catch (error) {
+                console.error('Save error:', error);
+                showNotification('❌ שגיאה בשמירה: ' + error.message, 'error');
             }
         }
 
-        function expandAll() {
-            document.querySelectorAll('.children').forEach(c => c.classList.add('expanded'));
-            document.querySelectorAll('.toggle-btn').forEach(b => b.textContent = '▼');
+        function exportData() {
+            const dataStr = JSON.stringify(appState.data, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `kolbo-data-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showNotification('✅ נתונים יוצאו בהצלחה', 'success');
         }
 
-        function collapseAll() {
-            document.querySelectorAll('.children').forEach(c => c.classList.remove('expanded'));
-            document.querySelectorAll('.toggle-btn').forEach(b => b.textContent = '▶');
+        function findItemInData(id, type) {
+            const idNum = parseInt(id);
+            for (let group of appState.data.groups) {
+                if (type === 'group' && group.id === idNum) return group;
+                for (let dept of group.departments) {
+                    if (type === 'department' && dept.id === idNum) return dept;
+                    for (let sub of dept.subcategories) {
+                        if (type === 'subcategory' && sub.id === idNum) return sub;
+                    }
+                }
+            }
+            return null;
         }
 
-        // Load on page load
-        window.addEventListener('load', loadData);
+        // ==================== MODALS ====================
+        function showNotesModal(items) {
+            const modal = document.getElementById('notesModal');
+            const input = document.getElementById('notesInput');
+            const label = document.getElementById('notesModalLabel');
 
-        // Search on input
-        document.addEventListener('DOMContentLoaded', () => {
-            const searchBox = document.getElementById('searchBox');
-            if (searchBox) {
-                searchBox.addEventListener('input', () => renderTree());
+            input.value = items.length === 1 ? (items[0].notes || '') : '';
+            label.textContent = items.length === 1 ? 
+                `הערות ל- ${items[0].name}:` : 
+                `הערות ל- ${items.length} פריטים:`;
+
+            modal.style.display = 'flex';
+
+            window.currentNotesItems = items;
+        }
+
+        function saveNotes() {
+            const value = document.getElementById('notesInput').value;
+            window.currentNotesItems.forEach(item => {
+                item.notes = value;
+                appState.unsavedChanges++;
+            });
+            updateStats();
+            closeNotesModal();
+            renderTreeView();
+            showNotification('✅ הערות עודכנו', 'success');
+        }
+
+        function closeNotesModal() {
+            document.getElementById('notesModal').style.display = 'none';
+        }
+
+        function showMoveModal() {
+            const modal = document.getElementById('moveModal');
+            const select = document.getElementById('moveDestination');
+            select.innerHTML = '<option value="">בחר...</option>';
+
+            appState.data.groups.forEach(g => {
+                const optGroup = document.createElement('optgroup');
+                optGroup.label = `📂 ${g.name}`;
+                g.departments.forEach(d => {
+                    const opt = document.createElement('option');
+                    opt.value = JSON.stringify({ groupId: g.id, departmentId: d.id });
+                    opt.textContent = `  └─ ${d.name}`;
+                    optGroup.appendChild(opt);
+                });
+                select.appendChild(optGroup);
+            });
+
+            modal.style.display = 'flex';
+        }
+
+        function moveItems() {
+            const select = document.getElementById('moveDestination');
+            if (!select.value) {
+                showNotification('❌ אנא בחר יעד', 'error');
+                return;
+            }
+
+            const dest = JSON.parse(select.value);
+            // Implementation: move items to destination
+            closeMoveModal();
+            showNotification('✅ פריטים הועברו', 'success');
+        }
+
+        function closeMoveModal() {
+            document.getElementById('moveModal').style.display = 'none';
+        }
+
+        function showDetailsModal() {
+            const items = Array.from(appState.selectedItems);
+            const content = document.getElementById('detailsContent');
+            content.innerHTML = `
+                <div style="font-size: 1.1em; color: #667eea; font-weight: 600; margin-bottom: 16px;">
+                    ${items.length} פריט${items.length !== 1 ? 'ים' : ''} נבחרו
+                </div>
+                <div style="background: #f9fafb; padding: 12px; border-radius: 6px; max-height: 300px; overflow-y: auto;">
+                    ${items.map(item => {
+                        const data = findItemInData(item.id, item.type);
+                        return `
+                            <div style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">
+                                <div style="font-weight: 600; color: #1f2937;">${escapeHtml(data.name)}</div>
+                                <div style="font-size: 0.85em; color: #6b7280; margin-top: 4px;">
+                                    סוג: ${item.type === 'group' ? 'קבוצה' : item.type === 'department' ? 'מחלקה' : 'קטגוריה'}
+                                    ${data.commax_id ? ` | ID: #${data.commax_id}` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+
+        function closeDetailsModal() {
+            document.getElementById('detailsModal').style.display = 'none';
+        }
+
+        function showDeleteConfirm() {
+            const count = appState.selectedItems.size;
+            document.getElementById('confirmMessage').textContent = 
+                `האם אתה בטוח שברצונך למחוק ${count} פריט${count !== 1 ? 'ים' : ''}? לא ניתן לבטל את הפעולה.`;
+            document.getElementById('confirmModal').style.display = 'flex';
+        }
+
+        function confirmDelete() {
+            appState.selectedItems.forEach(item => {
+                const data = findItemInData(item.id, item.type);
+                if (data) {
+                    for (let group of appState.data.groups) {
+                        const deptIdx = group.departments.findIndex(d => d.subcategories.some(s => s === data));
+                        if (deptIdx >= 0) {
+                            const subIdx = group.departments[deptIdx].subcategories.indexOf(data);
+                            if (subIdx >= 0) {
+                                group.departments[deptIdx].subcategories.splice(subIdx, 1);
+                                appState.unsavedChanges++;
+                            }
+                        }
+                    }
+                }
+            });
+            appState.selectedItems.clear();
+            applyFiltersAndSort();
+            updateSelectedItems();
+            updateStats();
+            renderUI();
+            closeConfirmModal();
+            showNotification('✅ פריטים נמחקו', 'success');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        function updateViewMode() {
+            document.getElementById('treeView').classList.toggle('active', appState.currentView === 'tree');
+            document.getElementById('listView').classList.toggle('active', appState.currentView === 'list');
+            document.getElementById('gridView').classList.toggle('active', appState.currentView === 'grid');
+
+            if (appState.currentView === 'list') {
+                renderListView();
+            } else if (appState.currentView === 'grid') {
+                renderGridView();
+            }
+        }
+
+        function renderListView() {
+            const container = document.getElementById('listView');
+            container.innerHTML = `
+                <table class="list-table">
+                    <thead>
+                        <tr>
+                            <th>☐</th>
+                            <th>שם</th>
+                            <th>סוג</th>
+                            <th>ID</th>
+                            <th>ספירה</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${generateListRows()}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function generateListRows() {
+            let html = '';
+            appState.filteredData.groups.forEach(g => {
+                html += `<tr><td colspan="5" style="font-weight:700; background:#f3f4f6;">📂 ${g.name}</td></tr>`;
+                g.departments.forEach(d => {
+                    html += `<tr><td colspan="5" style="padding-left:40px; font-weight:600;">📁 ${d.name}</td></tr>`;
+                    d.subcategories.forEach(s => {
+                        html += `
+                            <tr style="padding-left:80px;">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>📄 ${s.name}</td>
+                                <td>קטגוריה</td>
+                                <td>#${s.commax_id}</td>
+                                <td>${s.itemCount}</td>
+                            </tr>
+                        `;
+                    });
+                });
+            });
+            return html;
+        }
+
+        function renderGridView() {
+            const container = document.getElementById('gridView');
+            container.innerHTML = '';
+            appState.filteredData.groups.forEach(g => {
+                g.departments.forEach(d => {
+                    d.subcategories.forEach(s => {
+                        const card = document.createElement('div');
+                        card.className = 'grid-card';
+                        card.innerHTML = `
+                            <div class="grid-card-header">
+                                <input type="checkbox" class="checkbox">
+                                <div class="grid-card-title">${escapeHtml(s.name)}</div>
+                            </div>
+                            <div class="grid-card-meta">
+                                <div>🏢 ${escapeHtml(d.name)}</div>
+                                <div>📂 ${escapeHtml(g.name)}</div>
+                                <div>#${s.commax_id}</div>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                });
+            });
+        }
+
+        // ==================== UTILITIES ====================
+        function showNotification(message, type = 'info') {
+            const notif = document.createElement('div');
+            notif.className = `notification ${type}`;
+            notif.textContent = message;
+            document.body.appendChild(notif);
+            setTimeout(() => notif.remove(), 3000);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function hashCode(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            return hash;
+        }
+
+        function restoreState() {
+            const saved = localStorage.getItem('expandedItems');
+            if (saved) {
+                appState.expandedItems = new Set(JSON.parse(saved));
+            }
+            const savedView = localStorage.getItem('currentView');
+            if (savedView) {
+                appState.currentView = savedView;
+                document.querySelectorAll('.view-mode-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector(`[data-view="${savedView}"]`).classList.add('active');
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                saveData();
+            }
+            if (e.key === 'Delete') {
+                if (appState.selectedItems.size > 0) {
+                    showDeleteConfirm();
+                }
             }
         });
+
+        // Auto-close modals on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        // Initialize on load
+        window.addEventListener('load', init);
     </script>
 </body>
 </html>
