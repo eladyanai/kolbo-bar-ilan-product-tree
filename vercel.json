@@ -1,5 +1,5 @@
 {
-  "buildCommand": "echo 'Static files ready'",
+  "buildCommand": "echo 'Static files ready - Advanced Dashboard 1628 lines'",
   "outputDirectory": "./",
   "devCommand": "python3 -m http.server 3000",
   "cleanUrls": false,
