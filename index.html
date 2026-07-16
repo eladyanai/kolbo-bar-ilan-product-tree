@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>כלבו בר אילן - עץ קטגוריות מתקדם</title>
+    <title>כלבו בר אילן - עץ קטגוריות</title>
     <style>
         * {
             margin: 0;
@@ -61,14 +61,12 @@
             flex-wrap: wrap;
         }
 
-        button, input, select {
+        button, input {
             padding: 10px 15px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 0.95em;
             cursor: pointer;
-            background: white;
-            color: #333;
         }
 
         button {
@@ -108,44 +106,14 @@
         .sidebar-title {
             font-size: 0.9em;
             font-weight: bold;
-            text-transform: uppercase;
             color: #6b7280;
             margin-bottom: 15px;
-            margin-top: 20px;
-        }
-
-        .group-tag {
-            display: block;
-            padding: 8px 12px;
-            margin: 5px 0;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.2s;
-            border-left: 4px solid transparent;
-        }
-
-        .group-tag:hover {
-            background: rgba(102, 126, 234, 0.1);
-            border-left-color: #667eea;
-        }
-
-        .group-tag.active {
-            background: #667eea;
-            color: white;
-            border-left-color: #5568d3;
         }
 
         .content {
             flex: 1;
             overflow-y: auto;
             padding: 20px;
-        }
-
-        .tree-item {
-            margin: 10px 0;
-            border-radius: 8px;
-            overflow: hidden;
         }
 
         .tree-row {
@@ -155,11 +123,10 @@
             padding: 12px;
             background: white;
             border: 1px solid #e5e7eb;
+            margin: 5px 0;
+            border-radius: 6px;
             cursor: move;
             transition: all 0.2s;
-            border-radius: 6px;
-            margin: 5px 0;
-            draggable: true;
         }
 
         .tree-row:hover {
@@ -191,31 +158,11 @@
             font-size: 1.2em;
             color: #9ca3af;
             cursor: grab;
-            user-select: none;
-        }
-
-        .drag-handle:active {
-            cursor: grabbing;
-        }
-
-        .toggle-btn {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            color: #667eea;
-            font-size: 1.2em;
         }
 
         .item-name {
             flex: 1;
             font-size: 0.95em;
-            word-break: break-word;
         }
 
         .item-count {
@@ -243,6 +190,17 @@
             display: block;
         }
 
+        .toggle-btn {
+            width: 24px;
+            height: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
         .loading {
             text-align: center;
             padding: 40px;
@@ -265,17 +223,17 @@
             100% { transform: rotate(360deg); }
         }
 
-        .no-items {
+        .error {
+            color: #ef4444;
             text-align: center;
-            padding: 60px 20px;
-            color: #9ca3af;
+            padding: 40px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📦 כלבו בר אילן - עץ קטגוריות מתקדם</h1>
+            <h1>📦 כלבו בר אילן - עץ קטגוריות</h1>
             <div class="header-stats">
                 <span>📂 <strong id="groupCount">0</strong> קבוצות</span>
                 <span>📁 <strong id="deptCount">0</strong> מחלקות</span>
@@ -284,10 +242,9 @@
         </div>
 
         <div class="controls">
-            <button onclick="saveToCloud()">💾 שמור בענן</button>
-            <input type="text" class="search-box" id="searchBox" placeholder="חיפוש לפי שם או מספר Commax...">
             <button onclick="expandAll()">📂 הרחב הכל</button>
             <button onclick="collapseAll()">📁 צמצם הכל</button>
+            <input type="text" class="search-box" id="searchBox" placeholder="חיפוש...">
         </div>
 
         <div class="main-content">
@@ -307,19 +264,18 @@
 
     <script>
         let allData = {};
-        let expandedGroups = new Set();
-        let expandedDepts = new Set();
 
         async function loadData() {
             try {
-                const response = await fetch('data.json');
+                const response = await fetch('./data.json');
+                if (!response.ok) throw new Error('Failed to fetch data.json');
                 allData = await response.json();
                 renderTree();
                 renderSidebar();
                 updateStats();
             } catch (error) {
-                console.error('Failed to load data:', error);
-                document.getElementById('content').innerHTML = '<div class="no-items">שגיאה בטעינת הנתונים</div>';
+                console.error('Error:', error);
+                document.getElementById('content').innerHTML = '<div class="error">❌ שגיאה בטעינת הנתונים: ' + error.message + '</div>';
             }
         }
 
@@ -342,68 +298,67 @@
         function renderSidebar() {
             const sidebar = document.getElementById('groupFilter');
             sidebar.innerHTML = '';
-
             allData.groups?.forEach(group => {
-                const tag = document.createElement('div');
-                tag.className = 'group-tag';
-                tag.textContent = `${group.name} (${group.itemCount || 0})`;
-                tag.onclick = () => filterByGroup(group.name);
+                const tag = document.createElement('button');
+                tag.textContent = group.name;
+                tag.style.width = '100%';
+                tag.style.textAlign = 'right';
+                tag.style.margin = '5px 0';
+                tag.onclick = () => {
+                    document.getElementById('searchBox').value = group.name;
+                    renderTree();
+                };
                 sidebar.appendChild(tag);
             });
-        }
-
-        function filterByGroup(groupName) {
-            const searchBox = document.getElementById('searchBox');
-            searchBox.value = groupName;
-            renderTree();
         }
 
         function renderTree() {
             const content = document.getElementById('content');
             const searchTerm = document.getElementById('searchBox').value.toLowerCase();
 
-            if (!allData.groups) {
-                content.innerHTML = '<div class="no-items">אין נתונים זמינים</div>';
+            if (!allData.groups || allData.groups.length === 0) {
+                content.innerHTML = '<div class="error">אין נתונים זמינים</div>';
                 return;
             }
 
             let html = '';
 
             allData.groups.forEach(group => {
-                const groupMatches = group.name.toLowerCase().includes(searchTerm);
+                const groupMatches = !searchTerm || group.name.toLowerCase().includes(searchTerm);
 
                 let groupHtml = `
-                    <div class="tree-item">
-                        <div class="tree-row group" draggable="true">
+                    <div style="margin: 10px 0;">
+                        <div class="tree-row group">
                             <span class="drag-handle">☰</span>
                             <button class="toggle-btn" onclick="toggleGroup(event)">▼</button>
                             <span class="item-name">${group.name}</span>
                             <span class="item-count">${group.itemCount || 0}</span>
                         </div>
-                        <div class="children expanded" data-group-id="${group.id}">
+                        <div class="children expanded">
                 `;
 
                 group.departments?.forEach(dept => {
-                    const deptMatches = dept.name.toLowerCase().includes(searchTerm);
+                    const deptMatches = !searchTerm || dept.name.toLowerCase().includes(searchTerm);
 
                     groupHtml += `
-                        <div class="tree-item">
-                            <div class="tree-row department" draggable="true">
+                        <div style="margin: 5px 0;">
+                            <div class="tree-row department">
                                 <span class="drag-handle">☰</span>
                                 <button class="toggle-btn" onclick="toggleDept(event)">▼</button>
                                 <span class="item-name">${dept.name}</span>
                                 <span class="item-count">${dept.itemCount || 0}</span>
                             </div>
-                            <div class="children expanded" data-dept-id="${dept.id}">
+                            <div class="children expanded">
                     `;
 
                     dept.subcategories?.forEach(subcat => {
-                        const subcatMatches = subcat.name.toLowerCase().includes(searchTerm) || 
-                                            subcat.commax_id?.toString().includes(searchTerm);
+                        const subcatMatches = !searchTerm || 
+                            subcat.name.toLowerCase().includes(searchTerm) || 
+                            (subcat.commax_id && subcat.commax_id.toString().includes(searchTerm));
 
                         if (groupMatches || deptMatches || subcatMatches) {
                             groupHtml += `
-                                <div class="tree-row subcategory" draggable="true">
+                                <div class="tree-row subcategory">
                                     <span class="drag-handle">☰</span>
                                     <span class="item-name">${subcat.name}</span>
                                     <span class="item-id">#${subcat.commax_id}</span>
@@ -427,14 +382,7 @@
                 html += groupHtml;
             });
 
-            content.innerHTML = html || '<div class="no-items">לא נמצאו פריטים</div>';
-
-            // Add drag event listeners
-            document.querySelectorAll('.tree-row').forEach(row => {
-                row.addEventListener('dragstart', handleDragStart);
-                row.addEventListener('dragover', handleDragOver);
-                row.addEventListener('drop', handleDrop);
-            });
+            content.innerHTML = html || '<div class="error">לא נמצאו פריטים</div>';
         }
 
         function toggleGroup(event) {
@@ -467,32 +415,10 @@
             document.querySelectorAll('.toggle-btn').forEach(b => b.textContent = '▶');
         }
 
-        function handleDragStart(e) {
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/html', this.innerHTML);
-            this.style.opacity = '0.5';
-        }
-
-        function handleDragOver(e) {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-            this.style.background = '#e5e7eb';
-        }
-
-        function handleDrop(e) {
-            e.preventDefault();
-            this.style.background = '';
-        }
-
-        function saveToCloud() {
-            alert('💾 שמירת הנתונים בענן...\n\nהנתונים יישמרו בהצלחה.');
-            console.log('Save triggered. Data:', allData);
-        }
-
-        // Load data on page load
+        // Load on page load
         window.addEventListener('load', loadData);
 
-        // Search functionality
+        // Search on input
         document.addEventListener('DOMContentLoaded', () => {
             const searchBox = document.getElementById('searchBox');
             if (searchBox) {
