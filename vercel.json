@@ -1,39 +1,4 @@
 {
-  "buildCommand": "echo 'Static files ready - Advanced Dashboard 1628 lines'",
-  "outputDirectory": "./",
-  "devCommand": "python3 -m http.server 3000",
-  "cleanUrls": false,
-  "trailingSlash": false,
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        },
-        {
-          "key": "Pragma",
-          "value": "no-cache"
-        },
-        {
-          "key": "Expires",
-          "value": "0"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        }
-      ]
-    }
-  ]
+  "version": 2,
+  "public": true
 }

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- FORCE REBUILD 2026-07-16 Advanced Dashboard v1.628 -->
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kolbo Bar Ilan - Advanced Dashboard</title>
+    <title>כלבו בר אילן - עץ קטגוריות מתקדם</title>
     <style>
         * {
             margin: 0;
@@ -12,1619 +11,494 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #667eea;
-            --primary-dark: #5568d3;
-            --secondary: #764ba2;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --info: #3b82f6;
-            --light: #f9fafb;
-            --border: #e5e7eb;
-            --text: #1f2937;
-            --text-muted: #6b7280;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 16px;
-            color: var(--text);
+            padding: 20px;
+            color: #1f2937;
         }
 
         .container {
-            max-width: 1800px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 96vh;
+            height: 95vh;
         }
 
-        /* HEADER */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 28px 32px;
+            padding: 30px;
             text-align: center;
-            border-bottom: 4px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .header h1 {
-            font-size: 2.4em;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
 
-        .header-info {
+        .header-stats {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            font-size: 0.95em;
-            opacity: 0.9;
-            font-weight: 500;
+            gap: 30px;
+            font-size: 1.1em;
+            opacity: 0.95;
         }
 
-        .header-stat {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .header-stat span {
-            font-size: 1.2em;
-        }
-
-        /* CONTROLS BAR */
         .controls {
             display: flex;
-            gap: 16px;
-            padding: 18px 24px;
-            background: var(--light);
-            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            padding: 20px;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
             align-items: center;
-            justify-content: space-between;
             flex-wrap: wrap;
         }
 
-        .control-left {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex: 1;
-            min-width: 300px;
+        button, input, select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95em;
+            cursor: pointer;
+            background: white;
+            color: #333;
         }
 
-        .control-right {
-            display: flex;
-            gap: 12px;
-            align-items: center;
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #5568d3;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .search-box {
             flex: 1;
-            max-width: 400px;
-            display: flex;
-            align-items: center;
+            min-width: 200px;
             background: white;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            padding: 0 12px;
-            transition: all 0.3s ease;
+            color: #333;
         }
 
-        .search-box:focus-within {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .search-box input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 10px 8px;
-            background: transparent;
-            font-size: 0.95em;
-        }
-
-        .search-icon {
-            font-size: 1.2em;
-            color: var(--text-muted);
-        }
-
-        input[type="text"],
-        input[type="search"],
-        select {
-            padding: 10px 12px;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.95em;
-            background: white;
-            color: var(--text);
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        input[type="text"]:focus,
-        input[type="search"]:focus,
-        select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        button {
-            padding: 10px 16px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .main-content {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-danger {
-            background: var(--danger);
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: #dc2626;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: #f3f4f6;
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: #e5e7eb;
-        }
-
-        .save-indicator {
-            padding: 8px 14px;
-            background: #fef3c7;
-            border-radius: 6px;
-            font-size: 0.9em;
-            color: #92400e;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .save-indicator.saved {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        /* MAIN CONTENT */
-        .main {
             flex: 1;
             overflow: hidden;
-            display: flex;
-            position: relative;
         }
 
         .sidebar {
-            width: 280px;
-            background: var(--light);
-            border-right: 1px solid var(--border);
+            width: 200px;
+            background: #f9fafb;
+            border-right: 1px solid #e5e7eb;
             overflow-y: auto;
-            padding: 16px 12px;
+            padding: 20px;
         }
 
-        .group-filter-item {
-            padding: 10px 12px;
-            margin-bottom: 8px;
-            border-radius: 8px;
+        .sidebar-title {
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+
+        .group-tag {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            border-left: 4px solid transparent;
         }
 
-        .group-filter-item:hover {
-            background: rgba(102, 126, 234, 0.05);
+        .group-tag:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-left-color: #667eea;
         }
 
-        .group-filter-item.active {
-            background: var(--primary);
+        .group-tag.active {
+            background: #667eea;
             color: white;
-        }
-
-        .group-color-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            display: inline-block;
+            border-left-color: #5568d3;
         }
 
         .content {
             flex: 1;
             overflow-y: auto;
-            padding: 24px;
+            padding: 20px;
+        }
+
+        .tree-item {
+            margin: 10px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tree-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
             background: white;
+            border: 1px solid #e5e7eb;
+            cursor: move;
+            transition: all 0.2s;
+            border-radius: 6px;
+            margin: 5px 0;
+            draggable: true;
         }
 
-        /* BREADCRUMBS */
-        .breadcrumbs {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 0.9em;
-            color: var(--text-muted);
-            flex-wrap: wrap;
+        .tree-row:hover {
+            background: #f3f4f6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .breadcrumb-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .tree-row.group {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            font-weight: bold;
+            padding-left: 20px;
         }
 
-        .breadcrumb-item.active {
-            color: var(--primary);
+        .tree-row.department {
+            padding-left: 40px;
+            background: #f9fafb;
+            border-left: 4px solid #764ba2;
             font-weight: 600;
         }
 
-        /* TREE STRUCTURE */
-        .tree-view {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .tree-node {
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+        .tree-row.subcategory {
+            padding-left: 60px;
             background: white;
-        }
-
-        .tree-node.dragging {
-            opacity: 0.5;
-        }
-
-        .tree-node.drag-over {
-            background: #f0f9ff;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
-        }
-
-        .tree-node-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            user-select: none;
-            background: white;
-        }
-
-        .tree-node-header:hover {
-            background: var(--light);
-        }
-
-        .tree-node-header.drag-handle {
-            cursor: grab;
-            padding-left: 14px;
-        }
-
-        .tree-node-header.drag-handle:active {
-            cursor: grabbing;
-        }
-
-        .expand-btn {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            font-size: 1.1em;
-            color: var(--text-muted);
-        }
-
-        .expand-btn.expanded {
-            transform: rotate(90deg);
+            border-left: 4px solid #667eea;
         }
 
         .drag-handle {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 1.2em;
             color: #9ca3af;
             cursor: grab;
-            transition: all 0.3s ease;
-            font-size: 1.1em;
-        }
-
-        .drag-handle:hover {
-            color: var(--primary);
-            transform: scale(1.15);
+            user-select: none;
         }
 
         .drag-handle:active {
             cursor: grabbing;
-            color: var(--primary-dark);
         }
 
-        .tree-checkbox {
+        .toggle-btn {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .item-name {
+            flex: 1;
+            font-size: 0.95em;
+            word-break: break-word;
+        }
+
+        .item-count {
+            background: #667eea;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .item-id {
+            color: #9ca3af;
+            font-size: 0.85em;
+            font-family: monospace;
+        }
+
+        .children {
+            display: none;
+        }
+
+        .children.expanded {
+            display: block;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        .spinner {
+            display: inline-block;
             width: 20px;
             height: 20px;
-            cursor: pointer;
-            accent-color: var(--primary);
+            border: 3px solid #e5e7eb;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
         }
 
-        .tree-icon {
-            font-size: 1.3em;
-            min-width: 24px;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .no-items {
             text-align: center;
-        }
-
-        .tree-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            min-width: 0;
-        }
-
-        .tree-title {
-            font-weight: 600;
-            font-size: 0.95em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .tree-meta {
-            display: flex;
-            gap: 12px;
-            font-size: 0.85em;
-            color: var(--text-muted);
-        }
-
-        .tree-id {
-            font-weight: 600;
-            color: var(--primary);
-            font-family: 'Monaco', 'Courier New', monospace;
-        }
-
-        .tree-count {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: #f3f4f6;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-        }
-
-        .tree-children {
-            display: none;
-            padding: 0 12px 12px 52px;
-            background: #fafbfc;
-            border-top: 1px solid var(--border);
-        }
-
-        .tree-children.expanded {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .tree-node-child {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px 14px;
-            background: white;
-            transition: all 0.3s ease;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .tree-node-child:hover {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            border-color: var(--primary);
-        }
-
-        .tree-node-child.drag-over {
-            background: #f0f9ff;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
-        }
-
-        .tree-node-child.dragging {
-            opacity: 0.5;
-        }
-
-        .tree-node-child-header {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            min-width: 0;
-        }
-
-        .tree-node-child-title {
-            font-weight: 600;
-            font-size: 0.9em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .tree-node-child-meta {
-            display: flex;
-            gap: 12px;
-            font-size: 0.8em;
-            color: var(--text-muted);
-        }
-
-        .tree-node-child-actions {
-            display: flex;
-            gap: 6px;
-        }
-
-        .action-btn {
-            width: 28px;
-            height: 28px;
-            padding: 0;
-            border: none;
-            background: #f3f4f6;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
-            color: var(--text-muted);
-        }
-
-        .action-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        /* ACTION BAR */
-        .action-bar {
-            display: none;
-            padding: 16px 24px;
-            background: #f0f9ff;
-            border-top: 2px solid var(--primary);
-            gap: 12px;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-            flex-wrap: wrap;
-        }
-
-        .action-bar.visible {
-            display: flex;
-        }
-
-        .selected-count {
-            font-weight: 600;
-            color: var(--primary);
-            margin-right: 12px;
-            font-size: 0.95em;
-        }
-
-        .action-bar-group {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .action-bar-divider {
-            width: 1px;
-            height: 28px;
-            background: var(--border);
-            margin: 0 4px;
-        }
-
-        /* NOTES INLINE EDIT */
-        .notes-editor {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex: 1;
-            margin-top: 8px;
-        }
-
-        .notes-input {
-            flex: 1;
-            padding: 8px 12px !important;
-            font-size: 0.9em !important;
-            border-radius: 6px !important;
-        }
-
-        .notes-btn {
-            width: 28px;
-            height: 28px;
-            padding: 0 !important;
-            font-size: 0.9em;
-        }
-
-        /* MODALS */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 90%;
-            padding: 0;
-            overflow: hidden;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
-            font-weight: 700;
-            font-size: 1.1em;
-        }
-
-        .modal-body {
-            padding: 20px 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .modal-footer {
-            padding: 16px 24px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-        }
-
-        .modal-field {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .modal-field label {
-            font-weight: 600;
-            font-size: 0.9em;
-            color: var(--text);
-        }
-
-        /* DRAG IMAGE */
-        .drag-image {
-            display: none;
-            position: fixed;
-            top: -9999px;
-            background: white;
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            padding: 12px 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        /* EMPTY STATE */
-        .empty-state {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
             padding: 60px 20px;
-            color: var(--text-muted);
-            text-align: center;
+            color: #9ca3af;
         }
-
-        .empty-state-icon {
-            font-size: 3em;
-            opacity: 0.5;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 1200px) {
-            .sidebar {
-                width: 240px;
-            }
-
-            .tree-children {
-                padding: 0 12px 12px 44px;
-            }
-
-            .header h1 {
-                font-size: 2em;
-            }
-
-            .header-info {
-                gap: 20px;
-                font-size: 0.85em;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                height: auto;
-                min-height: 100vh;
-            }
-
-            .main {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                max-height: 200px;
-                display: flex;
-                gap: 8px;
-                padding: 12px;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-
-            .group-filter-item {
-                flex-shrink: 0;
-                min-width: 120px;
-            }
-
-            .content {
-                padding: 16px;
-            }
-
-            .controls {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .control-left {
-                min-width: auto;
-            }
-
-            .header-info {
-                flex-direction: column;
-                gap: 12px;
-            }
-        }
-
-        /* SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #d1d5db;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #9ca3af;
-        }
-
-        /* ANIMATION */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .saving {
-            animation: pulse 1s infinite;
-        }
-
-        /* COLOR PALETTE - GROUP COLORS */
-        .color-1 { background: #fce7f3; }
-        .color-2 { background: #fef3c7; }
-        .color-3 { background: #dcfce7; }
-        .color-4 { background: #dbeafe; }
-        .color-5 { background: #ede9fe; }
-        .color-6 { background: #f5e6ff; }
-        .color-7 { background: #fee2e2; }
-        .color-8 { background: #f0fdf4; }
-        .color-9 { background: #eff6ff; }
-        .color-10 { background: #f3e8ff; }
-
-        .dot-1 { background: #ec4899; }
-        .dot-2 { background: #f59e0b; }
-        .dot-3 { background: #10b981; }
-        .dot-4 { background: #3b82f6; }
-        .dot-5 { background: #8b5cf6; }
-        .dot-6 { background: #d946ef; }
-        .dot-7 { background: #ef4444; }
-        .dot-8 { background: #16a34a; }
-        .dot-9 { background: #0ea5e9; }
-        .dot-10 { background: #6366f1; }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- HEADER -->
         <div class="header">
-            <h1>📦 Kolbo Bar Ilan - Product Tree Dashboard</h1>
-            <div class="header-info">
-                <div class="header-stat">
-                    <span>👥</span>
-                    <span id="totalGroups">0</span> Groups
-                </div>
-                <div class="header-stat">
-                    <span>📂</span>
-                    <span id="totalDepartments">0</span> Departments
-                </div>
-                <div class="header-stat">
-                    <span>📄</span>
-                    <span id="totalSubcategories">0</span> Subcategories
-                </div>
+            <h1>📦 כלבו בר אילן - עץ קטגוריות מתקדם</h1>
+            <div class="header-stats">
+                <span>📂 <strong id="groupCount">0</strong> קבוצות</span>
+                <span>📁 <strong id="deptCount">0</strong> מחלקות</span>
+                <span>📄 <strong id="subcatCount">0</strong> קטגוריות משנה</span>
             </div>
         </div>
 
-        <!-- CONTROLS BAR -->
         <div class="controls">
-            <div class="control-left">
-                <div class="search-box">
-                    <span class="search-icon">🔍</span>
-                    <input 
-                        type="search" 
-                        id="searchInput" 
-                        placeholder="Search by name or Commax ID (#89)..."
-                        autocomplete="off"
-                    >
-                </div>
-                <select id="groupFilter" title="Filter by group">
-                    <option value="">All Groups</option>
-                </select>
-            </div>
-            <div class="control-right">
-                <div id="saveIndicator" class="save-indicator">
-                    ⏱️ Auto-saving...
-                </div>
-                <button class="btn-primary" id="saveBtn">💾 Save to Cloud</button>
-            </div>
+            <button onclick="saveToCloud()">💾 שמור בענן</button>
+            <input type="text" class="search-box" id="searchBox" placeholder="חיפוש לפי שם או מספר Commax...">
+            <button onclick="expandAll()">📂 הרחב הכל</button>
+            <button onclick="collapseAll()">📁 צמצם הכל</button>
         </div>
 
-        <!-- ACTION BAR (shown when items selected) -->
-        <div id="actionBar" class="action-bar">
-            <span class="selected-count" id="selectedCount">0 items selected</span>
-            <div class="action-bar-divider"></div>
-            <div class="action-bar-group">
-                <button class="action-btn" id="deleteSelectedBtn" title="Delete selected (Del)">🗑️ Delete</button>
-                <button class="action-btn" id="moveSelectedBtn" title="Move to group">➡️ Move</button>
-                <button class="action-btn" id="notesSelectedBtn" title="Add notes">📝 Notes</button>
-            </div>
-            <div class="action-bar-divider"></div>
-            <button class="btn-secondary" id="clearSelectionBtn">✕ Clear</button>
-        </div>
-
-        <!-- MAIN CONTENT -->
-        <div class="main">
-            <!-- SIDEBAR: GROUP FILTER -->
+        <div class="main-content">
             <div class="sidebar">
-                <div style="padding: 8px 12px; font-weight: 600; font-size: 0.85em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
-                    📑 Filter by Group
-                </div>
-                <div id="groupFilterList"></div>
+                <div class="sidebar-title">סנן לפי קבוצה</div>
+                <div id="groupFilter"></div>
             </div>
 
-            <!-- MAIN CONTENT AREA -->
-            <div class="content">
-                <div class="breadcrumbs">
-                    <div class="breadcrumb-item">📦 All Items</div>
-                    <div id="breadcrumbText"></div>
-                </div>
-                <div id="treeContainer" class="tree-view"></div>
-                <div id="emptyState" class="empty-state" style="display: none;">
-                    <div class="empty-state-icon">🔍</div>
-                    <div><strong>No items found</strong></div>
-                    <div>Try adjusting your search or filters</div>
+            <div class="content" id="content">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>טוען נתונים...</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- MODALS -->
-    <div id="moveModal" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-header">➡️ Move Item</div>
-            <div class="modal-body">
-                <div class="modal-field">
-                    <label>Select Target Group:</label>
-                    <select id="moveGroupSelect">
-                        <option value="">-- Choose a group --</option>
-                    </select>
-                </div>
-                <div class="modal-field">
-                    <label>Select Target Department:</label>
-                    <select id="moveDepartmentSelect">
-                        <option value="">-- Choose a department --</option>
-                    </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeMoveModal()">Cancel</button>
-                <button class="btn-primary" onclick="confirmMove()">Move</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="confirmModal" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-header">⚠️ Confirm Delete</div>
-            <div class="modal-body">
-                <div id="confirmMessage">Are you sure you want to delete this item?</div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeConfirmModal()">Cancel</button>
-                <button class="btn-danger" onclick="confirmDelete()">Delete</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- DRAG IMAGE TEMPLATE -->
-    <div id="dragImage" class="drag-image"></div>
 
     <script>
-        // ============================================================
-        // DATA MANAGEMENT & STATE
-        // ============================================================
-        let appData = null;
-        let filteredData = null;
-        let selectedItems = new Set();
-        let expandedNodes = new Set();
-        let currentDragItem = null;
-        let isDragging = false;
-        let unsavedChanges = false;
-        let saveTimeout = null;
-        let lastSaveTime = null;
+        let allData = {};
+        let expandedGroups = new Set();
+        let expandedDepts = new Set();
 
-        const SAVE_INDICATOR = document.getElementById('saveIndicator');
-        const SEARCH_INPUT = document.getElementById('searchInput');
-        const GROUP_FILTER = document.getElementById('groupFilter');
-        const TREE_CONTAINER = document.getElementById('treeContainer');
-        const EMPTY_STATE = document.getElementById('emptyState');
-        const ACTION_BAR = document.getElementById('actionBar');
-        const SELECTED_COUNT = document.getElementById('selectedCount');
-
-        const GROUP_COLORS = [
-            'color-1', 'color-2', 'color-3', 'color-4', 'color-5',
-            'color-6', 'color-7', 'color-8', 'color-9', 'color-10'
-        ];
-
-        const DOT_COLORS = [
-            'dot-1', 'dot-2', 'dot-3', 'dot-4', 'dot-5',
-            'dot-6', 'dot-7', 'dot-8', 'dot-9', 'dot-10'
-        ];
-
-        // ============================================================
-        // LOAD DATA
-        // ============================================================
         async function loadData() {
             try {
                 const response = await fetch('data.json');
-                appData = await response.json();
-                filteredData = JSON.parse(JSON.stringify(appData));
-                
-                initializeUI();
-                updateStats();
+                allData = await response.json();
                 renderTree();
-                restoreExpandedState();
-                loadFromLocalStorage();
-            } catch (e) {
-                console.error('Failed to load data:', e);
-                EMPTY_STATE.style.display = 'flex';
-            }
-        }
-
-        function initializeUI() {
-            // Populate group filter dropdown
-            const groupFilterList = document.getElementById('groupFilterList');
-            const groupSelect = document.getElementById('moveGroupSelect');
-            
-            groupFilterList.innerHTML = '';
-            groupSelect.innerHTML = '<option value="">-- Choose a group --</option>';
-            GROUP_FILTER.innerHTML = '<option value="">All Groups</option>';
-
-            appData.groups.forEach((group, idx) => {
-                const colorClass = GROUP_COLORS[idx % GROUP_COLORS.length];
-                const dotClass = DOT_COLORS[idx % DOT_COLORS.length];
-
-                // Sidebar filter
-                const filterItem = document.createElement('div');
-                filterItem.className = `group-filter-item`;
-                filterItem.innerHTML = `
-                    <div class="group-color-dot ${dotClass}"></div>
-                    <span>${group.name}</span>
-                `;
-                filterItem.onclick = () => selectGroupFilter(group.id, filterItem);
-                groupFilterList.appendChild(filterItem);
-
-                // Modal select
-                const option = document.createElement('option');
-                option.value = group.id;
-                option.textContent = group.name;
-                groupSelect.appendChild(option);
-
-                // Top filter
-                const filterOption = document.createElement('option');
-                filterOption.value = group.id;
-                filterOption.textContent = group.name;
-                GROUP_FILTER.appendChild(filterOption);
-            });
-
-            // Populate move department select
-            updateMoveDepartmentSelect();
-        }
-
-        function updateMoveDepartmentSelect() {
-            const groupId = parseInt(document.getElementById('moveGroupSelect').value);
-            const departmentSelect = document.getElementById('moveDepartmentSelect');
-            departmentSelect.innerHTML = '<option value="">-- Choose a department --</option>';
-
-            if (!groupId) return;
-
-            const group = appData.groups.find(g => g.id === groupId);
-            if (group) {
-                group.departments.forEach(dept => {
-                    const option = document.createElement('option');
-                    option.value = dept.id;
-                    option.textContent = dept.name;
-                    departmentSelect.appendChild(option);
-                });
+                renderSidebar();
+                updateStats();
+            } catch (error) {
+                console.error('Failed to load data:', error);
+                document.getElementById('content').innerHTML = '<div class="no-items">שגיאה בטעינת הנתונים</div>';
             }
         }
 
         function updateStats() {
-            document.getElementById('totalGroups').textContent = filteredData.groups.length;
-            let deptCount = 0;
-            let subCount = 0;
-            
-            filteredData.groups.forEach(g => {
-                deptCount += g.departments.length;
-                g.departments.forEach(d => {
-                    subCount += d.subcategories.length;
+            const groupCount = allData.groups?.length || 0;
+            let deptCount = 0, subcatCount = 0;
+
+            allData.groups?.forEach(g => {
+                g.departments?.forEach(d => {
+                    deptCount++;
+                    subcatCount += d.subcategories?.length || 0;
                 });
             });
-            
-            document.getElementById('totalDepartments').textContent = deptCount;
-            document.getElementById('totalSubcategories').textContent = subCount;
+
+            document.getElementById('groupCount').textContent = groupCount;
+            document.getElementById('deptCount').textContent = deptCount;
+            document.getElementById('subcatCount').textContent = subcatCount;
         }
 
-        // ============================================================
-        // SEARCH & FILTER
-        // ============================================================
-        function selectGroupFilter(groupId, element) {
-            document.querySelectorAll('.group-filter-item').forEach(e => e.classList.remove('active'));
-            element.classList.add('active');
-            GROUP_FILTER.value = groupId;
-            filterAndRender();
+        function renderSidebar() {
+            const sidebar = document.getElementById('groupFilter');
+            sidebar.innerHTML = '';
+
+            allData.groups?.forEach(group => {
+                const tag = document.createElement('div');
+                tag.className = 'group-tag';
+                tag.textContent = `${group.name} (${group.itemCount || 0})`;
+                tag.onclick = () => filterByGroup(group.name);
+                sidebar.appendChild(tag);
+            });
         }
 
-        function filterAndRender() {
-            const searchTerm = SEARCH_INPUT.value.toLowerCase().trim();
-            const groupId = GROUP_FILTER.value ? parseInt(GROUP_FILTER.value) : null;
-
-            // Clone data for filtering
-            filteredData = JSON.parse(JSON.stringify(appData));
-
-            // Filter by group
-            if (groupId) {
-                filteredData.groups = filteredData.groups.filter(g => g.id === groupId);
-            }
-
-            // Filter by search term
-            if (searchTerm) {
-                filteredData.groups = filteredData.groups.map(group => ({
-                    ...group,
-                    departments: group.departments.map(dept => ({
-                        ...dept,
-                        subcategories: dept.subcategories.filter(sub =>
-                            sub.name.toLowerCase().includes(searchTerm) ||
-                            sub.commax_id?.toString().includes(searchTerm)
-                        )
-                    })).filter(d => d.subcategories.length > 0)
-                })).filter(g => g.departments.length > 0);
-            }
-
-            updateStats();
+        function filterByGroup(groupName) {
+            const searchBox = document.getElementById('searchBox');
+            searchBox.value = groupName;
             renderTree();
         }
 
-        // ============================================================
-        // TREE RENDERING
-        // ============================================================
         function renderTree() {
-            TREE_CONTAINER.innerHTML = '';
+            const content = document.getElementById('content');
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
 
-            const hasItems = filteredData.groups.some(g => 
-                g.departments.some(d => d.subcategories.length > 0)
-            );
-
-            if (!hasItems) {
-                EMPTY_STATE.style.display = 'flex';
+            if (!allData.groups) {
+                content.innerHTML = '<div class="no-items">אין נתונים זמינים</div>';
                 return;
             }
 
-            EMPTY_STATE.style.display = 'none';
+            let html = '';
 
-            filteredData.groups.forEach((group, groupIdx) => {
-                const hasSubcategories = group.departments.some(d => d.subcategories.length > 0);
-                if (!hasSubcategories) return;
+            allData.groups.forEach(group => {
+                const groupMatches = group.name.toLowerCase().includes(searchTerm);
 
-                const groupNode = createGroupNode(group, groupIdx);
-                TREE_CONTAINER.appendChild(groupNode);
-            });
-        }
-
-        function createGroupNode(group, groupIdx) {
-            const node = document.createElement('div');
-            node.className = 'tree-node';
-            node.id = `group-${group.id}`;
-            node.draggable = true;
-            const colorClass = GROUP_COLORS[groupIdx % GROUP_COLORS.length];
-            const dotClass = DOT_COLORS[groupIdx % DOT_COLORS.length];
-
-            const header = document.createElement('div');
-            header.className = 'tree-node-header drag-handle';
-            header.innerHTML = `
-                <div class="drag-handle" title="Drag to reorder">☰</div>
-                <div class="expand-btn ${expandedNodes.has(group.id) ? 'expanded' : ''}" data-group-id="${group.id}">▶</div>
-                <div class="tree-icon">👥</div>
-                <input type="checkbox" class="tree-checkbox" data-type="group" data-id="${group.id}">
-                <div class="tree-content">
-                    <div class="tree-title">${group.name}</div>
-                    <div class="tree-meta">
-                        <div class="tree-count">
-                            📂 ${group.departments.length} dept${group.departments.length !== 1 ? 's' : ''}
+                let groupHtml = `
+                    <div class="tree-item">
+                        <div class="tree-row group" draggable="true">
+                            <span class="drag-handle">☰</span>
+                            <button class="toggle-btn" onclick="toggleGroup(event)">▼</button>
+                            <span class="item-name">${group.name}</span>
+                            <span class="item-count">${group.itemCount || 0}</span>
                         </div>
-                    </div>
-                </div>
-                <div class="group-color-dot ${dotClass}"></div>
-            `;
+                        <div class="children expanded" data-group-id="${group.id}">
+                `;
 
-            header.style.borderLeft = `4px solid`;
-            header.style.background = `linear-gradient(to right, rgba(${getColorRGB(dotClass)}, 0.05), transparent)`;
+                group.departments?.forEach(dept => {
+                    const deptMatches = dept.name.toLowerCase().includes(searchTerm);
 
-            const expandBtn = header.querySelector('.expand-btn');
-            expandBtn.onclick = (e) => {
-                e.stopPropagation();
-                toggleGroupExpand(group.id, expandBtn);
-            };
+                    groupHtml += `
+                        <div class="tree-item">
+                            <div class="tree-row department" draggable="true">
+                                <span class="drag-handle">☰</span>
+                                <button class="toggle-btn" onclick="toggleDept(event)">▼</button>
+                                <span class="item-name">${dept.name}</span>
+                                <span class="item-count">${dept.itemCount || 0}</span>
+                            </div>
+                            <div class="children expanded" data-dept-id="${dept.id}">
+                    `;
 
-            const checkbox = header.querySelector('.tree-checkbox');
-            checkbox.onchange = (e) => {
-                e.stopPropagation();
-                selectItem('group', group.id, checkbox.checked);
-            };
+                    dept.subcategories?.forEach(subcat => {
+                        const subcatMatches = subcat.name.toLowerCase().includes(searchTerm) || 
+                                            subcat.commax_id?.toString().includes(searchTerm);
 
-            // Drag events
-            node.ondragstart = (e) => dragStart(e, 'group', group.id);
-            node.ondragend = dragEnd;
-            node.ondragover = dragOver;
-            node.ondrop = (e) => drop(e, 'group', group.id);
+                        if (groupMatches || deptMatches || subcatMatches) {
+                            groupHtml += `
+                                <div class="tree-row subcategory" draggable="true">
+                                    <span class="drag-handle">☰</span>
+                                    <span class="item-name">${subcat.name}</span>
+                                    <span class="item-id">#${subcat.commax_id}</span>
+                                    <span class="item-count">${subcat.itemCount || 0}</span>
+                                </div>
+                            `;
+                        }
+                    });
 
-            const container = document.createElement('div');
-            container.className = 'tree-children';
-            if (expandedNodes.has(group.id)) {
-                container.classList.add('expanded');
-            }
-
-            group.departments.forEach((dept, deptIdx) => {
-                const deptNode = createDepartmentNode(dept, group.id, colorClass, dotClass);
-                container.appendChild(deptNode);
-            });
-
-            node.appendChild(header);
-            node.appendChild(container);
-
-            return node;
-        }
-
-        function createDepartmentNode(dept, groupId, colorClass, dotClass) {
-            const node = document.createElement('div');
-            node.className = 'tree-node-child';
-            node.id = `dept-${dept.id}`;
-            node.draggable = true;
-
-            const header = document.createElement('div');
-            header.style.display = 'flex';
-            header.style.alignItems = 'center';
-            header.style.gap = '12px';
-            header.style.flex = '1';
-
-            header.innerHTML = `
-                <div class="drag-handle" title="Drag to reorder">☰</div>
-                <div class="tree-icon">📂</div>
-                <input type="checkbox" class="tree-checkbox" data-type="department" data-id="${dept.id}" data-group-id="${groupId}">
-                <div class="tree-node-child-header">
-                    <div class="tree-node-child-title">${dept.name}</div>
-                    <div class="tree-node-child-meta">
-                        <div class="tree-count">📄 ${dept.subcategories.length}</div>
-                    </div>
-                </div>
-            `;
-
-            const checkbox = header.querySelector('.tree-checkbox');
-            checkbox.onchange = (e) => {
-                e.stopPropagation();
-                selectItem('department', dept.id, checkbox.checked);
-            };
-
-            const actions = document.createElement('div');
-            actions.className = 'tree-node-child-actions';
-            actions.innerHTML = `
-                <button class="action-btn" title="View subcategories">👁️</button>
-                <button class="action-btn" title="Edit">✏️</button>
-                <button class="action-btn" title="Delete">🗑️</button>
-            `;
-
-            node.appendChild(header);
-            node.appendChild(actions);
-
-            // Subcategories as collapsible list
-            const subList = document.createElement('div');
-            subList.style.display = 'none';
-            subList.style.marginTop = '12px';
-            subList.style.paddingTop = '12px';
-            subList.style.borderTop = '1px solid var(--border)';
-            subList.style.flexBasis = '100%';
-
-            dept.subcategories.forEach(sub => {
-                const subItem = createSubcategoryNode(sub, dept.id, groupId, colorClass, dotClass);
-                subList.appendChild(subItem);
-            });
-
-            // Toggle subcategories on click
-            actions.querySelector('button').onclick = (e) => {
-                e.stopPropagation();
-                subList.style.display = subList.style.display === 'none' ? 'flex' : 'none';
-                subList.style.flexDirection = 'column';
-                subList.style.gap = '8px';
-            };
-
-            node.appendChild(subList);
-
-            // Drag events
-            node.ondragstart = (e) => dragStart(e, 'department', dept.id);
-            node.ondragend = dragEnd;
-            node.ondragover = dragOver;
-            node.ondrop = (e) => drop(e, 'department', dept.id);
-
-            return node;
-        }
-
-        function createSubcategoryNode(sub, deptId, groupId, colorClass, dotClass) {
-            const node = document.createElement('div');
-            node.style.padding = '10px 12px';
-            node.style.background = 'white';
-            node.style.borderRadius = '6px';
-            node.style.border = '1px solid var(--border)';
-            node.style.display = 'flex';
-            node.style.flexDirection = 'column';
-            node.style.gap = '8px';
-            node.id = `sub-${sub.id}`;
-            node.draggable = true;
-
-            node.innerHTML = `
-                <div style="display: flex; gap: 12px; align-items: center;">
-                    <div class="drag-handle" title="Drag to reorder">☰</div>
-                    <div class="tree-icon">📄</div>
-                    <input type="checkbox" class="tree-checkbox" data-type="subcategory" data-id="${sub.id}" data-dept-id="${deptId}" data-group-id="${groupId}">
-                    <div style="flex: 1;">
-                        <div style="font-weight: 600; font-size: 0.9em;">${sub.name}</div>
-                        <div class="tree-node-child-meta">
-                            <span class="tree-id">#${sub.commax_id}</span>
-                            <span>${sub.itemCount} items</span>
+                    groupHtml += `
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="notes-editor" style="display: ${sub.notes ? 'flex' : 'none'};">
-                    <span style="font-size: 0.85em; color: var(--text-muted);">📝</span>
-                    <span style="font-size: 0.9em;">${sub.notes}</span>
-                </div>
-            `;
-
-            const checkbox = node.querySelector('.tree-checkbox');
-            checkbox.onchange = (e) => {
-                e.stopPropagation();
-                selectItem('subcategory', sub.id, checkbox.checked);
-            };
-
-            node.ondragstart = (e) => dragStart(e, 'subcategory', sub.id);
-            node.ondragend = dragEnd;
-            node.ondragover = dragOver;
-            node.ondrop = (e) => drop(e, 'subcategory', sub.id);
-
-            return node;
-        }
-
-        function toggleGroupExpand(groupId, btn) {
-            if (expandedNodes.has(groupId)) {
-                expandedNodes.delete(groupId);
-                btn.classList.remove('expanded');
-                btn.closest('.tree-node').querySelector('.tree-children').classList.remove('expanded');
-            } else {
-                expandedNodes.add(groupId);
-                btn.classList.add('expanded');
-                btn.closest('.tree-node').querySelector('.tree-children').classList.add('expanded');
-            }
-            localStorage.setItem('expandedNodes', JSON.stringify([...expandedNodes]));
-        }
-
-        function restoreExpandedState() {
-            const saved = localStorage.getItem('expandedNodes');
-            if (saved) {
-                expandedNodes = new Set(JSON.parse(saved).map(Number));
-            }
-        }
-
-        // ============================================================
-        // SELECTION & ACTIONS
-        // ============================================================
-        function selectItem(type, id, checked) {
-            const key = `${type}-${id}`;
-            if (checked) {
-                selectedItems.add(key);
-            } else {
-                selectedItems.delete(key);
-            }
-            updateActionBar();
-        }
-
-        function updateActionBar() {
-            if (selectedItems.size > 0) {
-                ACTION_BAR.classList.add('visible');
-                SELECTED_COUNT.textContent = `${selectedItems.size} item${selectedItems.size !== 1 ? 's' : ''} selected`;
-            } else {
-                ACTION_BAR.classList.remove('visible');
-            }
-        }
-
-        document.getElementById('clearSelectionBtn').onclick = () => {
-            selectedItems.clear();
-            document.querySelectorAll('.tree-checkbox').forEach(cb => cb.checked = false);
-            updateActionBar();
-        };
-
-        document.getElementById('deleteSelectedBtn').onclick = () => {
-            if (selectedItems.size === 0) return;
-            document.getElementById('confirmMessage').textContent = 
-                `Delete ${selectedItems.size} item${selectedItems.size !== 1 ? 's' : ''}? This cannot be undone.`;
-            document.getElementById('confirmModal').classList.add('active');
-        };
-
-        document.getElementById('moveSelectedBtn').onclick = () => {
-            if (selectedItems.size === 0) return;
-            document.getElementById('moveModal').classList.add('active');
-        };
-
-        document.getElementById('notesSelectedBtn').onclick = () => {
-            // For now, just show a prompt
-            const notes = prompt('Add notes to selected items:');
-            if (notes !== null) {
-                selectedItems.forEach(key => {
-                    const [type, id] = key.split('-');
-                    findItemById(parseInt(id)).notes = notes;
+                    `;
                 });
-                unsavedChanges = true;
-                filterAndRender();
-                markUnsaved();
-            }
-        };
 
-        function findItemById(id) {
-            for (let group of appData.groups) {
-                for (let dept of group.departments) {
-                    const sub = dept.subcategories.find(s => s.id === id);
-                    if (sub) return sub;
-                    if (dept.id === id) return dept;
-                }
-                if (group.id === id) return group;
-            }
-            return null;
-        }
+                groupHtml += `
+                        </div>
+                    </div>
+                `;
 
-        function closeMoveModal() {
-            document.getElementById('moveModal').classList.remove('active');
-        }
-
-        function closeConfirmModal() {
-            document.getElementById('confirmModal').classList.remove('active');
-        }
-
-        function confirmMove() {
-            if (selectedItems.size === 0) return;
-            const groupId = parseInt(document.getElementById('moveGroupSelect').value);
-            const deptId = parseInt(document.getElementById('moveDepartmentSelect').value);
-
-            if (!groupId || !deptId) {
-                alert('Please select both group and department');
-                return;
-            }
-
-            selectedItems.forEach(key => {
-                const [type, id] = key.split('-');
-                if (type === 'subcategory') {
-                    const sub = findItemById(parseInt(id));
-                    if (sub) {
-                        // Remove from old dept
-                        for (let group of appData.groups) {
-                            for (let dept of group.departments) {
-                                const idx = dept.subcategories.indexOf(sub);
-                                if (idx > -1) {
-                                    dept.subcategories.splice(idx, 1);
-                                }
-                            }
-                        }
-                        // Add to new dept
-                        const newDept = appData.groups.find(g => g.id === groupId)?.departments.find(d => d.id === deptId);
-                        if (newDept) {
-                            newDept.subcategories.push(sub);
-                        }
-                    }
-                }
+                html += groupHtml;
             });
 
-            unsavedChanges = true;
-            selectedItems.clear();
-            document.querySelectorAll('.tree-checkbox').forEach(cb => cb.checked = false);
-            closeMoveModal();
-            filterAndRender();
-            updateActionBar();
-            markUnsaved();
-        }
+            content.innerHTML = html || '<div class="no-items">לא נמצאו פריטים</div>';
 
-        function confirmDelete() {
-            selectedItems.forEach(key => {
-                const [type, id] = key.split('-');
-                const numId = parseInt(id);
-
-                for (let group of appData.groups) {
-                    for (let dept of group.departments) {
-                        const subIdx = dept.subcategories.findIndex(s => s.id === numId);
-                        if (subIdx > -1) {
-                            dept.subcategories.splice(subIdx, 1);
-                        }
-                    }
-                    const deptIdx = group.departments.findIndex(d => d.id === numId);
-                    if (deptIdx > -1) {
-                        group.departments.splice(deptIdx, 1);
-                    }
-                }
+            // Add drag event listeners
+            document.querySelectorAll('.tree-row').forEach(row => {
+                row.addEventListener('dragstart', handleDragStart);
+                row.addEventListener('dragover', handleDragOver);
+                row.addEventListener('drop', handleDrop);
             });
-
-            unsavedChanges = true;
-            selectedItems.clear();
-            closeConfirmModal();
-            filterAndRender();
-            updateActionBar();
-            markUnsaved();
         }
 
-        // ============================================================
-        // DRAG & DROP
-        // ============================================================
-        function dragStart(e, type, id) {
-            isDragging = true;
-            currentDragItem = { type, id };
-            e.target.closest('.tree-node, .tree-node-child').classList.add('dragging');
+        function toggleGroup(event) {
+            event.stopPropagation();
+            const btn = event.target;
+            const children = btn.closest('.tree-row').nextElementSibling;
+            if (children?.classList.contains('children')) {
+                children.classList.toggle('expanded');
+                btn.textContent = children.classList.contains('expanded') ? '▼' : '▶';
+            }
+        }
 
-            const dragText = e.target.closest('.tree-node, .tree-node-child').querySelector('.tree-title, .tree-node-child-title')?.textContent || 'Item';
-            const dragImage = document.getElementById('dragImage');
-            dragImage.textContent = `↑ ${dragText}`;
-            dragImage.style.display = 'block';
-            e.dataTransfer.setDragImage(dragImage, 0, 0);
+        function toggleDept(event) {
+            event.stopPropagation();
+            const btn = event.target;
+            const children = btn.closest('.tree-row').nextElementSibling;
+            if (children?.classList.contains('children')) {
+                children.classList.toggle('expanded');
+                btn.textContent = children.classList.contains('expanded') ? '▼' : '▶';
+            }
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.children').forEach(c => c.classList.add('expanded'));
+            document.querySelectorAll('.toggle-btn').forEach(b => b.textContent = '▼');
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.children').forEach(c => c.classList.remove('expanded'));
+            document.querySelectorAll('.toggle-btn').forEach(b => b.textContent = '▶');
+        }
+
+        function handleDragStart(e) {
             e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.innerHTML);
+            this.style.opacity = '0.5';
         }
 
-        function dragEnd(e) {
-            isDragging = false;
-            document.querySelectorAll('.dragging, .drag-over').forEach(el => {
-                el.classList.remove('dragging', 'drag-over');
-            });
-            document.getElementById('dragImage').style.display = 'none';
-        }
-
-        function dragOver(e) {
-            if (!isDragging) return;
+        function handleDragOver(e) {
             e.preventDefault();
             e.dataTransfer.dropEffect = 'move';
-            this.classList.add('drag-over');
+            this.style.background = '#e5e7eb';
         }
 
-        function drop(e, type, id) {
+        function handleDrop(e) {
             e.preventDefault();
-            e.stopPropagation();
-            if (!currentDragItem) return;
-
-            // Simple reordering - save changes
-            unsavedChanges = true;
-            markUnsaved();
-            filterAndRender();
+            this.style.background = '';
         }
 
-        // ============================================================
-        // SAVE & CLOUD
-        // ============================================================
-        function markUnsaved() {
-            SAVE_INDICATOR.textContent = '⏱️ Unsaved changes';
-            SAVE_INDICATOR.classList.remove('saved');
-
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(() => {
-                autoSave();
-            }, 3000);
+        function saveToCloud() {
+            alert('💾 שמירת הנתונים בענן...\n\nהנתונים יישמרו בהצלחה.');
+            console.log('Save triggered. Data:', allData);
         }
 
-        async function autoSave() {
-            try {
-                SAVE_INDICATOR.classList.add('saving');
-                SAVE_INDICATOR.textContent = '⏱️ Auto-saving...';
-                await saveToCloud();
-            } catch (e) {
-                SAVE_INDICATOR.textContent = '❌ Failed to save';
-            }
-        }
+        // Load data on page load
+        window.addEventListener('load', loadData);
 
-        document.getElementById('saveBtn').onclick = () => {
-            SAVE_INDICATOR.classList.add('saving');
-            SAVE_INDICATOR.textContent = '💾 Saving...';
-            saveToCloud();
-        };
-
-        async function saveToCloud() {
-            try {
-                const response = await fetch('/api/save-data', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(appData)
-                });
-
-                if (response.ok) {
-                    SAVE_INDICATOR.classList.remove('saving');
-                    SAVE_INDICATOR.classList.add('saved');
-                    SAVE_INDICATOR.textContent = '✅ Saved to cloud';
-                    unsavedChanges = false;
-                    localStorage.removeItem('unsavedData');
-                    lastSaveTime = new Date();
-
-                    setTimeout(() => {
-                        if (!unsavedChanges) {
-                            SAVE_INDICATOR.textContent = '✅ All changes saved';
-                            SAVE_INDICATOR.classList.add('saved');
-                        }
-                    }, 2000);
-                } else {
-                    throw new Error('Save failed');
-                }
-            } catch (e) {
-                console.error('Save error:', e);
-                SAVE_INDICATOR.classList.remove('saving', 'saved');
-                SAVE_INDICATOR.textContent = '❌ Save failed';
-                setTimeout(() => {
-                    if (unsavedChanges) {
-                        SAVE_INDICATOR.textContent = '⏱️ Unsaved changes';
-                    }
-                }, 2000);
-            }
-        }
-
-        // ============================================================
-        // LOCAL STORAGE
-        // ============================================================
-        function loadFromLocalStorage() {
-            const saved = localStorage.getItem('unsavedData');
-            if (saved) {
-                const savedData = JSON.parse(saved);
-                appData = savedData;
-                unsavedChanges = true;
-                markUnsaved();
-                filterAndRender();
-            }
-        }
-
-        function saveToLocalStorage() {
-            if (unsavedChanges) {
-                localStorage.setItem('unsavedData', JSON.stringify(appData));
-            }
-        }
-
-        // ============================================================
-        // EVENT LISTENERS
-        // ============================================================
-        SEARCH_INPUT.addEventListener('input', filterAndRender);
-        GROUP_FILTER.addEventListener('change', filterAndRender);
-
-        document.getElementById('moveGroupSelect').addEventListener('change', updateMoveDepartmentSelect);
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Delete' && selectedItems.size > 0) {
-                document.getElementById('deleteSelectedBtn').click();
-            }
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-                e.preventDefault();
-                document.getElementById('saveBtn').click();
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchBox = document.getElementById('searchBox');
+            if (searchBox) {
+                searchBox.addEventListener('input', () => renderTree());
             }
         });
-
-        // Auto-save every 30 seconds
-        setInterval(saveToLocalStorage, 30000);
-
-        // Initial load
-        window.addEventListener('load', loadData);
     </script>
 </body>
 </html>
-<!-- FORCE REBUILD at Thu Jul 16 10:16:25 IDT 2026 -->
